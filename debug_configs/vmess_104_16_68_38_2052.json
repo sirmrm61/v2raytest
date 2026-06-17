@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2087,
+      "port": 2106,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -20,17 +20,17 @@
   ],
   "outbounds": [
     {
-      "protocol": "vless",
+      "protocol": "vmess",
       "settings": {
         "vnext": [
           {
-            "address": "ovhwuxian.pai50288.uk",
-            "port": 8443,
+            "address": "104.16.68.38",
+            "port": 2052,
             "users": [
               {
-                "id": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
-                "encryption": "none",
-                "flow": ""
+                "id": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
+                "alterId": "0",
+                "security": "auto"
               }
             ]
           }
@@ -38,15 +38,10 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "ovhwuxian.pai50288.uk",
-          "allowInsecure": true
-        },
         "wsSettings": {
-          "path": "/57ba2ab1",
+          "path": "/glweidf.sbs/linkws",
           "headers": {
-            "Host": "ovhwuxian.pai50288.uk"
+            "Host": "proud-union-8659.email-0kn8d.workers.dev"
           }
         }
       }

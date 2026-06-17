@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2087,
+      "port": 2147,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -20,17 +20,17 @@
   ],
   "outbounds": [
     {
-      "protocol": "vless",
+      "protocol": "vmess",
       "settings": {
         "vnext": [
           {
-            "address": "ovhwuxian.pai50288.uk",
+            "address": "57.131.32.191",
             "port": 8443,
             "users": [
               {
-                "id": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
-                "encryption": "none",
-                "flow": ""
+                "id": "848af33c-81f2-40c9-93b2-4681d056936b",
+                "alterId": 0,
+                "security": "auto"
               }
             ]
           }
@@ -38,15 +38,12 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "ovhwuxian.pai50288.uk",
-          "allowInsecure": true
-        },
+        "security": true,
+        "tlsSettings": {},
         "wsSettings": {
-          "path": "/57ba2ab1",
+          "path": "/vmess/",
           "headers": {
-            "Host": "ovhwuxian.pai50288.uk"
+            "Host": "OV-Italy1.09vpn.com"
           }
         }
       }
