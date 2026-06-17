@@ -40,13 +40,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "M84tG1gGw0.SoLeNtRaA.iNfO",
+          "serverName": "I78nThHk0Q.sOlEnTrAa.InFo",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/",
           "headers": {
-            "Host": "M84tG1gGw0.SoLeNtRaA.iNfO"
+            "Host": "I78nThHk0Q.sOlEnTrAa.InFo"
           }
         }
       }
