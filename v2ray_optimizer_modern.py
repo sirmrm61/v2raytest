@@ -35,18 +35,30 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # ----------------------------- Country Detection -----------------------------
 
 
+_country_cache = {}  # Cache for country lookups
+
+
 def get_country_from_ip(ip: str) -> str:
-    """Get country code from IP address using free API"""
+    """Get country code from IP address using free API (with caching)"""
+    if ip in _country_cache:
+        return _country_cache[ip]
+    
     try:
-        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=2)
+        response = requests.get(f"http://ip-api.com/json/{ip}", timeout=1)
         data = response.json()
         if data.get("status") == "success":
             country_code = data.get("countryCode", "??")
             country_name = data.get("country", "Unknown")
-            return f"{country_code} ({country_name})"
-        return "??"
+            result = f"{country_code} ({country_name})"
+            _country_cache[ip] = result
+            return result
+        result = "??"
+        _country_cache[ip] = result
+        return result
     except:
-        return "??"
+        result = "??"
+        _country_cache[ip] = result
+        return result
 
 # ----------------------------- Modern Theme -----------------------------
 
@@ -239,8 +251,8 @@ def parse_vmess(link: str) -> Optional[ConfigItem]:
         host = data.get("add") or ""
         port = int(data.get("port") or 0)
         remark = data.get("ps") or data.get("name") or "vmess"
-        country = get_country_from_ip(host)
-        return ConfigItem(raw=link.strip(), protocol="vmess", host=host, port=port, remark=remark, extra=data, country=country)
+        # Don't get country during parsing to avoid blocking
+        return ConfigItem(raw=link.strip(), protocol="vmess", host=host, port=port, remark=remark, extra=data, country="")
     except Exception:
         return None
 
@@ -255,8 +267,8 @@ def parse_url_like(link: str) -> Optional[ConfigItem]:
         remark = parsed.fragment or f"{protocol}"
         if not host or not port:
             return None
-        country = get_country_from_ip(host)
-        return ConfigItem(raw=link.strip(), protocol=protocol, host=host, port=int(port), remark=remark, country=country)
+        # Don't get country during parsing to avoid blocking
+        return ConfigItem(raw=link.strip(), protocol=protocol, host=host, port=int(port), remark=remark, country="")
     except Exception:
         return None
 
@@ -712,6 +724,40 @@ def rank_results(results: List[TestResult]) -> List[TestResult]:
     )
 
 
+def auto_upload_to_github():
+    """Automatically commit and push results to GitHub"""
+    try:
+        import threading
+        def upload_task():
+            try:
+                # Add all changes
+                subprocess.run(["git", "add", "."], 
+                             capture_output=True, 
+                             creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
+                             timeout=30)
+                
+                # Commit with timestamp
+                timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+                subprocess.run(["git", "commit", "-m", f"Update test results - {timestamp}"],
+                             capture_output=True,
+                             creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
+                             timeout=30)
+                
+                # Push to GitHub
+                subprocess.run(["git", "push", "-u", "origin", "main"],
+                             capture_output=True,
+                             creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
+                             timeout=60)
+            except Exception as e:
+                print(f"Git upload error: {e}")
+        
+        # Run in background thread to not block UI
+        thread = threading.Thread(target=upload_task, daemon=True)
+        thread.start()
+    except Exception:
+        pass
+
+
 def save_output_files(best: List[TestResult], output_name: str):
     links = [res.config.raw for res in best]
     plain_path = f"{output_name}.txt"
@@ -758,6 +804,9 @@ def save_output_files(best: List[TestResult], output_name: str):
             }, f, indent=2, ensure_ascii=False)
     except Exception:
         pass
+    
+    # Auto-upload to GitHub
+    auto_upload_to_github()
 
 
 # ----------------------------- Modern GUI -----------------------------
@@ -1206,7 +1255,22 @@ class V2RayOptimizerModernGUI:
         unique = {}
         for cfg in configs:
             unique[cfg.key()] = cfg
-        return list(unique.values())
+        configs = list(unique.values())
+        
+        # Update countries in background (non-blocking)
+        self._update_countries_async(configs)
+        
+        return configs
+    
+    def _update_countries_async(self, configs: List[ConfigItem]):
+        """Update country info in background thread"""
+        def update_task():
+            for cfg in configs:
+                if not cfg.country:
+                    cfg.country = get_country_from_ip(cfg.host)
+        
+        thread = threading.Thread(target=update_task, daemon=True)
+        thread.start()
     
     def _increment_progress(self):
         self.completed_tests += 1
