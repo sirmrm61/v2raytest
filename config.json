@@ -7,5 +7,7 @@
   "tests_per_config": 2,
   "max_concurrency": 120,
   "timeout": 5.0,
-  "xray_path": "D:/project/python/v2raytest/Xray/xray.exe"
+  "xray_path": "D:/project/python/v2raytest/Xray/xray.exe",
+  "auto_schedule_enabled": true,
+  "auto_schedule_interval": 10
 }

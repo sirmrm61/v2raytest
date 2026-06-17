@@ -200,6 +200,8 @@ DEFAULT_SETTINGS = {
     "timeout": 3,
     "xray_path": "",
     "dark_mode": True,
+    "auto_schedule_enabled": False,
+    "auto_schedule_interval": 60,  # minutes
 }
 
 CONFIG_FILE = "config.json"
@@ -987,6 +989,8 @@ class V2RayOptimizerModernGUI:
         self.max_conc_var = tk.IntVar()
         self.timeout_var = tk.DoubleVar()
         self.xray_path_var = tk.StringVar()
+        self.auto_schedule_enabled_var = tk.BooleanVar()
+        self.auto_schedule_interval_var = tk.IntVar()
         
         settings = [
             ("نام فایل خروجی:", self.output_name_var, "best-configs"),
@@ -1025,6 +1029,33 @@ class V2RayOptimizerModernGUI:
         
         ModernButton(xray_frame, text="📁 انتخاب", command=lambda: self._browse_file(self.xray_path_var),
                     width=80).pack(side=tk.RIGHT, padx=5)
+        
+        # Auto-schedule section
+        schedule_frame = tk.Frame(settings_frame, bg=ModernTheme.BG_PRIMARY)
+        schedule_frame.pack(fill=tk.X, pady=(15, 8))
+        
+        tk.Label(schedule_frame, text="⏰ زمان‌بندی خودکار:",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
+                bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY, width=25, anchor="e").pack(side=tk.RIGHT)
+        
+        schedule_check = tk.Checkbutton(schedule_frame, text="فعال", variable=self.auto_schedule_enabled_var,
+                                       bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY,
+                                       selectcolor=ModernTheme.BG_SECONDARY, activebackground=ModernTheme.BG_PRIMARY)
+        schedule_check.pack(side=tk.RIGHT, padx=10)
+        
+        interval_frame = tk.Frame(schedule_frame, bg=ModernTheme.BG_PRIMARY)
+        interval_frame.pack(side=tk.RIGHT, padx=10)
+        
+        tk.Label(interval_frame, text="هر (دقیقه):",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY).pack(side=tk.RIGHT)
+        
+        interval_entry = tk.Entry(interval_frame, textvariable=self.auto_schedule_interval_var, width=8,
+                                bg=ModernTheme.BG_SECONDARY, fg=ModernTheme.TEXT_PRIMARY,
+                                insertbackground=ModernTheme.ACCENT,
+                                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                                relief="flat", bd=1)
+        interval_entry.pack(side=tk.RIGHT, padx=5)
         
         # Action buttons
         action_frame = tk.Frame(container, bg=ModernTheme.BG_PRIMARY)
@@ -1159,6 +1190,8 @@ class V2RayOptimizerModernGUI:
             "max_concurrency": int(self.max_conc_var.get() or DEFAULT_SETTINGS["max_concurrency"]),
             "timeout": float(self.timeout_var.get() or DEFAULT_SETTINGS["timeout"]),
             "xray_path": self.xray_path_var.get(),
+            "auto_schedule_enabled": self.auto_schedule_enabled_var.get(),
+            "auto_schedule_interval": int(self.auto_schedule_interval_var.get() or DEFAULT_SETTINGS["auto_schedule_interval"]),
         }
         save_settings(data)
         self._log("✓ تنظیمات ذخیره شد")
@@ -1174,6 +1207,8 @@ class V2RayOptimizerModernGUI:
         self.max_conc_var.set(st.get("max_concurrency", DEFAULT_SETTINGS["max_concurrency"]))
         self.timeout_var.set(st.get("timeout", DEFAULT_SETTINGS["timeout"]))
         self.xray_path_var.set(st.get("xray_path", ""))
+        self.auto_schedule_enabled_var.set(st.get("auto_schedule_enabled", DEFAULT_SETTINGS["auto_schedule_enabled"]))
+        self.auto_schedule_interval_var.set(st.get("auto_schedule_interval", DEFAULT_SETTINGS["auto_schedule_interval"]))
         self._log("✓ تنظیمات بارگذاری شد")
     
     def _log(self, msg: str):
@@ -1378,6 +1413,21 @@ class V2RayOptimizerModernGUI:
     
     def _finish(self):
         self.root.after(0, lambda: self.start_btn.config(state="normal"))
+        
+        # Check if auto-schedule is enabled
+        if self.auto_schedule_enabled_var.get():
+            interval = self.auto_schedule_interval_var.get()
+            if interval > 0:
+                self._log(f"⏰ تست بعدی در {interval} دقیقه")
+                self.root.after(interval * 60 * 1000, self._on_auto_schedule)
+    
+    def _on_auto_schedule(self):
+        """Auto-schedule callback"""
+        if not self.auto_schedule_enabled_var.get():
+            return
+        
+        self._log("⏰ شروع تست زمان‌بندی شده...")
+        self._on_start()
 
 
 def main():
