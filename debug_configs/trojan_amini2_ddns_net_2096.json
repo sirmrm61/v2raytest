@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2166,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "amini2.ddns.net",
+            "port": 2096,
+            "users": [
+              {
+                "password": "biwe49r2Tv"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "Qoakq.mookomeilz.homes",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/mskqq",
+          "headers": {
+            "Host": "pANeL159.moOkoMEilz.homes"
+          }
+        }
+      }
+    }
+  ]
+}

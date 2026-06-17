@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2090,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "188.42.88.252",
+            "port": 2087,
+            "users": [
+              {
+                "password": "Go5e2nKM9U"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "aa.v2jey.fun",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "JoinUs@v2rayNG_VPNN",
+          "headers": {
+            "Host": "aa.v2jey.fun"
+          }
+        }
+      }
+    }
+  ]
+}

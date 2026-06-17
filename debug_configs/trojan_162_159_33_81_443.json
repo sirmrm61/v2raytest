@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2163,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "162.159.33.81",
+            "port": 443,
+            "users": [
+              {
+                "password": "7964"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.novaye6130.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2560",
+          "headers": {
+            "Host": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.novaye6130.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2093,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.180.67",
+            "port": 443,
+            "users": [
+              {
+                "password": "0792bb58-36ac-451e-a629-e363e53da93b"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.zoom.us.kafka.eula.cloudns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@V2ray_Alpha/?ed=2048",
+          "headers": {
+            "Host": "support.zoom.us.kafka.eula.cloudns.org"
+          }
+        }
+      }
+    }
+  ]
+}

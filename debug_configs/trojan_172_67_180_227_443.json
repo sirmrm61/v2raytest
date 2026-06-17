@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2130,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.180.227",
+            "port": 443,
+            "users": [
+              {
+                "password": "bpb-trojan"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mashdt.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/tr?ed=2560",
+          "headers": {
+            "Host": "mashdt.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

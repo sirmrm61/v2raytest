@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2161,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.57.88",
+            "port": 443,
+            "users": [
+              {
+                "password": "072f4db4-d89d-420d-9d9e-045ed8d5c9cc"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "10tyu.iran.pp.ua",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/VEP415T5mby2DulPWRIwOavJd",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

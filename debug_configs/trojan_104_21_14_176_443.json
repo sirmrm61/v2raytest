@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2144,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.14.176",
+            "port": 443,
+            "users": [
+              {
+                "password": "blue2024"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tc.promote.icu",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed",
+          "headers": {
+            "Host": "tc.promote.icu"
+          }
+        }
+      }
+    }
+  ]
+}

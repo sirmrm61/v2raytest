@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2084,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.25.145.188",
+            "port": 2083,
+            "users": [
+              {
+                "password": "tXsBdKfoe9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cpuhot.boshrachoice.ir.",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/VPNTV20@_TOP.COM.VPNTV20@_TOP.COM.VPNTV20@_TOP.COM?ed=2048",
+          "headers": {
+            "Host": "cpuhot.boshrachoice.ir."
+          }
+        }
+      }
+    }
+  ]
+}

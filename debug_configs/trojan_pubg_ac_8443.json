@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2156,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "pubg.ac",
+            "port": 8443,
+            "users": [
+              {
+                "password": "a134e3de-b25a-4020-9998-05fa6b715f1a"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cdn-node-oss-99.paofu.de",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/profile/telegram@ssrsub",
+          "headers": {
+            "Host": "cdn-node-oss-99.paofu.de"
+          }
+        }
+      }
+    }
+  ]
+}

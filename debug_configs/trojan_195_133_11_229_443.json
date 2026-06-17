@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2139,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "195.133.11.229",
+            "port": 443,
+            "users": [
+              {
+                "password": "PU3f7528NtNXnQqb9X263rGSD"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "get.fragmentary.info",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/socks5tobefree",
+          "headers": {
+            "Host": "get.fragmentary.info"
+          }
+        }
+      }
+    }
+  ]
+}

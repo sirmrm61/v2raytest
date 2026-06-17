@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2085,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.26.12.31",
+            "port": 2053,
+            "users": [
+              {
+                "password": "6c0ed3fb-f0b0-5b53-a762-f8f8d832bdba"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "vfarid.xcdi.wOrkERS.DeV",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "trojan-ws/?ed=2048",
+          "headers": {
+            "Host": "vfarid.xcdi.wOrkERS.DeV"
+          }
+        }
+      }
+    }
+  ]
+}

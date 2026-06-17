@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2117,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "149.5.172.218",
+            "port": 995,
+            "users": [
+              {
+                "password": "I864rxBP9tLYy6OdZ_3SrQ"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "pubtlx.pqmin.online",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/twcdn-warp",
+          "headers": {
+            "Host": "fi.pqmin.online"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2116,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "188.114.96.34",
+            "port": 443,
+            "users": [
+              {
+                "password": "bpb-trojan"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "fcspring.ggff.net",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/tr?ed",
+          "headers": {
+            "Host": "fcspring.ggff.net"
+          }
+        }
+      }
+    }
+  ]
+}

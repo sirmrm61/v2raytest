@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2082,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.15.162.213",
+            "port": 9443,
+            "users": [
+              {
+                "password": "a7a0a5e774704906818422150550c1b4"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "apple.com",
+          "publicKey": "k9pQX_xPr03Jvy3pFRWhxMFvsX8QffPS2yJh7BFB0jA",
+          "shortId": "aabbccdd",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

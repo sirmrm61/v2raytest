@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2101,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.66.168.209",
+            "port": 443,
+            "users": [
+              {
+                "password": "aTArbZ2F0E"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "uSa-vp-27.bLAzECLOUD.SITE",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/linkvkws",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2161,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.66.46.249",
+            "port": 443,
+            "users": [
+              {
+                "password": "90cd4a77-141a-43c9-991b-08263cfe9c10"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "79193c43.aryoovpn-5fr.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@Linkvws?ed=2048",
+          "headers": {
+            "Host": "79193c43.aryoovpn-5fr.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

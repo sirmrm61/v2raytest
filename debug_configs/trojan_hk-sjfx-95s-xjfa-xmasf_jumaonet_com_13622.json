@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2118,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "hk-sjfx-95s-xjfa-xmasf.jumaonet.com",
+            "port": 13622,
+            "users": [
+              {
+                "password": "3e820eb0-3f06-4337-a4fc-0c3c7c0d3b4d"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "hk-sjfx-95s-xjfa-xmasf.jumaonet.com",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

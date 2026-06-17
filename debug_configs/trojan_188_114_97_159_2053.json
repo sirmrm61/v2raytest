@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2081,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "188.114.97.159",
+            "port": 2053,
+            "users": [
+              {
+                "password": "bpb-trojan"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "BPB-worKEr-pANel1-E4p.PAgES.Dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/tr9pU4LSFNK5k8URSo/ZGUucmFkaWNhbGx5LnBybw==",
+          "headers": {
+            "Host": "bpb-worker-panel1-e4p.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

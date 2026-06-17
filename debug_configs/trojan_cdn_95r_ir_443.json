@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2085,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "cdn.95r.ir",
+            "port": 443,
+            "users": [
+              {
+                "password": "MiTiVPN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cdn.95r.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "index.php?mitivpn",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2106,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.18.24.92",
+            "port": 443,
+            "users": [
+              {
+                "password": "e8105dfd24414268b6c7652c63731097"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "avianrecruit.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6b777a91",
+          "headers": {
+            "Host": "avianrecruit.com"
+          }
+        }
+      }
+    }
+  ]
+}

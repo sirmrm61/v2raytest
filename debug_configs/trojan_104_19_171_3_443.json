@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2130,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.19.171.3",
+            "port": 443,
+            "users": [
+              {
+                "password": "f0eb8c92ce8946aaba856569cff1a16b"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sherasheba.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6b777a91",
+          "headers": {
+            "Host": "sherasheba.com"
+          }
+        }
+      }
+    }
+  ]
+}

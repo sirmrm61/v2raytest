@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2096,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "coats.shapourzadegan.qzz.io",
+            "port": 2087,
+            "users": [
+              {
+                "password": "6uNkG%3BtZJ%5Dxy)n93"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "coATs.sHapOurZaDegan.QZz.io",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/eyJqdW5rIjoiMkxGRU5CWmxyU0dqN1JBbiIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560",
+          "headers": {
+            "Host": "coats.shapourzadegan.qzz.io"
+          }
+        }
+      }
+    }
+  ]
+}

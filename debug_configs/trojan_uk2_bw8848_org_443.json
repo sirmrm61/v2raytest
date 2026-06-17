@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2159,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "uk2.bw8848.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "N33CBbQDyAjLmcAT7rVaZMeqHcDXLfSTWcxUcebU9ipfoHTP"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "uk2.bw8848.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/uk2-uk2-csrde2",
+          "headers": {
+            "Host": "uk2.bw8848.org"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2119,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "37.27.186.225",
+            "port": 8443,
+            "users": [
+              {
+                "password": "SoftNetConnect"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.icloud.com",
+          "publicKey": "DJahVHFtcuTNluFrRVx-QZjtaiSMvW9XB73Yv3b2cSI",
+          "shortId": "e7",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

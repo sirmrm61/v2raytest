@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2126,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.16.201.94",
+            "port": 2053,
+            "users": [
+              {
+                "password": "bacfc613-672e-5078-b489-3752f8ed0a60"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "aboutus.CPiFORpErSIa.uK",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "trojan-ws/?ed=2048",
+          "headers": {
+            "Host": "aboutus.CPiFORpErSIa.uK"
+          }
+        }
+      }
+    }
+  ]
+}

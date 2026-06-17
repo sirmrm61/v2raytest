@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2159,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.16.72.40",
+            "port": 443,
+            "users": [
+              {
+                "password": "mitivpn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "SaDszDx.glObaL.ssl.fastly.net.mItIvPN.store",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "https://chatgpt.com",
+          "headers": {
+            "Host": "mItIvPN.glOBaL.ssl.mItIvPN.store"
+          }
+        }
+      }
+    }
+  ]
+}

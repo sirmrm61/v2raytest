@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2086,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "74.49.214.31",
+            "port": 8443,
+            "users": [
+              {
+                "password": "dt7yv1zi0ri2k0ur"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cdn.gazol.top",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/vpnnini",
+          "headers": {
+            "Host": "cdn.gazol.top"
+          }
+        }
+      }
+    }
+  ]
+}

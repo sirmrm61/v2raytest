@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "sg-aaa-sjf-4555-ass-78xa.jumaonet.com",
+            "port": 22209,
+            "users": [
+              {
+                "password": "3e820eb0-3f06-4337-a4fc-0c3c7c0d3b4d"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sg-aaa-sjf-4555-ass-78xa.jumaonet.com",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

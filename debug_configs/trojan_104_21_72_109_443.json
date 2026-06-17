@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2147,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.72.109",
+            "port": 443,
+            "users": [
+              {
+                "password": "f282b878-8711-45a1-8c69-5564172123c1"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "vpn.stupidworld.web.id",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Stupid-World/103.106.228.126-2053",
+          "headers": {
+            "Host": "vpn.stupidworld.web.id"
+          }
+        }
+      }
+    }
+  ]
+}

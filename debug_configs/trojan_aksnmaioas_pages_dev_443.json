@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2130,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "aksnmaioas.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "password": "38720105-063f-40f5-a5eb-f3198b9b617d"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "aksnmaioas.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@V2ray_Alpha/?ed=2048",
+          "headers": {
+            "Host": "aksnmaioas.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

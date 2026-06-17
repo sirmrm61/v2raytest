@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2160,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "bisque.qzz.io",
+            "port": 443,
+            "users": [
+              {
+                "password": "e86364fb-a5e3-42c3-b7fa-6ce8097fe19f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "bisque.qzz.io",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/66.135.4.222:8443",
+          "headers": {
+            "Host": "bisque.qzz.io"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2171,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.13.36",
+            "port": 443,
+            "users": [
+              {
+                "password": "a7c9c017-db10-4d15-b01b-0634db498b57"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ERt5.0890604.XyZ",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/OBmXcXufeTh7sLJtI1",
+          "headers": {
+            "Host": "ert5.0890604.xyz"
+          }
+        }
+      }
+    }
+  ]
+}

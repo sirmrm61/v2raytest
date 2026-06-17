@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2118,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "63.183.214.194",
+            "port": 443,
+            "users": [
+              {
+                "password": "cczQCxQBdYzynosgqLVSmUnZzwjJcWEnpWnMAjZQUy94hDdN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "gm2.bw8848.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/gm2-gm2-mo9ag9",
+          "headers": {
+            "Host": "gm2.bw8848.org"
+          }
+        }
+      }
+    }
+  ]
+}

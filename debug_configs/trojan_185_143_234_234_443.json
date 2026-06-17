@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2081,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "185.143.234.234",
+            "port": 443,
+            "users": [
+              {
+                "password": "t2okiudqtl9hpr33"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "rafsapisto.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/video",
+          "headers": {
+            "Host": "rafsapisto.com"
+          }
+        }
+      }
+    }
+  ]
+}

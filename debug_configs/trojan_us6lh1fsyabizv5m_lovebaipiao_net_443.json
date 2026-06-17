@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2126,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "us6lh1fsyabizv5m.lovebaipiao.net",
+            "port": 443,
+            "users": [
+              {
+                "password": "fde84658-f03b-430a-a86f-c32cb1a2cdad"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/images",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

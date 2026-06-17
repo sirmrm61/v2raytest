@@ -1,0 +1,56 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2159,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "npanel.digi2023game.com",
+            "port": 443,
+            "users": [
+              {
+                "password": "b35cd4e8-e193-4bbd-9084-91d73d2353f0"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "npanel.digi2023game.com",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "o8q9OHerR9LI4jhrTESVxpF0X-trgrpc",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}          }
+        }
+      }
+    }
+  ]
+}

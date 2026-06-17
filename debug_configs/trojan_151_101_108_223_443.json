@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2130,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "151.101.108.223",
+            "port": 443,
+            "users": [
+              {
+                "password": "ertpzfsl7w4kqvk4"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "default.ssl.fastly.net",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/TELEGRAM_NUFiLTER",
+          "headers": {
+            "Host": "nleiyajji.global.ssl.fastly.net"
+          }
+        }
+      }
+    }
+  ]
+}

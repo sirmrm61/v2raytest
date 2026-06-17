@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2085,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "77.110.126.179",
+            "port": 2087,
+            "users": [
+              {
+                "password": "SoftNetConnect"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.yahoo.com",
+          "publicKey": "sKoo23dE1a6b_G1-AimeDX_1mw4ByhGti6a9PxK1xWw",
+          "shortId": "7c",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

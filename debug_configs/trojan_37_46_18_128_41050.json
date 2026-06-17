@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "37.46.18.128",
+            "port": 41050,
+            "users": [
+              {
+                "password": "b1952da9-8a2a-4e2e-a79c-61914f9e6a9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.oracle.com",
+          "publicKey": "imFeKLbcdRQYFJZT6aPrQNoi_qGtUfPqptwAp7AyZBg",
+          "shortId": "f56959ba4318b2e9",
+          "fingerprint": "edge"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2144,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.18.15.19",
+            "port": 443,
+            "users": [
+              {
+                "password": "1b3b276f-44b4-4c39-bfdf-67ff6337b41f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "POOrIaREd--persEPolIS.pAGEs.Dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@V2ray_Alpha/?ed=2560",
+          "headers": {
+            "Host": "poORiaReD--PErsePOlIs.PagES.DEv"
+          }
+        }
+      }
+    }
+  ]
+}

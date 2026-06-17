@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2122,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "cf3.dalazhi.eu.org",
+            "port": 8443,
+            "users": [
+              {
+                "password": "e14c0c0e-f838-49e9-bcee-01ead9208af2"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "us.dalazhi.eu.org",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "unlotrojangrpc",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

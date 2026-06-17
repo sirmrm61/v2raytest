@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2120,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.141.68",
+            "port": 443,
+            "users": [
+              {
+                "password": "edZItoAdBZ"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mehrnews.ITN24.IR",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/14755/?ed=2048",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

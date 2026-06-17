@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "r00t.sinko.dpdns.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "3b189a2d-6c61-47dc-8178-bede32fd1fe3"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "r00t.sinko.dpdns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/whatever/trojan-ws",
+          "headers": {
+            "Host": "r00t.sinko.dpdns.org"
+          }
+        }
+      }
+    }
+  ]
+}

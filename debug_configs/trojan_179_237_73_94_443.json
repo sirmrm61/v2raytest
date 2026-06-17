@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2109,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "179.237.73.94",
+            "port": 443,
+            "users": [
+              {
+                "password": "Masir_Sefid"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "store.steampowered.com",
+          "publicKey": "wFoHLYaw4yhurNRsaWGQkoc9q6roKh6xQNUiOL4kuyo",
+          "shortId": "531a95",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

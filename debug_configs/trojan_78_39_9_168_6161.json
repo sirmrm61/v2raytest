@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2177,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "78.39.9.168",
+            "port": 6161,
+            "users": [
+              {
+                "password": "-EleP1yiGc6SD72p-m8Brw"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.zoom.us.speedtest.net",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "gg",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

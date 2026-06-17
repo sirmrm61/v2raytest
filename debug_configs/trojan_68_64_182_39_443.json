@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2127,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "68.64.182.39",
+            "port": 443,
+            "users": [
+              {
+                "password": "GKHWMe2R4qwNcNxu6l3KMkdd"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "vpn1.rnmcnm.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trj-ws",
+          "headers": {
+            "Host": "vpn1.rnmcnm.com"
+          }
+        }
+      }
+    }
+  ]
+}

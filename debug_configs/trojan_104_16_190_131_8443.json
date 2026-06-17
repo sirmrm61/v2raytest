@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2102,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.16.190.131",
+            "port": 8443,
+            "users": [
+              {
+                "password": "9d5e7586-64e1-4c29-9d47-6cbbd57fe8d1"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "pardazeshvpn-tg48.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@Linkvws?ed=2560",
+          "headers": {
+            "Host": "pardazeshvpn-tg48.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

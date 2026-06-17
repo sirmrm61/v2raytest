@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2126,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "www.digitalocean.com",
+            "port": 443,
+            "users": [
+              {
+                "password": "d0298536-d670-4045-bbb1-ddd5ea68683e"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "azadnet-5vk.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/azadnet-5vk.pages.dev/?ed=2560&PROT_TYPE=trojan",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

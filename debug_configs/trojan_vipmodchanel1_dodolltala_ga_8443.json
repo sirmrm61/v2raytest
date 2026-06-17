@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2166,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "vipmodchanel1.dodolltala.ga",
+            "port": 8443,
+            "users": [
+              {
+                "password": "ejUhS8iObS"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "joinvipmodchanel.dodolltala.ga",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

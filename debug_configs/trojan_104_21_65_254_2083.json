@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2166,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.65.254",
+            "port": 2083,
+            "users": [
+              {
+                "password": "r8CTEc4F7K"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "speedtestneternanewsggffnetemailcloudflarecomexpresstvsoft98ir.expresstv.ggff.net",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2048",
+          "headers": {
+            "Host": "speedtestneternanewsggffnetemailcloudflarecomexpresstvsoft98ir.expresstv.ggff.net"
+          }
+        }
+      }
+    }
+  ]
+}

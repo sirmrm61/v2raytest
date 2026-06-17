@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2156,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ssss2.avaaal.ir",
+            "port": 443,
+            "users": [
+              {
+                "password": "GdL9nNA8km"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ssss2.avaaal.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/720f09dba195249b423f771661162528/workers/services/view/Avaal/production/settings",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

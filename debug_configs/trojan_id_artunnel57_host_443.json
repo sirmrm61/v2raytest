@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2115,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "id.artunnel57.host",
+            "port": 443,
+            "users": [
+              {
+                "password": "1eb9fcd3-4875-4eae-a66e-bb054b84384d"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "id.artunnel57.host",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trojan-tls",
+          "headers": {
+            "Host": "id.artunnel57.host"
+          }
+        }
+      }
+    }
+  ]
+}

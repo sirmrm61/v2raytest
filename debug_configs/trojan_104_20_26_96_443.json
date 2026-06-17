@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2130,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.20.26.96",
+            "port": 443,
+            "users": [
+              {
+                "password": "cf3d48cf-750c-4f18-89a7-f81d2e153fbe"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "blog.webex.com.cyylr.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/in-do",
+          "headers": {
+            "Host": "blog.webex.com.cyylr.eu.cc"
+          }
+        }
+      }
+    }
+  ]
+}

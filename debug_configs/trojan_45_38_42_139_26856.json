@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2172,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.38.42.139",
+            "port": 26856,
+            "users": [
+              {
+                "password": "gx5fx0q4buwh4g4n"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "de2.yariresanbot.ir",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "Panel",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

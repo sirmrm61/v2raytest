@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2095,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "meti-u9d.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "password": "1187ba87-8ebc-4a07-aa89-b331ed2cb356"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "meti-u9d.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@V2ray_Alpha/?ed=2560",
+          "headers": {
+            "Host": "meti-u9d.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

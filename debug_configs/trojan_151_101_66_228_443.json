@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2135,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "151.101.66.228",
+            "port": 443,
+            "users": [
+              {
+                "password": "d6b6ea41-0950-4611-8246-224583e4ed1e"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "pscresearch.faculty.ucdavis.edu",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "ws/?ed=2048",
+          "headers": {
+            "Host": "uhc6rhiubu.com"
+          }
+        }
+      }
+    }
+  ]
+}

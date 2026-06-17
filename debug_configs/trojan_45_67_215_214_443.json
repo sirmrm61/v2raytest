@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2125,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.67.215.214",
+            "port": 443,
+            "users": [
+              {
+                "password": "78defd88-d333-67a5-9c34-d3bcef5816eb"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tirex.sugarbreaker1.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/@VPNine1",
+          "headers": {
+            "Host": "tirex.sugarbreaker1.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

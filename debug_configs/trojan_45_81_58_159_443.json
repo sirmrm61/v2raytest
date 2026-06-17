@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2166,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.81.58.159",
+            "port": 443,
+            "users": [
+              {
+                "password": "%56%50%4e%43%55%53%54%4f%4d%49%5a%45"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "www.godaddy.cc.cd",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/lousyrestateme?ed=2048",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

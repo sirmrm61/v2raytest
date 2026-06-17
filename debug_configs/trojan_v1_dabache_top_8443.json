@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2169,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "v1.dabache.top",
+            "port": 8443,
+            "users": [
+              {
+                "password": "T9BpZIVMNv"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sweden.vmaxpanel.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "%2Famd",
+          "headers": {
+            "Host": "sweden.vmaxpanel.com"
+          }
+        }
+      }
+    }
+  ]
+}

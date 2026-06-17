@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2133,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.248.100",
+            "port": 443,
+            "users": [
+              {
+                "password": "ac4300b3-30c9-4ef1-a8ce-5d94a059343c"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "zandgisalam.xcvx4.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/yrtOitfNUlfOieH0PAxGMPjJtnq",
+          "headers": {
+            "Host": "zandgisalam.xcvx4.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

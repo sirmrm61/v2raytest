@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.17.147.22",
+            "port": 2053,
+            "users": [
+              {
+                "password": "eJa21p5eRU"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "iRaN2.BrOwSiNg4.iR.",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "/v.use.i.sos.p.mytestdom.ir-cisco2.homa.ir-www.ardakanhebelexx.ir-www.cooleriranian.ir-www.palizceram.ir-www.speedtest.net-zula.ir-www.pokesanati-lica.ir-ed=80",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

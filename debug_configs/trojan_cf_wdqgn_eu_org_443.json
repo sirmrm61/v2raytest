@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2160,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "cf.wdqgn.eu.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "8b6fa5e7-2583-4dcf-a589-f3924c685dbb"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "HKNTT1.nauk.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/8b6fa5e7-2583-4dcf-a589-f3924c685dbb-tr",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

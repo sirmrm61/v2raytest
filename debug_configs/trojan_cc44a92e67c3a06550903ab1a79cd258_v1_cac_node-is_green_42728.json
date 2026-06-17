@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2104,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "cc44a92e67c3a06550903ab1a79cd258.v1.cac.node-is.green",
+            "port": 42728,
+            "users": [
+              {
+                "password": "61130614-528c-4b45-ac9b-e7987cff4952"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ca1.bilibili.com",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

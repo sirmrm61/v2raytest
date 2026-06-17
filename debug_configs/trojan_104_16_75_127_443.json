@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2122,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.16.75.127",
+            "port": 443,
+            "users": [
+              {
+                "password": "%6D%69%74%69%76%70%6E"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "www.www.www.www.95r.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/720f09dba195249b423f771661162528/workers/services/view/mitivpn/production/settings",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

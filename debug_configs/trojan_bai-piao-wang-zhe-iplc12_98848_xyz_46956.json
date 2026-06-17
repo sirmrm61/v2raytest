@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2176,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "bai-piao-wang-zhe-iplc12.98848.xyz",
+            "port": 46956,
+            "users": [
+              {
+                "password": "8619878a-3677-4c2d-aca5-55dbd765825f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "bai-piao-wang-zhe-iplc12.98848.xyz",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2080,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "67.220.72.41",
+            "port": 443,
+            "users": [
+              {
+                "password": "sharevpn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "http",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tlsh2ss.mynode.work.gdh2,http/1.1",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2124,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "b-corsairs.com",
+            "port": 443,
+            "users": [
+              {
+                "password": "29e0206a-2cef-4c8d-aa4b-dd7a43748167"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "zmaoz.faculty.ucdavis.edu.",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/olem/ws?@V2ray_Alpha-d=4096",
+          "headers": {
+            "Host": "fonmelo.com"
+          }
+        }
+      }
+    }
+  ]
+}

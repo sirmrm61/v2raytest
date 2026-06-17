@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2098,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.15.33",
+            "port": 2087,
+            "users": [
+              {
+                "password": "Z9LNB8WzJa"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.sabapardaziran.ir",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "/🆔@M3HDIO1",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

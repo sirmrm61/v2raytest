@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2100,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "198.41.220.10",
+            "port": 443,
+            "users": [
+              {
+                "password": "2cba4104747d49d18319e5ade1b93ab5"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "jobscareerforstudent.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "6b777a91",
+          "headers": {
+            "Host": "jobscareerforstudent.com"
+          }
+        }
+      }
+    }
+  ]
+}

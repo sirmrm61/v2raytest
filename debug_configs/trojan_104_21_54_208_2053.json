@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2139,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.54.208",
+            "port": 2053,
+            "users": [
+              {
+                "password": "poTB9j1n12Tq"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tasnim.andishehnegariran.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/🆔@M3HDIO1",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

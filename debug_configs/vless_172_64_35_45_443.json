@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2081,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "172.64.35.45",
+            "port": 443,
+            "users": [
+              {
+                "id": "7270612b-49f6-4b04-999c-34d8263da767",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "picassooo.info",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/aymdlws",
+          "headers": {
+            "Host": "picassooo.info"
+          }
+        }
+      }
+    }
+  ]
+}

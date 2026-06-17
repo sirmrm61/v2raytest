@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2114,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.19.53.254",
+            "port": 2096,
+            "users": [
+              {
+                "password": "8557692d-c228-48f0-b6f9-50d44d4a2096"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tjjd.yzyx1.v6.army",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2048&Telegram🇨🇳 @WangCai2",
+          "headers": {
+            "Host": "tjjd.yzyx1.v6.army"
+          }
+        }
+      }
+    }
+  ]
+}

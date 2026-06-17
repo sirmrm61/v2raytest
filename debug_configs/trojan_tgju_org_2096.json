@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2122,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "tgju.org",
+            "port": 2096,
+            "users": [
+              {
+                "password": "d3e663d2-5cce-56e1-a199-2fec6078fcb4"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mailbox.CpIfOrperSiA.UK",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "trojan-ws/?ed",
+          "headers": {
+            "Host": "mailbox.CpIfOrperSiA.UK"
+          }
+        }
+      }
+    }
+  ]
+}

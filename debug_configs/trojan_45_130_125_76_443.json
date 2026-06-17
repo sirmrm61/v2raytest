@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2085,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.130.125.76",
+            "port": 443,
+            "users": [
+              {
+                "password": "y5yef0udbqnu7sym"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "dashboard.nscl.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/dashboard",
+          "headers": {
+            "Host": "dashboard.nscl.ir"
+          }
+        }
+      }
+    }
+  ]
+}

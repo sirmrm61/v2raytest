@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2156,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.xekak98448.workers.dev",
+            "port": 2083,
+            "users": [
+              {
+                "password": "1111"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.xekak98448.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2560",
+          "headers": {
+            "Host": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.xekak98448.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

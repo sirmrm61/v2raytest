@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "154.211.8.90",
+            "port": 443,
+            "users": [
+              {
+                "password": "Aimer"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "epgc.aimercc.dpdns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2560&proxyip=ts.hpc.tw",
+          "headers": {
+            "Host": "epgc.aimercc.dpdns.org"
+          }
+        }
+      }
+    }
+  ]
+}

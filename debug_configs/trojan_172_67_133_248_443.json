@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2087,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.133.248",
+            "port": 443,
+            "users": [
+              {
+                "password": "6d898085-bf6a-449b-9763-0073d4dc2ce0"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "boston03.890604.FILEGEAr-SG.ME",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Q3cz2AWTPMCtDGV1L6R1Jz18eIUw",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

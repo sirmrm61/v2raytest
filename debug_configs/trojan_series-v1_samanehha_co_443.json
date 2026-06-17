@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2086,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "series-v1.samanehha.co",
+            "port": 443,
+            "users": [
+              {
+                "password": "0b65bb06-6b28-487a-8e3c-820dda51e977"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "series-v1.samanehha.co",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/43xf5zgeApzDAfhOHq",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

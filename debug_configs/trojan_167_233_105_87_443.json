@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2116,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "167.233.105.87",
+            "port": 443,
+            "users": [
+              {
+                "password": "%53%6f%66%74%4e%65%74%43%6f%6e%6e%65%63%74"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.yahoo.com",
+          "publicKey": "nhOVbG_d8gvDrs6ayt-kdjwo2wITTujBH_hbDO5hZnE",
+          "shortId": "7a66d2f9e8805c17",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

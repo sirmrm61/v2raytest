@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2158,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.66.44.230",
+            "port": 8443,
+            "users": [
+              {
+                "password": "8r%3C%5B9%27l6hAO%238ZQi"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "Koma-YT.PAGeS.Dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/tro8sFW1S91B6sZrM1?ed=2560",
+          "headers": {
+            "Host": "Koma-YT.PAGeS.Dev"
+          }
+        }
+      }
+    }
+  ]
+}

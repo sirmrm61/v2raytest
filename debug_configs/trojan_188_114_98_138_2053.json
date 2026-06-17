@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2084,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "188.114.98.138",
+            "port": 2053,
+            "users": [
+              {
+                "password": "bpb-trojan"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "G1-21N.paGEs.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/traV0kgCnzWDCx27E2/ZGUucmFkaWNhbGx5LnBybw==",
+          "headers": {
+            "Host": "g1-21n.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

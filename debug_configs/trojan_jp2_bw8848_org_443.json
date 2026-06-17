@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2118,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "jp2.bw8848.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "5YYALHHZEiMDssHZwTMQxbuT8CZVP5Y25ppCtpZnvK4asz73"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "jp2.bw8848.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/jp2-jp2-nnnmhz",
+          "headers": {
+            "Host": "jp2.bw8848.org"
+          }
+        }
+      }
+    }
+  ]
+}

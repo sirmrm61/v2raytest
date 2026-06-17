@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2108,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.64.155.209",
+            "port": 2087,
+            "users": [
+              {
+                "password": "DailyConfigs"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "kanale-daily-configs.blackoutconnection.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/@Daily_Configs,@Daily_Configs?ed=2560",
+          "headers": {
+            "Host": "kanale-daily-configs.blackoutconnection.ir"
+          }
+        }
+      }
+    }
+  ]
+}

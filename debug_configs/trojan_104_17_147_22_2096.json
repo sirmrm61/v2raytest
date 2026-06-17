@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2177,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.17.147.22",
+            "port": 2096,
+            "users": [
+              {
+                "password": "DC&&buj17.%23donz*"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "Sue-suppoRT.pAgeS.dEV",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trjFapI0BLfN3cT9v4/MTYyLjE1OC4yMDEuODI=?ed=2560",
+          "headers": {
+            "Host": "sue-support.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

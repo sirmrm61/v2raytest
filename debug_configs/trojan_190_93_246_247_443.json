@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2135,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "190.93.246.247",
+            "port": 443,
+            "users": [
+              {
+                "password": "dba20dcb635e430fa4d3bfc303a149d2"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "jobscareerforlawyers.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6b777a91",
+          "headers": {
+            "Host": "jobscareerforlawyers.com"
+          }
+        }
+      }
+    }
+  ]
+}

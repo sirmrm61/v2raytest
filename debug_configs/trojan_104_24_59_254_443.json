@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2142,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.24.59.254",
+            "port": 443,
+            "users": [
+              {
+                "password": "cf0912c2-7048-9bd8-3537-c629d470a27b"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tiny-thunder-e91e.izehgol1405.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/sync",
+          "headers": {
+            "Host": "tiny-thunder-e91e.izehgol1405.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

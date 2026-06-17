@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2133,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ws-1.hysteria.ltd",
+            "port": 9443,
+            "users": [
+              {
+                "password": "LYaEYwjN8LjWTRJdCCTzW7V6gK7atJVu"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ws-1.hysteria.ltd",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ws",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

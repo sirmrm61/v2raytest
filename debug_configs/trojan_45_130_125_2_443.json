@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.130.125.2",
+            "port": 443,
+            "users": [
+              {
+                "password": "Telegram-Config0plus"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "media-sin6-3.cdn.whatsapp.net.cyylr.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/in-pdr",
+          "headers": {
+            "Host": "media-sin6-3.cdn.whatsapp.net.cyylr.eu.cc"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2163,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "kr2.bw8848.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "GedH5PTxP5F4oP4kZ5opF3PWgPPCwYw3kfHMN9ZZTEXFbz9c"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "kr2.bw8848.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/kr2-kr2-g9xjmv",
+          "headers": {
+            "Host": "kr2.bw8848.org"
+          }
+        }
+      }
+    }
+  ]
+}

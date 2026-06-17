@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2118,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.26.15.85",
+            "port": 443,
+            "users": [
+              {
+                "password": "936c6853-6bbf-4e24-8667-ec5b2fc275b3"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "md1.safecdn.site",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Channel_vpnAndroid2-Channel_vpnAndroid2-Channel_vpnAndroid2-Channel_vpnAndroid2",
+          "headers": {
+            "Host": "md1.safecdn.site"
+          }
+        }
+      }
+    }
+  ]
+}

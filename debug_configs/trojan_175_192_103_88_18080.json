@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2101,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "175.192.103.88",
+            "port": 18080,
+            "users": [
+              {
+                "password": "433e785b-2077-47f7-a43d-985f63dd18d1"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "vpn.rnmcnm.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trojan",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2129,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "199.232.32.213",
+            "port": 443,
+            "users": [
+              {
+                "password": "jsxj911dddd"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "zmaoz.faculty.ucdavis.edu",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/tr288yKeKIY0f8FV9F/MTkzLjEyMy42OS43Nw==?ed=2560",
+          "headers": {
+            "Host": "ConfingLand.me"
+          }
+        }
+      }
+    }
+  ]
+}

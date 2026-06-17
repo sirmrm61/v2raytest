@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2117,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "94.103.2.31",
+            "port": 9443,
+            "users": [
+              {
+                "password": "204bc731190243e7a8cc9c1d0b7ac3ba"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "static.rutube.ru",
+          "publicKey": "Zuu0slAOjX2uWf6-xRWeZzv7O_URTgpe8BHpvoS1llw",
+          "shortId": "aabbccdd",
+          "fingerprint": "random"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2081,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "81.28.12.12",
+            "port": 443,
+            "users": [
+              {
+                "password": "aq8fDUEzAt"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mihanhost.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/13035/hfiid",
+          "headers": {
+            "Host": "shabshodeporsetare.com"
+          }
+        }
+      }
+    }
+  ]
+}

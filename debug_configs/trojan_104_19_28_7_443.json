@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2085,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.19.28.7",
+            "port": 443,
+            "users": [
+              {
+                "password": "JByTyDrdqS"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mobo.zironet.top",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/mobotouch",
+          "headers": {
+            "Host": "mobo.zironet.top"
+          }
+        }
+      }
+    }
+  ]
+}

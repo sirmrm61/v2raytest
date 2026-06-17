@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2108,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "muddy-frost-4e2d.vpnetwork3567.workers.dev",
+            "port": 443,
+            "users": [
+              {
+                "password": "C910E5F2-A662-7CFB-B5A6-5D39DB212CBA"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "muddy-frost-4e2d.vpnetwork3567.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?--Telegram--Viturey--Telegram--Viturey--",
+          "headers": {
+            "Host": "muddy-frost-4e2d.vpnetwork3567.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

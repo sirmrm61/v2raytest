@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2157,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "91.107.240.100",
+            "port": 2095,
+            "users": [
+              {
+                "password": "f1aefe1d-64a7-4252-81b9-34c8221a925f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "EMie2V.Gstatic.COM.coiNEX.com.SARBAZIT.COM",
+          "publicKey": "SgzllpJZNbdqv4IXgW-tixaJDu1mK5EZTS6dqrQvnEE",
+          "shortId": "8786b7bb",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2112,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "162.159.128.233",
+            "port": 8443,
+            "users": [
+              {
+                "password": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "e9464f45.trauma-2r4.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/TELEGRAM-@PROXY_MTM-TELEGRAM-@PROXY_MTM/?ed=2048",
+          "headers": {
+            "Host": "e9464f45.trauma-2r4.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

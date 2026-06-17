@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2164,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "109.120.176.146",
+            "port": 443,
+            "users": [
+              {
+                "password": "mitivpn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "gamingdll.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ed=mitivpn/index.php",
+          "headers": {
+            "Host": "gamingdll.ir"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2135,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.17.147.11",
+            "port": 443,
+            "users": [
+              {
+                "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "jobscareerfortoday.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6b777a91",
+          "headers": {
+            "Host": "jobscareerfortoday.com"
+          }
+        }
+      }
+    }
+  ]
+}

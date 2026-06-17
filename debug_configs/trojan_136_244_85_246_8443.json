@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2133,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "136.244.85.246",
+            "port": 8443,
+            "users": [
+              {
+                "password": "EG3sv0L4SWpEEWDBnp3%2FUrtpZVHnPcn9yVSiGob%2BeBw%3D"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.microsoft.com",
+          "publicKey": "tM6alniDFK5avcNt5y8YfKPw70QUOF8lMwcv77xmZBY",
+          "shortId": "a6710cba770f",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

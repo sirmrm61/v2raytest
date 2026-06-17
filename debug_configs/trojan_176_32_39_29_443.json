@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2148,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "176.32.39.29",
+            "port": 443,
+            "users": [
+              {
+                "password": "8OXD5VVt8s"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "journalofbigdata.springeropen.com",
+          "publicKey": "f_av3K6BFEs9abRaFgPJMKHz4ElZP7BP34ZlRtxysQ0",
+          "shortId": "109cb5faeb6b",
+          "fingerprint": "random"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2125,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "212.192.14.227",
+            "port": 9443,
+            "users": [
+              {
+                "password": "1e32fe52198848788f029c2ec244f347"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "ya.ru",
+          "publicKey": "GooqN94J-NNbWxkVsDb7NIQW4xXhkMGByk58ihKwX1Q",
+          "shortId": "aabbccdd",
+          "fingerprint": "random"
+        }
+      }
+    }
+  ]
+}

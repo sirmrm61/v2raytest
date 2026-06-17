@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2151,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ihave.baselinux.net",
+            "port": 39257,
+            "users": [
+              {
+                "password": "WyYdHzq88EQJVVThgpupm3wCKVD44jtN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ihave.baselinux.net",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "discord",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

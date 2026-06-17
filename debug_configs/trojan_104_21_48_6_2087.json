@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2168,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.48.6",
+            "port": 2087,
+            "users": [
+              {
+                "password": "qQE5Yl3oU5"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "iran.farsonline24.ir",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "/🆔@M3HDIO1",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

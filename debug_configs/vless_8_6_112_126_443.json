@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2177,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "8.6.112.126",
+            "port": 443,
+            "users": [
+              {
+                "id": "a491b1c4-1141-4f59-9731-e0621f6e452f",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "website.yaroo383mardak.online",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/@mahdi_383ir",
+          "headers": {
+            "Host": "website.yaroo383mardak.online"
+          }
+        }
+      }
+    }
+  ]
+}

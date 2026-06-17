@@ -1,0 +1,50 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2097,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "6654c734ccab8f440ff0825eb443dc7f.qos.onl",
+            "port": 10020,
+            "users": [
+              {
+                "id": "52f9cbfb-5bb3-3dd3-b947-725e365c59f3",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "v2pr9feoh0z86anj2gz9onnjg9viuev0j.mobgslb.tbcache.com"
+          }
+        }
+      }
+    }
+  ]
+}

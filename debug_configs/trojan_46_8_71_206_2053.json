@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2135,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "46.8.71.206",
+            "port": 2053,
+            "users": [
+              {
+                "password": "8r%3C%5B9%27l6hAO%238ZQi"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "Koma-YT.PAGeS.Dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trTelegram🇨🇳 @WangCai2",
+          "headers": {
+            "Host": "Koma-YT.PAGeS.Dev"
+          }
+        }
+      }
+    }
+  ]
+}

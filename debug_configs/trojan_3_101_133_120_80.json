@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2087,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "3.101.133.120",
+            "port": 80,
+            "users": [
+              {
+                "password": "Aimer"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ngep.ambercc.filegear-sg.me",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed",
+          "headers": {
+            "Host": "ngep.ambercc.filegear-sg.mehttp/1.1"
+          }
+        }
+      }
+    }
+  ]
+}

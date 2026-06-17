@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2149,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "81.90.25.240",
+            "port": 24700,
+            "users": [
+              {
+                "password": "8fle37aqg03ov1g1"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "m.vk.com",
+          "publicKey": "3AIC42qkf5zolb0OZtoJ5xC_8u009Ih4solDMMCSVXQ",
+          "shortId": "90c39f65",
+          "fingerprint": "qq"
+        }
+      }
+    }
+  ]
+}

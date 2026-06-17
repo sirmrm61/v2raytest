@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2098,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "itarmy.com.ua",
+            "port": 443,
+            "users": [
+              {
+                "password": "6884d714-d3c4-4b49-aa20-767ea92837d6"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "icecream.955850.xyz",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/proxyip=45.67.215.153:443&proxyIP=null",
+          "headers": {
+            "Host": "icecream.955850.xyz"
+          }
+        }
+      }
+    }
+  ]
+}

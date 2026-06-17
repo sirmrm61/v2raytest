@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2126,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "maradona_vpn14.history-paint.art",
+            "port": 443,
+            "users": [
+              {
+                "password": "maradona_vpn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "teo.history-paint.art",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/wss24142?ed=2048",
+          "headers": {
+            "Host": "teo.history-paint.art"
+          }
+        }
+      }
+    }
+  ]
+}

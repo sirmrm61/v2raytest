@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2086,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "youtube-bai-piao-wang-zhe-usa.98848.xyz",
+            "port": 443,
+            "users": [
+              {
+                "password": "d1478689-439c-4590-b7ce-36e786a02dc3"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "youtube-bai-piao-wang-zhe-usa.98848.xyz",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "YouTube@bai-piao-wang-zhe_trojangrpc",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

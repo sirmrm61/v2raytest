@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2165,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "test96.alicesss.repl.co",
+            "port": 443,
+            "users": [
+              {
+                "password": "6978644c-611e-47c9-be8c-2b28ebf62f24"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "test96.alicesss.repl.co",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6978644c-611e-47c9-be8c-2b28ebf62f24-trojan",
+          "headers": {
+            "Host": "test96.alicesss.repl.co"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2087,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "vip-srv-for-you.parsiclouds.ir",
+            "port": 443,
+            "users": [
+              {
+                "password": "SHAMOJ3rnxb5LyMDn6CRXA"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "x1-dpim9mztudx78ieloo1t.parsiclouds.ir",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2137,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "seashell.qzz.io",
+            "port": 443,
+            "users": [
+              {
+                "password": "13e71ddb-908c-45e0-993c-da482d848c88"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "seashell.qzz.io",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/156.254.114.120:30011",
+          "headers": {
+            "Host": "seashell.qzz.io"
+          }
+        }
+      }
+    }
+  ]
+}

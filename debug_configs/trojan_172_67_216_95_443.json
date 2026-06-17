@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2159,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.216.95",
+            "port": 443,
+            "users": [
+              {
+                "password": "pjdnqv"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "aws-us-oregon-1.f1cflined.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/f1rocket",
+          "headers": {
+            "Host": "aws-us-oregon-1.f1cflined.com"
+          }
+        }
+      }
+    }
+  ]
+}

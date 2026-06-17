@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2135,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "maradona_vpn.history-paint.art",
+            "port": 443,
+            "users": [
+              {
+                "password": "Maradona_vpn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "teo.history-paint.art",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "grpc20337",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

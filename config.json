@@ -1,0 +1,11 @@
+{
+  "subscriptions": [
+    "https://github.com/Epodonios/v2ray-configs/blob/main/Sub1.txt"
+  ],
+  "output_name": "best-configs",
+  "top_n": 20,
+  "tests_per_config": 2,
+  "max_concurrency": 120,
+  "timeout": 5.0,
+  "xray_path": "D:/project/python/v2raytest/Xray/xray.exe"
+}

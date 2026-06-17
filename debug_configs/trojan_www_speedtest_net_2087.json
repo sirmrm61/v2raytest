@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2089,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "www.speedtest.net",
+            "port": 2087,
+            "users": [
+              {
+                "password": "Z2P0nBrc5d-54JXKPLQcGg"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "jfkgfuiodghlf.ahmadinabaz.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/speedtest",
+          "headers": {
+            "Host": "jfkgfuiodghlf.ahmadinabaz.ir"
+          }
+        }
+      }
+    }
+  ]
+}

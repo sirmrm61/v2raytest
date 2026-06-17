@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2168,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.130.125.69",
+            "port": 2053,
+            "users": [
+              {
+                "password": "jkftUiv9JW"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "p.hudhudhub.pro",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/video",
+          "headers": {
+            "Host": "p.hudhudhub.pro"
+          }
+        }
+      }
+    }
+  ]
+}

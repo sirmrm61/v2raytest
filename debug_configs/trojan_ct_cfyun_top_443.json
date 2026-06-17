@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2139,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ct.cfyun.top",
+            "port": 443,
+            "users": [
+              {
+                "password": "c5110090-c3a2-429e-b9b8-072b6535be1b"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cfus4.trojanwss.xyz",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/CFJICHANG",
+          "headers": {
+            "Host": "cfus4.trojanwss.xyz"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2086,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "2.27.23.226",
+            "port": 5231,
+            "users": [
+              {
+                "password": "WXgoPIGPSr"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.icloud.com",
+          "publicKey": "ksyeiEzHremNnFa1kqsHJkIEXQqPZ3CPQvU65WaMNWM",
+          "shortId": "02",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

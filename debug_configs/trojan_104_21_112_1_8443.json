@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2100,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.112.1",
+            "port": 8443,
+            "users": [
+              {
+                "password": "s42&umY(K5n*csP4"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "JOInMAHDiseRVer-EEu.pAGEs.dEv",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trOagy9SuM2cDpqUqO?ed=2560",
+          "headers": {
+            "Host": "joinmahdiserver-eeu.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

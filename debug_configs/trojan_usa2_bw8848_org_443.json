@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2137,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "usa2.bw8848.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "S8wG5SmFw5wVDeLG4K2N6Mqr2mSPjrpBd7QCHcK4F8fYRfiN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "usa2.bw8848.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/usa2-usa2-yuyv2d",
+          "headers": {
+            "Host": "usa2.bw8848.org"
+          }
+        }
+      }
+    }
+  ]
+}

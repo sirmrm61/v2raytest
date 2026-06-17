@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2171,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "zula.ir",
+            "port": 2096,
+            "users": [
+              {
+                "password": "98f0c223-cb75-4faa-859e-47110b1f052b"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "iNTeRnET4EVERIeONe7.PaGes.DeV",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram-@V2ray_Alpha/?ed=2560",
+          "headers": {
+            "Host": "internet4everieone7.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2129,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.43.168",
+            "port": 443,
+            "users": [
+              {
+                "password": "0RiSuJPsug%23v"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "2.link-kon.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trTcwZRw8JC0TPp6d1?ed=2560",
+          "headers": {
+            "Host": "2.lINK-KoN.IR"
+          }
+        }
+      }
+    }
+  ]
+}

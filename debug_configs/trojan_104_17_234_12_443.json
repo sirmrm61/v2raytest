@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2096,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.17.234.12",
+            "port": 443,
+            "users": [
+              {
+                "password": "Telegram-frev2ray"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "1.2.3.4.5.6.7.8.9.10.www.speedtest.net.frev2ray.abrha.co.za",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "1.2.3.4.5.6.7.8.9.10.www.speedtest.net.frev2ray.abrha.co.za"
+          }
+        }
+      }
+    }
+  ]
+}

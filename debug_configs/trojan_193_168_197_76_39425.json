@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2104,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "193.168.197.76",
+            "port": 39425,
+            "users": [
+              {
+                "password": "lpfAiPjB00"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.amazon.com",
+          "publicKey": "DoKBudC7Cd1TXpRPWAu7ClkqwEzEPVgfteqs7c0XwXk",
+          "shortId": "8d0e8a871f53",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

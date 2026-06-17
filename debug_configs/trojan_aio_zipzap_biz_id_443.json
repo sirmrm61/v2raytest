@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2123,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "aio.zipzap.biz.id",
+            "port": 443,
+            "users": [
+              {
+                "password": "f282b878-8711-45a1-8c69-5564172123c1"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "aio.zipzap.biz.id",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/aioproxybot/129.150.49.58-18650",
+          "headers": {
+            "Host": "aio.zipzap.biz.id"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2160,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ubu.okaoclax.me",
+            "port": 443,
+            "users": [
+              {
+                "password": "13c169be-8592-4eaa-94cb-69c859e7d987"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ubu.okaoclax.me",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trojan-ws",
+          "headers": {
+            "Host": "ubu.okaoclax.me"
+          }
+        }
+      }
+    }
+  ]
+}

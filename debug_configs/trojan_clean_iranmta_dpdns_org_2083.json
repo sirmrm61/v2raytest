@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2092,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "clean.iranmta.dpdns.org",
+            "port": 2083,
+            "users": [
+              {
+                "password": "esdv29q87qcv90g7"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "lock.iranmta.dpdns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Many",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2113,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.18.26.90",
+            "port": 443,
+            "users": [
+              {
+                "password": "Xa4%5El(%3B.%3BB%23a"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "S1.mitivpN.wOrKeRS.DEV",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trUXByA1rnbs4YQ1Xw?ed=2560",
+          "headers": {
+            "Host": "s1.mitivpn.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

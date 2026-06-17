@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2125,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "103.168.155.73",
+            "port": 3306,
+            "users": [
+              {
+                "password": "0cc6b4268dea0ba8"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "n2.gladns.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/gateway/connect",
+          "headers": {
+            "Host": "TG.WangCai_1"
+          }
+        }
+      }
+    }
+  ]
+}

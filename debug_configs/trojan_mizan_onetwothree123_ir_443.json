@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2104,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "mizan.onetwothree123.ir",
+            "port": 443,
+            "users": [
+              {
+                "password": "0NwfsBonyf"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "mizan.onetwothree123.ir",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "/33658/mehdi",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2175,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "blackshadow.dpdns.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "2bcfbfba-b446-4ad5-93ad-72af9e008f61"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.zoom.us.blackshadow.dpdns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/195.123.218.174-443",
+          "headers": {
+            "Host": "support.zoom.us.blackshadow.dpdns.org"
+          }
+        }
+      }
+    }
+  ]
+}

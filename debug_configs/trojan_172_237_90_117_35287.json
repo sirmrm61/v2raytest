@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2147,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.237.90.117",
+            "port": 35287,
+            "users": [
+              {
+                "password": "fNeTGTI4KN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "zoom.us",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/FREE By Tharuwa (0767597317)",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

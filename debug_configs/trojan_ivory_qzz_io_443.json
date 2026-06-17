@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2084,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ivory.qzz.io",
+            "port": 443,
+            "users": [
+              {
+                "password": "e2e3b171-33a8-4c8f-9e5f-ae6e92299e40"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ivory.qzz.io",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/46.232.122.240:8000",
+          "headers": {
+            "Host": "ivory.qzz.io"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2084,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "wellyoumust.goahead.rf.gd",
+            "port": 24135,
+            "users": [
+              {
+                "password": "E8zpqsyJ8FR9apcaFtKy65gcFX8mGXAk"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "splithttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "wellyoumust.goahead.rf.gd",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

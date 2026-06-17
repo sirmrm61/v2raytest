@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2164,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "p1.zerolost.shop",
+            "port": 443,
+            "users": [
+              {
+                "password": "WHM-RoLgbDj1qY1f1kNNkqYYFwos-JE7"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.google.com",
+          "publicKey": "blSaUMI9GEDc8ZgDuzftsdQzxN6OLYmQxvmiyqvg00g",
+          "shortId": "0ac4a2720661a38d",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

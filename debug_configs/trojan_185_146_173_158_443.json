@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2086,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "185.146.173.158",
+            "port": 443,
+            "users": [
+              {
+                "password": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "esetsecuritylicense.bwnsmv.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram-@V2ray_Alpha/?ed=2560",
+          "headers": {
+            "Host": "esetsecuritylicense.bwnsmv.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

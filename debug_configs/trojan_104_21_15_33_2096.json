@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2163,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.21.15.33",
+            "port": 2096,
+            "users": [
+              {
+                "password": "BTns3czXfT"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.sabapardaziran.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/🆔@M3HDIO1",
+          "headers": {
+            "Host": "support.sabapardaziran.ir"
+          }
+        }
+      }
+    }
+  ]
+}

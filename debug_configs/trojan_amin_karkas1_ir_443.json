@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2138,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "amin.karkas1.ir",
+            "port": 443,
+            "users": [
+              {
+                "password": "11ae0edd-2f63-4495-8683-037abbda9986"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "amin.karkas1.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6vuNVgOFnqUEvj0sNkGkxxW7",
+          "headers": {
+            "Host": "amin.karkas1.ir"
+          }
+        }
+      }
+    }
+  ]
+}

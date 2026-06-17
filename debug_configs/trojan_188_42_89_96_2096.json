@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2163,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "188.42.89.96",
+            "port": 2096,
+            "users": [
+              {
+                "password": "Z5+!cnPuRr!+X7f&"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "lITTle-darKness-6057.eDWARDFERaNK0923.WORKERS.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trep7IDWJcI0KhhM0u?ed=2560",
+          "headers": {
+            "Host": "little-darkness-6057.edwardferank0923.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

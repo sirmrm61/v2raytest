@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2173,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "185.146.173.115",
+            "port": 443,
+            "users": [
+              {
+                "password": "9a4bc15d-a7d4-4181-9485-405629c36894"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "king-ae1.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/@Telegram@Linkvws?ed=2560",
+          "headers": {
+            "Host": "king-ae1.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

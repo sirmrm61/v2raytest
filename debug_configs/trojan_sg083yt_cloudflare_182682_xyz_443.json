@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2149,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "sg083yt.cloudflare.182682.xyz",
+            "port": 443,
+            "users": [
+              {
+                "password": "81d322d7-3eee-45d9-b3b8-d8971800bb3e"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "31eacogyh9.bpsg2026.top",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/images",
+          "headers": {
+            "Host": "sgeofho04.bpsg2026.top"
+          }
+        }
+      }
+    }
+  ]
+}

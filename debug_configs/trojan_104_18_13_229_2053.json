@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2118,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.18.13.229",
+            "port": 2053,
+            "users": [
+              {
+                "password": "Watashi_VPN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "t-watashi-r-jacket-o-people-jan.watashi-java.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "Telegram@V2ray_Alpha/?ed=2087",
+          "headers": {
+            "Host": "t-watashi-r-jacket-o-people-jan.watashi-java.ir"
+          }
+        }
+      }
+    }
+  ]
+}

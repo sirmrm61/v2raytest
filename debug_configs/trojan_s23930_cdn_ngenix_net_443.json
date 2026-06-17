@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2095,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "s23930.cdn.ngenix.net",
+            "port": 443,
+            "users": [
+              {
+                "password": "Y10B3MFWKpwTZxpkY2dCNcxyHX4Q5qa1"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "s23930.cdn.ngenix.net",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/api/user",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2152,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.203.189",
+            "port": 443,
+            "users": [
+              {
+                "password": "1bf36abe-aa32-41f5-9523-70d713645ba6"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sinabigo1.soft10.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Channel--SiNABiGO-SiNABiGO-SiNABiGO--LqZwXyhqvlBwEC",
+          "headers": {
+            "Host": "sinabigo1.soft10.ir"
+          }
+        }
+      }
+    }
+  ]
+}

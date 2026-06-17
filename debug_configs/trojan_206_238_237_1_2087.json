@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2115,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "206.238.237.1",
+            "port": 2087,
+            "users": [
+              {
+                "password": "dns68"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "trojan.putata.us.kg",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed",
+          "headers": {
+            "Host": "trojan.putata.us.kg"
+          }
+        }
+      }
+    }
+  ]
+}

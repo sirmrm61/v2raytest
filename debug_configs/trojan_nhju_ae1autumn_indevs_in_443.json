@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2141,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "nhju.ae1autumn.indevs.in",
+            "port": 443,
+            "users": [
+              {
+                "password": "4c205c81-5694-43fe-a287-af563a2ebc05"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "nhju.ae1autumn.indevs.in",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/P23lDbkARo4gds7cXpDB5nO5",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

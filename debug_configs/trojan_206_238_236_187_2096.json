@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2179,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "206.238.236.187",
+            "port": 2096,
+            "users": [
+              {
+                "password": "0d89a36e-36bc-41d2-8bd3-bbd639991f29"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.zoom.us.nicorobin.eula.cloudns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@Linkvws?ed=2560",
+          "headers": {
+            "Host": "support.zoom.us.nicorobin.eula.cloudns.org"
+          }
+        }
+      }
+    }
+  ]
+}

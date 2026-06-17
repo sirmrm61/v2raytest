@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2179,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "cajeoha.cloudflare.182682.xyz",
+            "port": 443,
+            "users": [
+              {
+                "password": "9edc413e-3fdb-4277-b70b-53fff007d4f4"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "hfaw9h34.bpca2026.top",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/images",
+          "headers": {
+            "Host": "hfaw9h34.bpca2026.top"
+          }
+        }
+      }
+    }
+  ]
+}

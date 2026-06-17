@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2121,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "eaff1678-af6f-6bf0-fb76-494149bcda59.iran2035.dpdns.org",
+            "port": 443,
+            "users": [
+              {
+                "password": "2e665e3f-9e57-4ee1-9e8d-a7728c39a4c0"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "eaff1678-Af6F-6BF0-Fb76-494149BCDA59.IRan2035.DpdnS.ORg",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/JLoH4KJGixTxaNUhHMng",
+          "headers": {
+            "Host": "eAfF1678-AF6f-6bF0-fb76-494149bcDA59.iRAN2035.dPDns.Org"
+          }
+        }
+      }
+    }
+  ]
+}

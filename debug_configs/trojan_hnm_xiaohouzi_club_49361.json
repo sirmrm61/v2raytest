@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2114,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "hnm.xiaohouzi.club",
+            "port": 49361,
+            "users": [
+              {
+                "password": "0f098bb2-9fad-3cc3-8acf-2a3268c1eb27"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "support.zoom.us.hnm.xiaohouzi.club",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

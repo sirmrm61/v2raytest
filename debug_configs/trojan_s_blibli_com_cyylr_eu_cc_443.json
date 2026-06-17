@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2142,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "s.blibli.com.cyylr.eu.cc",
+            "port": 443,
+            "users": [
+              {
+                "password": "aa710f78-eddb-45b4-bd32-1f8692a754e5"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "s.blibli.com.cyylr.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ae-bo",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

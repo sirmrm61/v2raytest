@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2128,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "91947508-sy41s0-szj3jn-1qthu.cm5.cnkuaishou.com",
+            "port": 27231,
+            "users": [
+              {
+                "password": "8fa4bea0-8703-11ef-83cc-f23c913c8d2b"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "91947508-sy41s0-szj3jn-1qthu.cm5.cnkuaishou.com",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

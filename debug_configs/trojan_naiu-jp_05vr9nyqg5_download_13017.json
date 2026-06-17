@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2115,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "naiu-jp.05vr9nyqg5.download",
+            "port": 13017,
+            "users": [
+              {
+                "password": "cf8c51d3-e692-46a6-b351-4c5ef0b5efc3"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cloudflare.node-ssl.cdn-alibaba.com",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

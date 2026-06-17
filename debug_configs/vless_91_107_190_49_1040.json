@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2146,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "91.107.190.49",
+            "port": 1040,
+            "users": [
+              {
+                "id": "727bec5f-6077-48cb-a722-0217cb627982",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.oracle.com",
+          "publicKey": "QGNDB8osX42rKSsOZQZRuA1tzKUZtjHA5bUjAReQHiM",
+          "shortId": "55e5",
+          "fingerprint": "random"
+        }
+      }
+    }
+  ]
+}

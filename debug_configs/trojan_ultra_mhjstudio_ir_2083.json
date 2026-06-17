@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2162,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ultra.mhjstudio.ir",
+            "port": 2083,
+            "users": [
+              {
+                "password": "1u390tbg71u85lvn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "engine.mhjstudio.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/mhjstudios134",
+          "headers": {
+            "Host": "engine.mhjstudio.ir"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2169,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "14.102.228.76",
+            "port": 443,
+            "users": [
+              {
+                "password": "rbtk1t6pbj"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "world.thepouria.xyz",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/thepurea",
+          "headers": {
+            "Host": "world.thepouria.xyz"
+          }
+        }
+      }
+    }
+  ]
+}

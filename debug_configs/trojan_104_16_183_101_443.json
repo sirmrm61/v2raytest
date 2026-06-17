@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2160,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.16.183.101",
+            "port": 443,
+            "users": [
+              {
+                "password": "a0514d9b-d109-47fd-b173-1e7f83268f21"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "tws23.kallepache.store",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/update",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

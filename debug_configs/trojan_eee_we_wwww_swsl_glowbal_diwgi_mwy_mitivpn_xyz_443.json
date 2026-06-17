@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2136,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "eee.we.wwww.swsl.glowbal.diwgi.mwy.mitivpn.xyz",
+            "port": 443,
+            "users": [
+              {
+                "password": "mitivpn"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "www.ssl.global.digi.my.mitivpn.xyz",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ed=mitivpn",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

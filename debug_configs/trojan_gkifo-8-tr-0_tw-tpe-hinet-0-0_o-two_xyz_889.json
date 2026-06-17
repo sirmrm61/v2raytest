@@ -1,0 +1,47 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2113,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "gkifo-8-tr-0.tw-tpe-hinet-0-0.o-two.xyz",
+            "port": 889,
+            "users": [
+              {
+                "password": "JeSDlzqBCKqUCmDskZDSIvgscdvOYWbd"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "o-two.bond",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2087,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "re.iranfastfod.ir",
+            "port": 8443,
+            "users": [
+              {
+                "password": "telegram-Afv2Ray"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.speedtest.net",
+          "publicKey": "0LI5bDltMLiL2_W9Sl4xp60UGlznmgR-b6TbsKFtKG4",
+          "shortId": "96c7",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

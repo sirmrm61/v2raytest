@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2108,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ip4.vpean2.qzz.io",
+            "port": 443,
+            "users": [
+              {
+                "password": "rYuChHcwQZskq9E0zdoR"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "vpn5.rnmcnm.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ws-79dffb8106db",
+          "headers": {
+            "Host": "vpn5.rnmcnm.com"
+          }
+        }
+      }
+    }
+  ]
+}

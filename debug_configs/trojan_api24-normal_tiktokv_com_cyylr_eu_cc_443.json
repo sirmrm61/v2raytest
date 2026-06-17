@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2099,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "api24-normal.tiktokv.com.cyylr.eu.cc",
+            "port": 443,
+            "users": [
+              {
+                "password": "bb45f73f-795b-4a05-a8e0-ba717bce87e3"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "api24-normal.tiktokv.com.cyylr.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/id-tksi",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

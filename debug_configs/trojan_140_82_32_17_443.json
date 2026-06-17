@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2151,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "140.82.32.17",
+            "port": 443,
+            "users": [
+              {
+                "password": "mainssh-niwrhf87"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "getgrpc.mainssh.xyz",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "trojangrpc",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2143,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "172.67.196.253",
+            "port": 443,
+            "users": [
+              {
+                "password": "azadnet-trojan"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "XN----PmCnaaC0dKn0Rb71NdA.PagES.DeV",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trbRb6rQQHUXO1sk03?ed=2560",
+          "headers": {
+            "Host": "xn----pmcnaac0dkn0rb71nda.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}

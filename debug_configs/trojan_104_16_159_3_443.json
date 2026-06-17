@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2103,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.16.159.3",
+            "port": 443,
+            "users": [
+              {
+                "password": "dba20dcb635e430fa4d3bfc303a149d2"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "bangladeshipatri.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "6b777a91",
+          "headers": {
+            "Host": "bangladeshipatri.com"
+          }
+        }
+      }
+    }
+  ]
+}

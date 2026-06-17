@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2173,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "193.163.85.39",
+            "port": 443,
+            "users": [
+              {
+                "password": "43716b3b-df44-409e-beff-e571e39a889c"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "platyscelis.duckdns.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/vpn",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

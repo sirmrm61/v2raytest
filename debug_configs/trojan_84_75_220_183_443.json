@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2117,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "84.75.220.183",
+            "port": 443,
+            "users": [
+              {
+                "password": "drmcm9e34cjg177c"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.google.com",
+          "publicKey": "n4II_vPH4Xv8MtRUcmJYj6lfoN-BUpzZIb6O3pF2NQs",
+          "shortId": "755af94f",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

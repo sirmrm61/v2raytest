@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2150,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "vip3.kaixincloud.top",
+            "port": 8443,
+            "users": [
+              {
+                "password": "T9BpZIVMNv"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sweden.vmaxpanel.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/amd",
+          "headers": {
+            "Host": "sweden.vmaxpanel.com"
+          }
+        }
+      }
+    }
+  ]
+}

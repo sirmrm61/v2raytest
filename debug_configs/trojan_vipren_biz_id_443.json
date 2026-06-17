@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2094,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "vipren.biz.id",
+            "port": 443,
+            "users": [
+              {
+                "password": "bbbbbbbb-cccc-4ddd-eeee-ffffffffffff"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "vipren.biz.id",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Neoxide-X/194.87.62.236-443",
+          "headers": {
+            "Host": "vipren.biz.id"
+          }
+        }
+      }
+    }
+  ]
+}

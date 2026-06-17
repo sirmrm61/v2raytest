@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2130,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "investors.spotify.com.cyylr.eu.cc",
+            "port": 443,
+            "users": [
+              {
+                "password": "Config0plus"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "investors.spotify.com.cyylr.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/in-pdr",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2140,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "138.124.112.238",
+            "port": 2053,
+            "users": [
+              {
+                "password": "162534"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "cchh2.pages.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?https://t.me/WangCai2\u001f1E8\u001f1F3=",
+          "headers": {
+            "Host": "cchh2.pages.dev"
+          }
+        }
+      }
+    }
+  ]
+}
