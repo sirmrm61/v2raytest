@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2132,
+      "port": 2161,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.ignitelimit.com",
+          "serverName": "JoinProxyVPN11.gossipglove.com",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/assignment",
           "headers": {
-            "Host": "www.ignitelimit.com"
+            "Host": "www.gossipglove.com"
           }
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2151,
+      "port": 2098,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "TEst-63W.PaGEs.deV",
+          "serverName": "support.zoom.us.TEst-63W.PaGEs.deV",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/tre6QQRE1ue6YL7k30/NzIuMTMuMTIyLjEzNw",
-          "headers": {
-            "Host": "TEst-63W.PaGEs.deV"
-          }
         }
       }
     }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2129,
+      "port": 2170,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "%61%75%74%6f"
+                "password": "auto"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "trojanfree-76s.pages.dev",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/trojanfree-76s.pages.dev/?ed=2560",
-          "headers": {
-            "Host": ""
-          }
         }
       }
     }

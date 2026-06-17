@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2154,
+      "port": 2094,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "Koma-YT.PAGeS.Dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "%2FtrTelegram%F0%9F%87%A8%F0%9F%87%B3%20%40WangCai2",
+          "headers": {
+            "Host": ""
+          }
         }
       }
     }

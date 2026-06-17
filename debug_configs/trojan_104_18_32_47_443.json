@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2081,
+      "port": 2134,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.calmlunch.com",
+          "serverName": "www.creationlong.org",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/assignment",
           "headers": {
-            "Host": ""
+            "Host": "www.creationlong.org"
           }
         }
       }

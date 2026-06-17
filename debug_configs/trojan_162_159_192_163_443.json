@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2157,
+      "port": 2115,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "blOOM-cHh.pAges.DeV",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram@V2ray_Alpha/?ed=2048",
+          "headers": {
+            "Host": "blOOM-cHh.pAges.DeV"
+          }
         }
       }
     }

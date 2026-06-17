@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2134,
+      "port": 2113,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -44,7 +44,7 @@
         "wsSettings": {
           "path": "/trj-ws",
           "headers": {
-            "Host": ""
+            "Host": "vpn1.rnmcnm.com"
           }
         }
       }

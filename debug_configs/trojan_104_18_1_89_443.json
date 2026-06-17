@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2087,
+      "port": 2150,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "join-midas-x-x-----join-midas-x-x-----join-midas-x-x.join-midas-x-x-a14.workers.dev",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "join-midas-x-x-----join-midas-x-x-----join-midas-x-x.join-midas-x-x-a14.workers.dev"
-          }
         }
       }
     }

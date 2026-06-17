@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2107,
+      "port": 2115,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "b96ef9ae.trojanfree-76s.pages.dev",
+          "serverName": "",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/b96ef9ae.trojanfree-76s.pages.dev/",
-          "headers": {
-            "Host": "b96ef9ae.trojanfree-76s.pages.dev"
-          }
         }
       }
     }

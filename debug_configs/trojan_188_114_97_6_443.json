@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2171,
+      "port": 2084,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "cdn.de.linko1.ir",
+          "serverName": "cdn.linkman1.ir",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/720f09dba195249b423f771661162528/workers/services/view/mitivpn/production/settings",
           "headers": {
-            "Host": ""
+            "Host": "cdn.linkman1.ir"
           }
         }
       }

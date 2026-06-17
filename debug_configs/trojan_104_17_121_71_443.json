@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2167,
+      "port": 2160,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "mitivpn"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.calmloud.com",
+          "serverName": "www.app-cloud.ir",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "/?ed=2048",
           "headers": {
-            "Host": "www.calmloud.com"
+            "Host": "www.app-cloud.ir"
           }
         }
       }

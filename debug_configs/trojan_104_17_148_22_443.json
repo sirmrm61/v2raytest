@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2097,
+      "port": 2104,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "e2f4d1fa-0a6d-48c3-a5bb-8b438e78af23"
+                "password": "A4u%5Ep%28_UR*F6"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "119f3a0b.chikiy123w.pages.dev",
+          "serverName": "027.ELeCTroCelLco-CF-027.wORkERS.dEv",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/Telegram@Linkvws?ed=2048",
+          "path": "/eyJqdW5rIjoidlhnMXN5OXFUSiIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560",
           "headers": {
-            "Host": "119f3a0b.chikiy123w.pages.dev"
+            "Host": "027.electrocellco-cf-027.workers.dev"
           }
         }
       }

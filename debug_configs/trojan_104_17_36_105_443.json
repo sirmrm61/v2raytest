@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2108,
+      "port": 2155,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "blue2024"
+                "password": "auto"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hb.lii2010.us.kg",
+          "serverName": "b96ef9ae.trojanfree-76s.pages.dev",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/?ed=2560",
+          "path": "/b96ef9ae.trojanfree-76s.pages.dev/",
           "headers": {
-            "Host": "hb.lii2010.us.kg"
+            "Host": "b96ef9ae.trojanfree-76s.pages.dev"
           }
         }
       }

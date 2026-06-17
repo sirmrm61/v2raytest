@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2163,
+      "port": 2089,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "eeb6823c-b926-4ea2-866a-5542edd26e59"
+                "password": "8r%253C%255B9%2527l6hAO%25238ZQi"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "tjsp.hhxaf.cc.cd",
+          "serverName": "Koma-YT.PAGeS.Dev",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "tjsp.hhxaf.cc.cd"
-          }
         }
       }
     }

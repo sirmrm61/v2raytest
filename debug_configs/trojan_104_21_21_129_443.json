@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2091,
+      "port": 2085,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "trojanmz.pages.dev",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/trojanmz.pages.dev/?ed=2560",
-          "headers": {
-            "Host": "trojanmz.pages.dev"
-          }
         }
       }
     }

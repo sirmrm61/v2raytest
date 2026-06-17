@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2102,
+      "port": 2101,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,7 +42,7 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/Telegram@Linkvws?ed=2560",
+          "path": "/",
           "headers": {
             "Host": "pardazeshvpn-tg48.pages.dev"
           }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2117,
+      "port": 2114,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -41,7 +41,7 @@
           "serverName": "static.rutube.ru",
           "publicKey": "Zuu0slAOjX2uWf6-xRWeZzv7O_URTgpe8BHpvoS1llw",
           "shortId": "aabbccdd",
-          "fingerprint": "random"
+          "fingerprint": "chrome"
         }
       }
     }

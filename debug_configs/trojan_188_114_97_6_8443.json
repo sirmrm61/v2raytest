@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2178,
+      "port": 2147,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 8443,
             "users": [
               {
-                "password": "shabrangvpn"
+                "password": "WJfAuySyhs"
               }
             ]
           }
@@ -38,11 +38,11 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "de1.shabrang.shop",
+          "serverName": "hamincharkhooo.rafachita.ir",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/",
+          "path": "/720f09dba195249b423f771661162528/workers/services/view/best/production/settings",
           "headers": {
             "Host": ""
           }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2092,
+      "port": 2141,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "8e107680-6844-11f1-a5dc-1239d0255272"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.calmloud.com",
+          "serverName": "uk1.test3.net",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "/howdy",
           "headers": {
-            "Host": "www.calmloud.com"
+            "Host": "uk1.test3.net"
           }
         }
       }

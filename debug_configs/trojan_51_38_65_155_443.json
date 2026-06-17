@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2090,
+      "port": 2150,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "3e7112b0-5d42-11f1-8311-1239d0255272"
+                "password": "255a0a50-3f10-11f0-b0d6-1239d0255272"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "yahoo.com",
+          "serverName": "",
           "allowInsecure": true
         }
       }

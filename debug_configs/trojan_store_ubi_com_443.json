@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2129,
+      "port": 2083,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "eeb6823c-b926-4ea2-866a-5542edd26e59"
+                "password": "87d1bfd4-574e-4c96-ad42-0426f27461ff"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hhcm.hhxaf.cc.cd",
+          "serverName": "_acme",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2560",
+          "headers": {
+            "Host": ""
+          }
         }
       }
     }

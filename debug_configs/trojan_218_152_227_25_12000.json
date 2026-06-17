@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2125,
+      "port": 2170,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "vpn.rnmcnm.com",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/trojan",
-          "headers": {
-            "Host": ""
-          }
         }
       }
     }

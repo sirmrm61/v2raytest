@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2129,
+      "port": 2142,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "support.zoom.us.hn.xiaohouzi.club",
+          "serverName": "hn.xiaohouzi.club",
           "allowInsecure": true
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2167,
+      "port": 2121,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "masirsefid"
+                "password": "humanity"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "xhttp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "vps.smamin.com",
+          "serverName": "www.gossipglove.com",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/assignment",
+          "headers": {
+            "Host": ""
+          }
         }
       }
     }

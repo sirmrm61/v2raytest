@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2088,
+      "port": 2091,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 2096,
             "users": [
               {
-                "password": "VtEmSN3CPs"
+                "password": "VGZ0nM9KY3Qz"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "iran.farsonline24.ir",
+          "serverName": "esna.farsonline24.ir",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/🆔@M3HDIO1",
-          "headers": {
-            "Host": "iran.farsonline24.ir"
-          }
         }
       }
     }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2100,
+      "port": 2136,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,7 +42,7 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "6b777a91",
+          "path": "/6b777a91",
           "headers": {
             "Host": "jobscareerforstudent.com"
           }

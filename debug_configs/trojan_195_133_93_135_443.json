@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2114,
+      "port": 2164,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "3747000103274291200"
+                "password": "3723507166611775488"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "epic-weasel.treefrog761.one",
+          "serverName": "pleased-airedale.boa152.lol",
           "allowInsecure": true
         }
       }

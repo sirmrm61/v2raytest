@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2129,
+      "port": 2160,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,22 @@
             "port": 443,
             "users": [
               {
-                "password": "00ad4330-8d40-11ee-8d1a-1239d0255272"
+                "password": "qj1Dz1CJmFQRhWr1SP80aA"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "grpc",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "us1.test3.net",
+          "serverName": "cdn-21.gsmxreality.com",
           "allowInsecure": true
         },
-        "wsSettings": {
-          "path": "/howdy",
-          "headers": {
-            "Host": "us1.test3.net"
-          }
+        "grpcSettings": {
+          "serviceName": "443trojan",
+          "multiMode": false
         }
       }
     }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2098,
+      "port": 2136,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "72e07880-67b8-11f1-af64-1239d0255272"
+                "password": "%40LetIranBreath-61l%26"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "uk1.test3.net",
+          "serverName": "2IlSwBCAbLZo4kx0PBw6.WdcIuQdn.wORkERs.dEV",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/howdy",
+          "path": "/eyJqdW5rIjoidWphdmUwYnp2dnE1b3QxciIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=550",
           "headers": {
-            "Host": "uk1.test3.net"
+            "Host": "2ilswbcablzo4kx0pbw6.wdciuqdn.workers.dev"
           }
         }
       }

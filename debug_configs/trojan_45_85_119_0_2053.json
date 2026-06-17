@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2093,
+      "port": 2161,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 2053,
             "users": [
               {
-                "password": "Go5e2nKM8U"
+                "password": "Go5e2nKM8U-v2rayNG_VPNN"
               }
             ]
           }

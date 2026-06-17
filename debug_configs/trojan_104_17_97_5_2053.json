@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2163,
+      "port": 2109,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,15 +28,25 @@
             "port": 2053,
             "users": [
               {
-                "password": "bIa-DailY_cOnFIgs"
+                "password": "Kanale-Daily_Configs"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "t... "
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "kanale-daily-configs.blackoutconnection.ir",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/TELEGRAM:@Daily_Configs?ed=2560",
+          "headers": {
+            "Host": "kanale-daily-configs.blackoutconnection.ir"
+          }
+        }
       }
     }
   ]

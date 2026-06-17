@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2098,
+      "port": 2097,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "zholli90.biggestqut.workers.dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/152.32.181.246-44070",
+          "headers": {
+            "Host": "zholli90.biggestqut.workers.dev"
+          }
         }
       }
     }

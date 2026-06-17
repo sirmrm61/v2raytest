@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2140,
+      "port": 2178,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,7 +42,7 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "%2Fassignment",
+          "path": "/assignment",
           "headers": {
             "Host": "www.calmloud.com"
           }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2122,
+      "port": 2141,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "%6D%69%74%69%76%70%6E"
+                "password": "45c47cfa-67da-47e0-b20b-5efa674e6a9b"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.www.www.www.95r.ir",
+          "serverName": "unnes.ac.id.r3xxe.eu.cc",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/720f09dba195249b423f771661162528/workers/services/view/mitivpn/production/settings",
+          "path": "/us-gllc",
           "headers": {
-            "Host": ""
+            "Host": "unnes.ac.id.r3xxe.eu.cc"
           }
         }
       }

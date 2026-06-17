@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2128,
+      "port": 2123,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": ")5,9FW.Kk166"
+                "password": "A4u^p(_UR*F6"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "support.zoom.us.028.eLECtRocEllco-Cf-028.worKErS.dev",
+          "serverName": "027.eLECTROcelLCO-cf-027.WorKerS.Dev",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/eyJqdW5rIjoiU2oxczB0b0tSIiwicHJvdG9jb2wiOiJ0ciIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==?ed=2560",
+          "path": "/eyJqdW5rIjoidDJ0UDljR2ZIaVBQakg2byIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
           "headers": {
-            "Host": "support.zoom.us.028.eLECtRocEllco-Cf-028.worKErS.dev"
+            "Host": "027.electrocellco-cf-027.workers.dev"
           }
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2136,
+      "port": 2092,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 2087,
             "users": [
               {
-                "password": "d6b8011a-c725-435a-9fec-bf6d3530392c"
+                "password": "auto"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "vle.amclubdns.dpdns.org",
+          "serverName": "trojanfree-76s.pages.dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram-@V2ray_Alpha/?ed=2560",
+          "headers": {
+            "Host": "trojanfree-76s.pages.dev"
+          }
         }
       }
     }

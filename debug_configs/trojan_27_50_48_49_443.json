@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2118,
+      "port": 2158,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "mitivpn"
+                "password": "humanity"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "gamingdll.ir",
+          "serverName": "www.calmloud.com",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/index.html/ed=mitivpn",
+          "path": "/assignment",
           "headers": {
-            "Host": "gamingdll.ir"
+            "Host": "www.calmloud.com"
           }
         }
       }

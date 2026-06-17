@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2089,
+      "port": 2093,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "f6a0a650-306e-11ee-b692-1239d0255272"
+                "password": "01dd9960-ed03-11ed-ba5d-1239d0255272"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "Speedtest.net",
+          "serverName": "www.adge.com",
           "allowInsecure": true
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2136,
+      "port": 2101,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "VIP-VPN-join"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.ignitelimit.com",
+          "serverName": "profile.vexaservice.ir",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "/",
           "headers": {
-            "Host": "www.ignitelimit.com"
+            "Host": "profile.vexaservice.ir"
           }
         }
       }

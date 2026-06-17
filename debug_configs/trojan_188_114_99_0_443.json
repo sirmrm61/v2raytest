@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2104,
+      "port": 2168,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "your_password"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.gossipglove.com",
+          "serverName": "aws-ge-frankfurt-1.f1cflinea.com",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "%2Fassignment",
+          "path": "/f1rocket",
           "headers": {
-            "Host": "www.gossipglove.com"
+            "Host": "aws-ge-frankfurt-1.f1cflinea.com"
           }
         }
       }

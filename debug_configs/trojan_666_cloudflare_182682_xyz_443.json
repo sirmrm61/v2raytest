@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2138,
+      "port": 2084,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "sgeofh22.bpsg2026.top",
+          "serverName": "0o3vr2n5k2.bpuk2026.top",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/images",
           "headers": {
-            "Host": "sgeofh22.bpsg2026.top"
+            "Host": "ehofhoe.bpuk2026.top"
           }
         }
       }

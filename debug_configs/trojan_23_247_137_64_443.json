@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2135,
+      "port": 2118,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,15 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "grpc",
         "security": "tls",
         "tlsSettings": {
           "serverName": "n2.gladns.com",
           "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "db",
+          "multiMode": false
         }
       }
     }

@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "omid2.teama.tk",
+          "serverName": "damn-mci-again-3.danesh-bonyan.store",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/",
           "headers": {
-            "Host": "k.teama.tk"
+            "Host": "f-1.danesh-bonyan.store"
           }
         }
       }

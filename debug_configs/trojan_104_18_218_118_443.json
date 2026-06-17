@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2085,
+      "port": 2162,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,7 +42,7 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/",
+          "path": "/Telegram@Linkvws?ed=2560",
           "headers": {
             "Host": "5c53ca21.vpn-aryoo.pages.dev"
           }

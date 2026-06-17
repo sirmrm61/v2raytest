@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2158,
+      "port": 2163,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.ignitelimit.com",
+          "serverName": "www.creationlong.org",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/assignment",
           "headers": {
-            "Host": "www.ignitelimit.com"
+            "Host": "www.creationlong.org"
           }
         }
       }

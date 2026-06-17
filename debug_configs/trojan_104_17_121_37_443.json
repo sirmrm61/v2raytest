@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2132,
+      "port": 2123,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "Mitivpn"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.gossipglove.com",
+          "serverName": "my.hitgram.ir",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/assignment",
-          "headers": {
-            "Host": "www.gossipglove.com"
-          }
         }
       }
     }

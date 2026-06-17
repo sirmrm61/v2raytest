@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2094,
+      "port": 2086,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,10 +35,10 @@
         ]
       },
       "streamSettings": {
-        "network": "raw",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "130.94.94.15",
+          "serverName": "",
           "allowInsecure": true
         }
       }

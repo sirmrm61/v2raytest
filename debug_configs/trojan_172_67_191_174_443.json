@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2154,
+      "port": 2134,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "zzzZZZZz.222769.XYZ",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/Ws1FkyQlT190JQOSZb9TPR",
-          "headers": {
-            "Host": "zzzzzzzz.222769.xyz"
-          }
         }
       }
     }

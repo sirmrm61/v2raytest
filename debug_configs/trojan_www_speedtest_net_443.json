@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2178,
+      "port": 2119,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "n6avKI&^Lz2Oh0;S"
+                "password": "A4u%5Ep%28_UR*F6"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "SweET-CLOud-c500.MeYsAm-p12345.workErS.DEV",
+          "serverName": "027.ELeCTroCelLco-CF-027.wORkERS.dEv",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/eyJqdW5rIjoiZlllZjFjbzFKdG56IiwicHJvdG9jb2wiOiJ0ciIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OmIwOjY0OjpdIl19?ed=2560",
+          "path": "/eyJqdW5rIjoidlhnMXN5OXFUSiIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560",
           "headers": {
-            "Host": "sweet-cloud-c500.meysam-p12345.workers.dev"
+            "Host": "027.electrocellco-cf-027.workers.dev"
           }
         }
       }

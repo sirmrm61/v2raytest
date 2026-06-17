@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2105,
+      "port": 2161,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "0b971bb0-f0af-11ee-8f57-1239d0255272"
+                "password": "2a85cc50-5f55-11ee-b3ab-1239d0255272"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "uk1.test3.net",
+          "serverName": "de1.test3.net",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/howdy",
+          "headers": {
+            "Host": "de1.test3.net"
+          }
         }
       }
     }

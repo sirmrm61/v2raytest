@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2112,
+      "port": 2136,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 8443,
             "users": [
               {
-                "password": "162534"
+                "password": "8r%3C%5B9%27l6hAO%238ZQi"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "cchh2.pages.dev",
+          "serverName": "Koma-YT.PAGeS.Dev",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/?ed=2560&https://t.me/WangCai2🇨🇳",
+          "path": "/trTelegram🇨🇳 @WangCai2",
           "headers": {
-            "Host": "cchh2.pages.dev"
+            "Host": "Koma-YT.PAGeS.Dev"
           }
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2162,
+      "port": 2083,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,13 +40,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "I78nThHk0Q.sOlEnTrAa.InFo",
+          "serverName": "M84tG1gGw0.SoLeNtRaA.iNfO",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/",
           "headers": {
-            "Host": "I78nThHk0Q.sOlEnTrAa.InFo"
+            "Host": "M84tG1gGw0.SoLeNtRaA.iNfO"
           }
         }
       }

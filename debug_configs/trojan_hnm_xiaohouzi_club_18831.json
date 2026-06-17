@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2093,
+      "port": 2086,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hnm.xiaohouzi.club",
+          "serverName": "avas01.xiaohouzi.club",
           "allowInsecure": true
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2102,
+      "port": 2087,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "25ae6230-7834-41dc-94a4-586e1a79ea89"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.calmloud.com",
+          "serverName": "shy-brook-df1e.amirkhan69.workers.dev",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "/?ed=2048",
           "headers": {
-            "Host": "www.calmloud.com"
+            "Host": "shy-brook-df1e.amirkhan69.workers.dev"
           }
         }
       }

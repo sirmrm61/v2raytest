@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2138,
+      "port": 2091,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "epgc.aimercc.dpdns.org",
+          "serverName": "acepo.ambercc.filegear-sg.me",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/?ed=2560&proxyip=ts.hpc.tw",
-          "headers": {
-            "Host": "epgc.aimercc.dpdns.org"
-          }
         }
       }
     }

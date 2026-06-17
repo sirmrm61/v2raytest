@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2084,
+      "port": 2104,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 2096,
             "users": [
               {
-                "password": "b12f4be0-e874-568e-954f-942dcc3a67e9"
+                "password": "98f0c223-cb75-4faa-859e-47110b1f052b"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "trojan.trojan0.woRkeRS.deV",
+          "serverName": "iNTeRnET4EVERIeONe7.PaGes.DeV",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/trojan-ws/?ed=2048",
+          "path": "/Telegram-@V2ray_Alpha/?ed=2560",
           "headers": {
-            "Host": "trojan.trojan0.woRkeRS.deV"
+            "Host": "internet4everieone7.pages.dev"
           }
         }
       }

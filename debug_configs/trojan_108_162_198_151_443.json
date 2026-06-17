@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2178,
+      "port": 2128,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.pifirib369.workers.dev",
+          "serverName": "support.zoom.us.v2ngfast-v2ngfast-v2ngfast-v2ngfast.pifirib369.workers.dev",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/?ed=2560",
           "headers": {
-            "Host": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.pifirib369.workers.dev"
+            "Host": "support.zoom.us.v2ngfast-v2ngfast-v2ngfast-v2ngfast.pifirib369.workers.dev"
           }
         }
       }

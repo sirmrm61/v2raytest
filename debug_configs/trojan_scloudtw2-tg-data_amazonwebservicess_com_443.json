@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2122,
+      "port": 2090,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "ca7febc2-bb45-4e6d-810e-ab0af6009c4e"
+                "password": "4aeda200-44c9-4168-8f2a-a00a72176d35"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "scloudtw2-tg-data.amazonwebservicess.com",
+          "serverName": "data.amazonwebservicess.com",
           "allowInsecure": true
         }
       }

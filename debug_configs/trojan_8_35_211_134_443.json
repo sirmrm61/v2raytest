@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2095,
+      "port": 2140,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.jayag42786.workers.dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2560",
+          "headers": {
+            "Host": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.jayag42786.workers.dev"
+          }
         }
       }
     }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2093,
+      "port": 2107,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "172.64.156.42",
+          "serverName": "",
           "allowInsecure": true
         }
       }

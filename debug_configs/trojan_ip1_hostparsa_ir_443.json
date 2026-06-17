@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2083,
+      "port": 2104,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "Sg11afdb3c058cf8211956"
+                "password": "If14dbc539cc713de2cf87"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "xhttp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "x2-dpim9mztudx78ieloo1t.parsiclouds.ir",
+          "serverName": "x1-dpim9mztudx78ieloo1t.parsiclouds.ir",
           "allowInsecure": true
         }
       }

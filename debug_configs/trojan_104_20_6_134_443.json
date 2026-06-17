@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2100,
+      "port": 2123,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -44,7 +44,7 @@
         "wsSettings": {
           "path": "/assignment",
           "headers": {
-            "Host": ""
+            "Host": "www.multiplydose.com"
           }
         }
       }

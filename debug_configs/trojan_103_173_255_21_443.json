@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2152,
+      "port": 2158,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "5623be5f-c9da-4511-81a9-b4b39b16edae"
+                "password": "29ea82cf-f956-42b2-a5dc-35feea39e7ff"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "sbank.ir",
+          "serverName": "glc-vn.windowsupdatea.com",
           "allowInsecure": true
         }
       }

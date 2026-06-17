@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2113,
+      "port": 2150,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "Z3_=ewk_+l1U4OT4usQ5=o2vFfk95yfy1V"
+                "password": "Z3_%3Dewk_%2Bl1U4OT4usQ5%3Do2vFfk95yfy1V"
               }
             ]
           }

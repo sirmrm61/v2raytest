@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2129,
+      "port": 2096,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "0RiSuJPsug%23v"
+                "password": "mVaHDDWsvC"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "2.link-kon.ir",
+          "serverName": "us-ashburn.wealthpost.ca",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/trTcwZRw8JC0TPp6d1?ed=2560",
-          "headers": {
-            "Host": "2.lINK-KoN.IR"
-          }
         }
       }
     }

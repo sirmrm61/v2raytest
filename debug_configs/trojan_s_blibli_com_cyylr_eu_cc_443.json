@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2142,
+      "port": 2121,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "s.blibli.com.cyylr.eu.cc",
+          "serverName": "",
           "allowInsecure": true
         },
         "wsSettings": {

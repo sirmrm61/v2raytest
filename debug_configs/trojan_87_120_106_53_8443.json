@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2136,
+      "port": 2176,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -39,8 +39,8 @@
         "security": "reality",
         "realitySettings": {
           "serverName": "www.trendyol.com",
-          "publicKey": "",
-          "shortId": "",
+          "publicKey": "G8S5riGF4RfQHI6QeqcnjN47CEKUEWomywiXDEpO0Rs",
+          "shortId": "ddad09466f6f25de",
           "fingerprint": "chrome"
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2150,
+      "port": 2141,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 8080,
             "users": [
               {
-                "password": "cIatXQiBDG"
+                "password": "7UdfQ85dsJ"
               }
             ]
           }
@@ -46,7 +46,7 @@
         "wsSettings": {
           "path": "/?ed=2048",
           "headers": {
-            "Host": "s2.aananas.ir"
+            "Host": "s1.aananas.ir"
           }
         }
       }

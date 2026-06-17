@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2137,
+      "port": 2089,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "trojan.burgerip.co.uk",
           "allowInsecure": true
         }
       }

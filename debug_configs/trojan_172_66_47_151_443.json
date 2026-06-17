@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2142,
+      "port": 2151,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "a64f0cea-ca89-40e6-b316-b3badff1eb90"
+                "password": "89b3cbba-e6ac-485a-9481-976a0415eab9"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "iSaA1.paGes.DEv",
+          "serverName": "23sPT.pAGEs.dEV",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/Telegram@Linkvws?ed=2560",
           "headers": {
-            "Host": "IsaA1.pAGEs.DEV"
+            "Host": "23spt.pages.dev"
           }
         }
       }

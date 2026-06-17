@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2086,
+      "port": 2166,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "gkH7imOMi--3t3xcStZT8pp4dlZUEsKN.PagEs.deV",
+          "serverName": "support.zoom.us.gkH7imOMi--3t3xcStZT8pp4dlZUEsKN.PagEs.deV",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/trjlFIcjqAklnJcJjx/YnBiLnlvdXNlZi5pc2VnYXJvLmNvbQ==",
           "headers": {
-            "Host": "gkh7imomi--3t3xcstzt8pp4dlzueskn.pages.dev"
+            "Host": "support.zoom.us.gkH7imOMi--3t3xcStZT8pp4dlZUEsKN.PagEs.deV"
           }
         }
       }

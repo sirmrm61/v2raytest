@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2170,
+      "port": 2139,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 2087,
             "users": [
               {
-                "password": "Go5e2nKM9U"
+                "password": "Go5e2nJM8U"
               }
             ]
           }
@@ -42,9 +42,9 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "JoinUs@v2rayNG_VPNN",
+          "path": "@v2rayNG_VPNN",
           "headers": {
-            "Host": "aa.v2jey.fun"
+            "Host": "ee.v2jey.fun"
           }
         }
       }

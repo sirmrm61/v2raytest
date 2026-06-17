@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2173,
+      "port": 2176,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "00ad4330-8d40-11ee-8d1a-1239d0255272"
+                "password": "8ac9d280-afe3-4389-bc00-25128983a689"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "us1.test3.net",
+          "serverName": "ttbirdxray.collagenetwork.us.kg",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/howdy",
+          "path": "/?ed=2560",
           "headers": {
-            "Host": "us1.test3.net"
+            "Host": "ttbirdxray.collagenetwork.us.kg"
           }
         }
       }

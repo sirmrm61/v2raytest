@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2131,
+      "port": 2108,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "e30dbfd0-f15a-11ed-9080-1239d0255272"
+                "password": "4c903e60-fa19-11ed-a488-1239d0255272"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "fr.test3.net",
+          "serverName": "cdn.appsflyer.com",
           "allowInsecure": true
         }
       }

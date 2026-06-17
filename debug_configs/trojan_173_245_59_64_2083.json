@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2098,
+      "port": 2126,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "v2ngfast-v2ngfast-v2ngfast-v2ngfast.jegoka6436.workers.dev",
+          "serverName": "support.zoom.us.v2ngfast-v2ngfast-v2ngfast-v2ngfast.jegoka6436.workers.dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2560",
+          "headers": {
+            "Host": "support.zoom.us.v2ngfast-v2ngfast-v2ngfast-v2ngfast.jegoka6436.workers.dev"
+          }
         }
       }
     }

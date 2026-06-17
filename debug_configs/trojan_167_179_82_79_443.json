@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2112,
+      "port": 2104,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,9 +42,9 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/?ed=2048",
+          "path": "/",
           "headers": {
-            "Host": "jy.hhllfly.kdns.fr"
+            "Host": ""
           }
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2118,
+      "port": 2119,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 46639,
             "users": [
               {
-                "password": "8r%3C%5B9%27l6hAO%238ZQi"
+                "password": "ttfang"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "Koma-YT.PAGeS.Dev",
+          "serverName": "ttfang.fange.me",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "%2FtrTelegram%F0%9F%87%A8%F0%9F%87%B3%20%40WangCai2",
+          "path": "/",
           "headers": {
-            "Host": ""
+            "Host": "ttfang.fange.me"
           }
         }
       }

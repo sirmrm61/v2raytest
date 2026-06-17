@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2177,
+      "port": 2084,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "grpc",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "support.zoom.us.speedtest.net",
+          "serverName": "speedtest.net",
           "allowInsecure": true
         },
         "grpcSettings": {

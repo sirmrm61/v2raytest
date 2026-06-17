@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2144,
+      "port": 2157,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "x2swe-ovh.devefun.net",
           "allowInsecure": true
         }
       }

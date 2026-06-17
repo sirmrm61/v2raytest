@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2093,
+      "port": 2171,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "bpb-trojan"
+                "password": "4045e84e-5e3c-4f70-8ff5-c1097882a55a"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "BPB-wOrkeR-pANel1-E4P.pageS.DeV",
+          "serverName": "BPb-WOrKeR-paneL1-e4P.PAGES.DEV",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/trbo9SGocZQNTqq3Cd/YnBiLnlvdXNlZi5pc2VnYXJvLmNvbQ==",
-          "headers": {
-            "Host": ""
-          }
         }
       }
     }

@@ -202,6 +202,7 @@ DEFAULT_SETTINGS = {
     "dark_mode": True,
     "auto_schedule_enabled": False,
     "auto_schedule_interval": 60,  # minutes
+    "max_allowed_latency": 500,  # ms
 }
 
 CONFIG_FILE = "config.json"
@@ -301,6 +302,9 @@ def normalize_subscription_url(url: str) -> str:
     """Handle common cases like GitHub blob URLs -> raw."""
     if "github.com" in url and "/blob/" in url:
         return url.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/")
+    # Handle refs URLs (e.g., /refs/heads/main -> /main)
+    if "raw.githubusercontent.com" in url and "/refs/heads/" in url:
+        return url.replace("/refs/heads/", "/")
     return url
 
 
@@ -664,7 +668,7 @@ def _test_with_socks5_manual(local_port: int, timeout: float, start_time: float)
 
 
 async def test_config(config: ConfigItem, tests_per_config: int, timeout: float, 
-                     sem: asyncio.Semaphore, progress_cb, log_cb, xray_path: str = ""):
+                     sem: asyncio.Semaphore, progress_cb, log_cb, xray_path: str = "", cancel_check=None, stats_cb=None):
     success = 0
     fails = 0
     latencies: List[float] = []
@@ -672,6 +676,11 @@ async def test_config(config: ConfigItem, tests_per_config: int, timeout: float,
     use_xray = bool(xray_path and os.path.exists(xray_path))
     
     for i in range(1, tests_per_config + 1):
+        # Check for cancellation before each test
+        if cancel_check and cancel_check():
+            log_cb(f"⏹️ [{config.remark}] تست لغو شد", "cancel")
+            break
+        
         async with sem:
             # First do TCP test (always)
             tcp_ok, tcp_latency = await tcp_latency_test(config.host, config.port, timeout)
@@ -689,22 +698,30 @@ async def test_config(config: ConfigItem, tests_per_config: int, timeout: float,
                 if xray_ok:
                     success += 1
                     latencies.append(xray_latency)
-                    log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: Proxy={xray_latency:.1f}ms | TCP={tcp_latency:.1f}ms")
+                    log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: Proxy={xray_latency:.1f}ms | TCP={tcp_latency:.1f}ms", "success")
+                    if stats_cb:
+                        stats_cb("success")
                 else:
                     fails += 1
                     if tcp_ok:
-                        log_cb(f"⚠ [{config.remark}] تست {i}/{tests_per_config}: Proxy شکست (TCP={tcp_latency:.1f}ms)")
+                        log_cb(f"⚠ [{config.remark}] تست {i}/{tests_per_config}: Proxy شکست (TCP={tcp_latency:.1f}ms)", "warning")
                     else:
-                        log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: Proxy و TCP شکست")
+                        log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: Proxy و TCP شکست", "error")
+                    if stats_cb:
+                        stats_cb("fail")
             else:
                 # Fallback to TCP only
                 if tcp_ok:
                     success += 1
                     latencies.append(tcp_latency)
-                    log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: TCP={tcp_latency:.1f}ms")
+                    log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: TCP={tcp_latency:.1f}ms", "success")
+                    if stats_cb:
+                        stats_cb("success")
                 else:
                     fails += 1
-                    log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: شکست")
+                    log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: شکست", "error")
+                    if stats_cb:
+                        stats_cb("fail")
             
             progress_cb()
     
@@ -713,11 +730,53 @@ async def test_config(config: ConfigItem, tests_per_config: int, timeout: float,
 
 
 async def run_all_tests(configs: List[ConfigItem], tests_per_config: int, 
-                       timeout: float, max_concurrency: int, progress_cb, log_cb, xray_path: str = ""):
+                       timeout: float, max_concurrency: int, progress_cb, log_cb, xray_path: str = "",
+                       max_allowed_latency: float = float("inf"), top_n: int = 10, cancel_event: asyncio.Event = None, stats_cb=None):
+    if cancel_event is None:
+        cancel_event = asyncio.Event()
+    
     sem = asyncio.Semaphore(max_concurrency)
-    tasks = [test_config(cfg, tests_per_config, timeout, sem, progress_cb, log_cb, xray_path) 
-             for cfg in configs]
-    results: List[TestResult] = await asyncio.gather(*tasks, return_exceptions=True)
+    results: List[TestResult] = []
+    good_configs_found = 0
+    results_lock = asyncio.Lock()
+    
+    def cancel_check():
+        return cancel_event.is_set()
+    
+    async def test_with_early_stop(cfg: ConfigItem):
+        if cancel_event.is_set():
+            return None
+        result = await test_config(cfg, tests_per_config, timeout, sem, progress_cb, log_cb, xray_path, cancel_check, stats_cb)
+        
+        # Check if this config meets the latency requirement
+        if result.success_count > 0:
+            latency = result.avg_latency if result.latencies else result.avg_tcp_latency
+            if latency <= max_allowed_latency:
+                nonlocal good_configs_found
+                async with results_lock:
+                    good_configs_found += 1
+                    log_cb(f"✓ کانفیگ خوب پیدا شد ({good_configs_found}/{top_n}): {cfg.remark} - {latency:.1f}ms", "success")
+                    
+                    if good_configs_found >= top_n:
+                        log_cb(f"⏹️ {top_n} کانفیگ خوب پیدا شد - توقف تست", "success")
+                        cancel_event.set()
+        
+        return result
+    
+    # Create all tasks
+    tasks = [test_with_early_stop(cfg) for cfg in configs]
+    
+    # Process tasks as they complete
+    for task in asyncio.as_completed(tasks):
+        if cancel_event.is_set():
+            # Cancel remaining tasks
+            for t in tasks:
+                if not t.done():
+                    t.cancel()
+            break
+        result = await task
+        if result:
+            results.append(result)
     
     # Filter out exceptions
     valid_results = []
@@ -887,6 +946,8 @@ class V2RayOptimizerModernGUI:
         self.progress_var = tk.DoubleVar(value=0)
         self.total_tests = 0
         self.completed_tests = 0
+        self.success_tests = 0
+        self.failed_tests = 0
         self.tree_item_map = {}
         
         # Apply modern theme
@@ -896,6 +957,7 @@ class V2RayOptimizerModernGUI:
         self._build_ui()
         self._load_settings_to_ui()
         self.root.after(100, self._process_log_queue)
+        self.testing_cancelled = False
     
     def _build_ui(self):
         # Header
@@ -991,6 +1053,7 @@ class V2RayOptimizerModernGUI:
         self.xray_path_var = tk.StringVar()
         self.auto_schedule_enabled_var = tk.BooleanVar()
         self.auto_schedule_interval_var = tk.IntVar()
+        self.max_allowed_latency_var = tk.IntVar()
         
         settings = [
             ("نام فایل خروجی:", self.output_name_var, "best-configs"),
@@ -998,6 +1061,7 @@ class V2RayOptimizerModernGUI:
             ("تعداد تست برای هر کانفیگ:", self.tests_per_cfg_var, 5),
             ("تعداد همزمانی (Concurrency):", self.max_conc_var, 50),
             ("Timeout هر تست (ثانیه):", self.timeout_var, 3.0),
+            ("حداکثر تاخیر مجاز (ms):", self.max_allowed_latency_var, 500),
         ]
         
         for idx, (label, var, default) in enumerate(settings):
@@ -1080,6 +1144,13 @@ class V2RayOptimizerModernGUI:
                                      bg_color=ModernTheme.SUCCESS, hover_color="#94e2c9")
         self.start_btn.pack(pady=10)
         
+        # Cancel button
+        self.cancel_btn = ModernButton(container, text="⏹️ لغو تست",
+                                      command=self._on_cancel, width=150, height=35,
+                                      bg_color=ModernTheme.ERROR, hover_color="#f28f8f")
+        self.cancel_btn.pack(pady=5)
+        self.cancel_btn.config(state="disabled")
+        
         # Progress section
         progress_frame = tk.Frame(container, bg=ModernTheme.BG_PRIMARY)
         progress_frame.pack(fill=tk.X, pady=15)
@@ -1093,6 +1164,15 @@ class V2RayOptimizerModernGUI:
                                            maximum=100, style="TProgressbar")
         self.progress_bar.pack(fill=tk.X, pady=5)
         
+        # Stats labels
+        stats_frame = tk.Frame(progress_frame, bg=ModernTheme.BG_PRIMARY)
+        stats_frame.pack(fill=tk.X, pady=(10, 0))
+        
+        self.stats_label = tk.Label(stats_frame, text="کل: 0 | موفق: 0 | شکست: 0",
+                                    font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                                    bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_SECONDARY)
+        self.stats_label.pack(anchor="e")
+        
         # Log section
         tk.Label(container, text="📋 لاگ زنده:", 
                 font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
@@ -1105,6 +1185,12 @@ class V2RayOptimizerModernGUI:
                                fg=ModernTheme.TEXT_PRIMARY, insertbackground=ModernTheme.ACCENT,
                                font=("Consolas", 9), relief="flat", bd=0, state="disabled")
         self.log_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        
+        # Configure color tags for log
+        self.log_text.tag_config("success", foreground="#4ade80")  # green
+        self.log_text.tag_config("error", foreground="#f87171")    # red
+        self.log_text.tag_config("warning", foreground="#fbbf24")  # yellow
+        self.log_text.tag_config("cancel", foreground="#a78bfa")   # purple
         
         log_scrollbar = ttk.Scrollbar(log_frame, command=self.log_text.yview)
         log_scrollbar.pack(side=tk.LEFT, fill=tk.Y)
@@ -1192,6 +1278,7 @@ class V2RayOptimizerModernGUI:
             "xray_path": self.xray_path_var.get(),
             "auto_schedule_enabled": self.auto_schedule_enabled_var.get(),
             "auto_schedule_interval": int(self.auto_schedule_interval_var.get() or DEFAULT_SETTINGS["auto_schedule_interval"]),
+            "max_allowed_latency": int(self.max_allowed_latency_var.get() or DEFAULT_SETTINGS["max_allowed_latency"]),
         }
         save_settings(data)
         self._log("✓ تنظیمات ذخیره شد")
@@ -1209,18 +1296,31 @@ class V2RayOptimizerModernGUI:
         self.xray_path_var.set(st.get("xray_path", ""))
         self.auto_schedule_enabled_var.set(st.get("auto_schedule_enabled", DEFAULT_SETTINGS["auto_schedule_enabled"]))
         self.auto_schedule_interval_var.set(st.get("auto_schedule_interval", DEFAULT_SETTINGS["auto_schedule_interval"]))
+        self.max_allowed_latency_var.set(st.get("max_allowed_latency", DEFAULT_SETTINGS["max_allowed_latency"]))
         self._log("✓ تنظیمات بارگذاری شد")
     
-    def _log(self, msg: str):
+    def _log(self, msg: str, status: str = "info"):
         timestamp = time.strftime("%H:%M:%S")
-        self.log_queue.put(f"[{timestamp}] {msg}\n")
+        self.log_queue.put((f"[{timestamp}] {msg}\n", status))
     
     def _process_log_queue(self):
         try:
             while not self.log_queue.empty():
-                msg = self.log_queue.get_nowait()
+                msg, status = self.log_queue.get_nowait()
                 self.log_text.config(state="normal")
-                self.log_text.insert(tk.END, msg)
+                
+                # Color coding based on status
+                if status == "success":
+                    self.log_text.insert(tk.END, msg, "success")
+                elif status == "error":
+                    self.log_text.insert(tk.END, msg, "error")
+                elif status == "warning":
+                    self.log_text.insert(tk.END, msg, "warning")
+                elif status == "cancel":
+                    self.log_text.insert(tk.END, msg, "cancel")
+                else:
+                    self.log_text.insert(tk.END, msg)
+                
                 self.log_text.see(tk.END)
                 self.log_text.config(state="disabled")
         except Exception:
@@ -1241,6 +1341,7 @@ class V2RayOptimizerModernGUI:
             max_concurrency = int(self.max_conc_var.get() or DEFAULT_SETTINGS["max_concurrency"])
             timeout = float(self.timeout_var.get() or DEFAULT_SETTINGS["timeout"])
             xray_path = self.xray_path_var.get()
+            max_allowed_latency = int(self.max_allowed_latency_var.get() or DEFAULT_SETTINGS["max_allowed_latency"])
             
             # Check if Xray is available
             if xray_path and os.path.exists(xray_path):
@@ -1248,22 +1349,34 @@ class V2RayOptimizerModernGUI:
             else:
                 self._log("⚠ Xray core یافت نشد - استفاده از تست TCP")
             
+            self._log(f"⏱️ حداکثر تاخیر مجاز: {max_allowed_latency}ms")
+            
             self.start_btn.config(state="disabled")
+            self.cancel_btn.config(state="normal")
             self.completed_tests = 0
             self.total_tests = 0
+            self.success_tests = 0
+            self.failed_tests = 0
             self.progress_var.set(0)
             self.status_label.config(text="در حال جمع‌آوری کانفیگ‌ها...")
+            self.testing_cancelled = False
             
             thread = threading.Thread(
                 target=self._worker,
-                args=(subs, output_name, top_n, tests_per_config, max_concurrency, timeout, xray_path),
+                args=(subs, output_name, top_n, tests_per_config, max_concurrency, timeout, xray_path, max_allowed_latency),
                 daemon=True,
             )
             thread.start()
         except Exception as exc:
             messagebox.showerror("خطا", str(exc))
     
-    def _worker(self, subs, output_name, top_n, tests_per_config, max_concurrency, timeout, xray_path):
+    def _on_cancel(self):
+        """Handle cancel button click"""
+        self.testing_cancelled = True
+        self._log("⏹️ درخواست لغو تست...")
+        self.cancel_btn.config(state="disabled")
+    
+    def _worker(self, subs, output_name, top_n, tests_per_config, max_concurrency, timeout, xray_path, max_allowed_latency):
         try:
             configs = self._collect_configs(subs)
             if not configs:
@@ -1278,18 +1391,46 @@ class V2RayOptimizerModernGUI:
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             progress_cb = lambda: self._increment_progress()
-            log_cb = lambda msg: self._log(msg)
+            log_cb = lambda msg, status="info": self._log(msg, status)
+            stats_cb = lambda status: self._update_stats(status)
+            
+            # Create cancellation event
+            cancel_event = asyncio.Event()
+            
+            # Check for cancellation periodically
+            async def check_cancellation():
+                while not cancel_event.is_set():
+                    if self.testing_cancelled:
+                        cancel_event.set()
+                        break
+                    await asyncio.sleep(0.1)
+            
+            # Start cancellation checker
+            cancel_task = loop.create_task(check_cancellation())
+            
             results: List[TestResult] = loop.run_until_complete(
-                run_all_tests(configs, tests_per_config, timeout, max_concurrency, progress_cb, log_cb, xray_path)
+                run_all_tests(configs, tests_per_config, timeout, max_concurrency, progress_cb, log_cb, xray_path, max_allowed_latency, top_n, cancel_event, stats_cb)
             )
+            
+            # Cancel the checker task
+            cancel_task.cancel()
+            try:
+                loop.run_until_complete(cancel_task)
+            except:
+                pass
+            
             loop.close()
             
-            ranked = rank_results(results)
-            best = ranked[:top_n]
-            save_output_files(best, output_name)
-            self._update_results(best)
-            self._set_status("✓ اتمام تست")
-            self._log(f"✓ خروجی ذخیره شد: {output_name}.txt (v2rayNG format) و {output_name}.base64")
+            if self.testing_cancelled:
+                self._log("⏹️ تست توسط کاربر لغو شد")
+                self._set_status("✗ لغو شد")
+            else:
+                ranked = rank_results(results)
+                best = ranked[:top_n]
+                save_output_files(best, output_name)
+                self._update_results(best)
+                self._set_status("✓ اتمام تست")
+                self._log(f"✓ خروجی ذخیره شد: {output_name}.txt (v2rayNG format) و {output_name}.base64")
         except Exception as exc:
             self._log(f"✗ خطا: {exc}")
             traceback.print_exc()
@@ -1313,6 +1454,9 @@ class V2RayOptimizerModernGUI:
             unique[cfg.key()] = cfg
         configs = list(unique.values())
         
+        # Reverse order (end to beginning)
+        configs.reverse()
+        
         # Update countries in background (non-blocking)
         self._update_countries_async(configs)
         
@@ -1334,6 +1478,17 @@ class V2RayOptimizerModernGUI:
             pct = (self.completed_tests / self.total_tests) * 100
             self.root.after(0, lambda: self.progress_var.set(pct))
             self.root.after(0, lambda: self.status_label.config(text=f"پیشرفت: {pct:.1f}%"))
+    
+    def _update_stats(self, status: str):
+        """Update success/failed stats"""
+        if status == "success":
+            self.success_tests += 1
+        elif status == "fail":
+            self.failed_tests += 1
+        
+        self.root.after(0, lambda: self.stats_label.config(
+            text=f"کل: {self.completed_tests} | موفق: {self.success_tests} | شکست: {self.failed_tests}"
+        ))
     
     def _set_status(self, text: str):
         self.root.after(0, lambda: self.status_label.config(text=text))
@@ -1413,9 +1568,10 @@ class V2RayOptimizerModernGUI:
     
     def _finish(self):
         self.root.after(0, lambda: self.start_btn.config(state="normal"))
+        self.root.after(0, lambda: self.cancel_btn.config(state="disabled"))
         
         # Check if auto-schedule is enabled
-        if self.auto_schedule_enabled_var.get():
+        if self.auto_schedule_enabled_var.get() and not self.testing_cancelled:
             interval = self.auto_schedule_interval_var.get()
             if interval > 0:
                 self._log(f"⏰ تست بعدی در {interval} دقیقه")

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2164,
+      "port": 2145,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "blue2024"
+                "password": "auto"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hb.lii2010.us.kg",
+          "serverName": "trojanmz.pages.dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/trojanmz.pages.dev/?ed=2560",
+          "headers": {
+            "Host": "trojanmz.pages.dev"
+          }
         }
       }
     }

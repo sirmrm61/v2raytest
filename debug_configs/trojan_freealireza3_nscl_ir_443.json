@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2158,
+      "port": 2156,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "freealireza3.nscl.ir",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/dashboard",
-          "headers": {
-            "Host": "freealireza3.nscl.ir"
-          }
         }
       }
     }

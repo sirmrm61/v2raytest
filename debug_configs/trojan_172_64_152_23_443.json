@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2129,
+      "port": 2116,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.multiplydose.com",
+          "serverName": "www.calmlunch.com",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/assignment",
           "headers": {
-            "Host": ""
+            "Host": "www.calmlunch.com"
           }
         }
       }

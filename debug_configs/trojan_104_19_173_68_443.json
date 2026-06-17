@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2141,
+      "port": 2158,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "d0298536-d670-4045-bbb1-ddd5ea68683e"
+                "password": "81d322d7-3eee-45d9-b3b8-d8971800bb3e"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "azadnet-5vk.pages.dev",
+          "serverName": "060514ouz77pthp4.bpusfaster2.top",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/azadnet-5vk.pages.dev/?ed=2560&PROT_TYPE=trojan",
+          "path": "/images",
           "headers": {
-            "Host": ""
+            "Host": "060514ouz77pthp4.bpusfaster2.top"
           }
         }
       }

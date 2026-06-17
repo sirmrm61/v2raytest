@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2152,
+      "port": 2137,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "%43%6f%6e%66%69%67%30%70%6c%75%73"
+                "password": "humanity"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "investors.spotify.com.cyylr.eu.cc",
+          "serverName": "www.calmloud.com",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/in-pdr",
+          "path": "/assignment",
           "headers": {
-            "Host": "investors.spotify.com.cyylr.eu.cc"
+            "Host": "www.calmloud.com"
           }
         }
       }

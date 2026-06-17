@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2155,
+      "port": 2142,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "cd0e795a-4f26-4f8c-9981-ed8b7dcb6126"
+                "password": "a4e8ec0a-75d0-4fc5-837a-4973ed3a9d3e"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "sDFgHU.931.pP.ua",
+          "serverName": "dDDfFfVVBNHju.931.pP.UA",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/93fAx7DxPbqU8RhisheV",
+          "path": "/eoIwQ2eV4yO04R1hYgCXNutkS5H",
           "headers": {
-            "Host": ""
+            "Host": "dddfffvvbnhju.931.pp.ua"
           }
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2108,
+      "port": 2110,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "official.taipeicitygovernment.co.ua",
+          "serverName": "",
           "allowInsecure": true
         }
       }

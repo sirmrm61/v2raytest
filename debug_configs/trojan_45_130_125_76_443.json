@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2085,
+      "port": 2146,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "y5yef0udbqnu7sym"
+                "password": "humanity"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "dashboard.nscl.ir",
+          "serverName": "www.calmlunch.com",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/dashboard",
+          "path": "/assignment",
           "headers": {
-            "Host": "dashboard.nscl.ir"
+            "Host": "www.calmlunch.com"
           }
         }
       }

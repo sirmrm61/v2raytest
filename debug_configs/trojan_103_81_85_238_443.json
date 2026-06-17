@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2167,
+      "port": 2155,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "b874173c-dfc6-40f4-9542-d973997f9659"
+                "password": "29ea82cf-f956-42b2-a5dc-35feea39e7ff"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "glc-vn.windowsupdatea.com",
           "allowInsecure": true
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2133,
+      "port": 2080,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "n0tm70d5ogbfxunj"
+                "password": "Mitivpn"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "httpupgrade",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "irancdn.mirz4-mirz4.ir",
+          "serverName": "panel.hitgram.ir",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=mitivpn",
+          "headers": {
+            "Host": "panel.hitgram.ir"
+          }
         }
       }
     }

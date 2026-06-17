@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2168,
+      "port": 2169,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 2053,
             "users": [
               {
-                "password": "%6D%69%74%69%76%70%6E"
+                "password": "acccrd"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "cdn.linkman1.ir",
+          "serverName": "dash.hitgram.ir",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/?ed=2048",
+          "headers": {
+            "Host": "dash.hitgram.ir"
+          }
         }
       }
     }

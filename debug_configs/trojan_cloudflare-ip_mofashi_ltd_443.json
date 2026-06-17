@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2122,
+      "port": 2119,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "2399fe0a-b359-40a9-a3f0-b70c3c177a01"
+                "password": "4c3164ee-abcf-4091-abea-d1cd4937a68d"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "aa.beijng.dpdns.org",
+          "serverName": "jy.hhllfly.kdns.fr",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/?ed=2048",
           "headers": {
-            "Host": "aa.beijng.dpdns.org"
+            "Host": "jy.hhllfly.kdns.fr"
           }
         }
       }

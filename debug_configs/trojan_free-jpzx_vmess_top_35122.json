@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2128,
+      "port": 2121,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "support.zoom.us.free-jpzx.vmess.top",
           "allowInsecure": true
         }
       }

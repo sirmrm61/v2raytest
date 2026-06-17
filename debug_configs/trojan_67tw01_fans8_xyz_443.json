@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "cd4417a2-588c-485d-a796-ee6e090f8836"
+                "password": "10b3df8b-2316-4b43-843a-d165ce6603aa"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "67tw01.fans8.xyz",
           "allowInsecure": true
         }
       }

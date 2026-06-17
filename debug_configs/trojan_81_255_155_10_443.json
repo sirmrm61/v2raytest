@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2144,
+      "port": 2159,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "AhMfyq76HFG6Yl-759Lpj03f6luOEr2c.kELArdaSHtt.WoRKerS.Dev",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/eyJqdW5rIjoiNzJHc0NRZUV6QkkiLCJwcm90b2NvbCI6InRyIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119?ed=2560",
-          "headers": {
-            "Host": ""
-          }
         }
       }
     }

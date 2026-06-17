@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2169,
+      "port": 2121,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "x5cDfADabj"
               }
             ]
           }
@@ -38,16 +38,18 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.calmlunch.com",
+          "serverName": "b.aananas.ir",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "/?ed=2048",
           "headers": {
-            "Host": "www.calmlunch.com"
+            "Host": "b.aananas.ir"
           }
         }
       }
     }
+  ]
+} }
   ]
 }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2158,
+      "port": 2122,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "epgc.aimercc.dpdns.org",
+          "serverName": "epgb.aimercc.dpdns.org",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/?ed=2560&proxyip=ts.hpc.tw",
+          "path": "/?ed=2560",
           "headers": {
-            "Host": "epgc.aimercc.dpdns.org"
+            "Host": "epgb.aimercc.dpdns.org"
           }
         }
       }

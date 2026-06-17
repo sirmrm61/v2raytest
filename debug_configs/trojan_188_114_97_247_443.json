@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2115,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "188.114.97.247",
+            "port": 443,
+            "users": [
+              {
+                "password": "01596265-168b-46a7-bcb7-25662c7a9546"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "hdfy7c1.foriran2.eu.org",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "fYn1ncaQMA1foaK1hpquM",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

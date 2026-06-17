@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2150,
+      "port": 2118,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "auto"
+                "password": "Aimer"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "trojanmz.pages.dev",
+          "serverName": "epccz.ambercc.filegear-sg.me",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/trojanmz.pages.dev/?ed=2560",
-          "headers": {
-            "Host": "trojanmz.pages.dev"
-          }
         }
       }
     }

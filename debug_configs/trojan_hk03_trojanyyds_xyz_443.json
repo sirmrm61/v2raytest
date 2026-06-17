@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2118,
+      "port": 2152,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "243eab52-9ac1-405c-887c-eb112c0985b8"
+                "password": "9bb27128-e6d2-4cac-bbd3-beb46c4417f8"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hk03.trojanyyds.xyz",
+          "serverName": "",
           "allowInsecure": true
         }
       }

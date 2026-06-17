@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2120,
+      "port": 2128,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -44,7 +44,7 @@
         "wsSettings": {
           "path": "/assignment",
           "headers": {
-            "Host": "www.creationlong.org"
+            "Host": ""
           }
         }
       }

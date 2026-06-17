@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2097,
+      "port": 2122,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,10 +35,10 @@
         ]
       },
       "streamSettings": {
-        "network": "raw",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "link.honghongai.top",
           "allowInsecure": true
         }
       }

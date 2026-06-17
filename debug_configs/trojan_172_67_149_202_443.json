@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2136,
+      "port": 2113,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "CVFgTrE4.222560.XyZ",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Hq0I4JMuzO0WLijID",
+          "headers": {
+            "Host": "cvfgtre4.222560.xyz"
+          }
         }
       }
     }

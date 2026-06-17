@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2096,
+      "port": 2175,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,7 +35,7 @@
         ]
       },
       "streamSettings": {
-        "network": "raw",
+        "network": "tcp",
         "security": "reality",
         "realitySettings": {
           "serverName": "www.intel.com",

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2143,
+      "port": 2098,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "esetsecuritylicense3.wawafec355.workers.dev",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "esetsecuritylicense3.wawafec355.workers.dev"
-          }
         }
       }
     }

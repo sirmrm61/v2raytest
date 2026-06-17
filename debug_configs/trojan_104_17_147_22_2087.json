@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2120,
+      "port": 2121,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 2087,
             "users": [
               {
-                "password": "cassiusvpn"
+                "password": "auto"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "telegram----cassiusvpn----4447265148777747781232254445611722275.mint14.workers.dev",
+          "serverName": "abbas.ab841vpn.workers.dev",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/",
+          "path": "/?ed=2560",
           "headers": {
-            "Host": "telegram----cassiusvpn----4447265148777747781232254445611722275.mint14.workers.dev"
+            "Host": "abbas.ab841vpn.workers.dev"
           }
         }
       }

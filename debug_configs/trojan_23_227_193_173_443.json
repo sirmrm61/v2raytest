@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2152,
+      "port": 2087,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,14 +28,14 @@
             "port": 443,
             "users": [
               {
-                "password": "AZWY=WAZk5TeVYmMUudr2xmeb00I3ymeMQ"
+                "password": "AZWY%3DWAZk5TeVYmMUudr2xmeb00I3ymeMQ"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "raw",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "www.dataset-logger.click",

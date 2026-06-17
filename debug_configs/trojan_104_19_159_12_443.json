@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2137,
+      "port": 2131,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "jobscareertoday.com",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/6b777a91",
+          "headers": {
+            "Host": "jobscareertoday.com"
+          }
         }
       }
     }

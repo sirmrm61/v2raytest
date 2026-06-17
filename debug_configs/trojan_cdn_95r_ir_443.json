@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2085,
+      "port": 2104,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "cdn.95r.ir",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "index.php?mitivpn",
-          "headers": {
-            "Host": ""
-          }
         }
       }
     }

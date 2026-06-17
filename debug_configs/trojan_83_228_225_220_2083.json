@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2145,
+      "port": 2096,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,9 +38,9 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "store.steampowered.com",
-          "publicKey": "w0XepGv1Hk0gBh1Apiw-nvn8SfzjWcDuxdxN1mpaF3g",
-          "shortId": "84e87fdcdf2ea9e8",
+          "serverName": "",
+          "publicKey": "",
+          "shortId": "",
           "fingerprint": "chrome"
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2135,
+      "port": 2170,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "03c93f49-d573-4889-a4bb-187047c5a314"
+                "password": "3792b958-c945-4a40-a2ad-586070c3a82a"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "M7Yyu.777162.xYZ",
+          "serverName": "c5011f7d-70a0-6c6f-cf8c-7fb77fcc4a23.777162.xyz",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/Rij8gsblmlfrZUch7YcAPgiEbt",
+          "path": "/pEbwh6PZDq4ItMLLmrU6y4",
           "headers": {
-            "Host": "M7Yyu.777162.xYZ"
+            "Host": "c5011f7d-70a0-6c6f-cf8c-7fb77fcc4a23.777162.xyz"
           }
         }
       }

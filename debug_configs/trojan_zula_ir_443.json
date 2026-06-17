@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2125,
+      "port": 2145,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "bpb-trojan"
+                "password": "auto"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "10-bPB-worKER-PAnEl.PagES.Dev",
+          "serverName": "tg.cmliussss.us.kg",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/@Azarakhsh_Proxy?ed=2560",
+          "headers": {
+            "Host": "tg.cmliussss.us.kg"
+          }
         }
       }
     }

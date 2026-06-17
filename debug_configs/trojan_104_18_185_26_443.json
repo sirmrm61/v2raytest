@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2105,
+      "port": 2095,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "36639485-60a0-4853-856c-40ac05f4b00d"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.gossipglove.com",
+          "serverName": "null.us1234567891.xyz",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "%2Fassignment",
+          "path": "/music",
           "headers": {
-            "Host": "www.gossipglove.com"
+            "Host": ""
           }
         }
       }

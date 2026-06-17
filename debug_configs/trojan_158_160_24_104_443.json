@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2164,
+      "port": 2088,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "0eAL2kMJtPsKB0TxPDZ5wCgxqJuRh7zJ"
+                "password": "H7JYmmq83ud-nKwYVZMsVchJJNjSd_6x"
               }
             ]
           }
@@ -40,7 +40,7 @@
         "realitySettings": {
           "serverName": "ads.x5.ru",
           "publicKey": "yy7ircoME_G27Bh0vXCP7VJg0MrtPovonmY7kGJv0F4",
-          "shortId": "2c00eed207ff89b7",
+          "shortId": "cc22f2896048a3bf",
           "fingerprint": "chrome"
         }
       }

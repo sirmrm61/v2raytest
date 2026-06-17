@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2114,
+      "port": 2111,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "epge.muarua.filegear-sg.me",
+          "serverName": "ngepx.ambercc.filegear-sg.me",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/?proxyip=ts.hpc.tw&ed=2560",
-          "headers": {
-            "Host": ""
-          }
         }
       }
     }

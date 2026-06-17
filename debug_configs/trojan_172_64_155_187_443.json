@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2115,
+      "port": 2096,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,11 +35,17 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
           "serverName": "POOrIaREd--persEPolIS.pAGEs.Dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/Telegram-@V2ray_Alpha/?ed=2560",
+          "headers": {
+            "Host": "poORiaReD--PErsePOlIs.PagES.DEv"
+          }
         }
       }
     }

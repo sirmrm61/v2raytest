@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2095,
+      "port": 2131,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "d4435b69-3d08-d58a-919f-7f1707150ecb"
+                "password": "3r372"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hg.053111.xyz",
+          "serverName": "tj786.37927.online",
           "allowInsecure": true
         }
       }

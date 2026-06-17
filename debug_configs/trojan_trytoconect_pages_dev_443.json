@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2118,
+      "port": 2145,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "trytoConECt.PageS.dEv",
+          "serverName": "TrytOcOnEcT.PAGeS.Dev",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/eyJqdW5rIjoiTmFBclhQeE83ZyIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560",
+          "path": "/eyJqdW5rIjoicXUzbXp6SXBiVCIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560",
           "headers": {
-            "Host": "trytoconect.pages.dev"
+            "Host": ""
           }
         }
       }

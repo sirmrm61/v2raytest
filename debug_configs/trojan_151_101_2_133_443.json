@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2102,
+      "port": 2085,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "bpb-trojan"
+                "password": "29e0206a-2cef-4c8d-aa4b-dd7a43748167"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "live.skornorth.com",
+          "serverName": "zmaoz.faculty.ucdavis.edu.",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/trEjWhhuRjwiMwSbDN/ZGUucmFkaWNhbGx5LnBybw==",
+          "path": "/",
           "headers": {
-            "Host": "vip-programs.il"
+            "Host": "fonmelo.com"
           }
         }
       }

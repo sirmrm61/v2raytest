@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2102,
+      "port": 2137,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -35,17 +35,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
           "serverName": "de1.test3.net",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/howdy",
-          "headers": {
-            "Host": "de1.test3.net"
-          }
         }
       }
     }

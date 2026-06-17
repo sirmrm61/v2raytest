@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2125,
+      "port": 2173,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "mitivpn"
+                "password": "MiTiVPN"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.iranpoems.ir",
+          "serverName": "linkkon-w.ir",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/?ed=2048",
+          "path": "/cdn=mitivpn",
           "headers": {
-            "Host": "www.iranpoems.ir"
+            "Host": "linkkon-w.ir"
           }
         }
       }

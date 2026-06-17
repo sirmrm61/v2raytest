@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2179,
+      "port": 2145,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "support.zoom.us.nicorobin.eula.cloudns.org",
+          "serverName": "nicorobin.eula.cloudns.org",
           "allowInsecure": true
         },
         "wsSettings": {
           "path": "/Telegram@Linkvws?ed=2560",
           "headers": {
-            "Host": "support.zoom.us.nicorobin.eula.cloudns.org"
+            "Host": "nicorobin.eula.cloudns.org"
           }
         }
       }

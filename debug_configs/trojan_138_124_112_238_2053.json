@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2140,
+      "port": 2154,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,7 +42,7 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/?https://t.me/WangCai2\u001f1E8\u001f1F3=",
+          "path": "/?ed=2560&https://t.me/WangCai2🇨🇳",
           "headers": {
             "Host": "cchh2.pages.dev"
           }

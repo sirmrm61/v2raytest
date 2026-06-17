@@ -28,18 +28,24 @@
             "port": 443,
             "users": [
               {
-                "password": "blue2024"
+                "password": "auto"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
+        "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "tb.promote.icu",
+          "serverName": "b96ef9ae.trojanfree-76s.pages.dev",
           "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/b96ef9ae.trojanfree-76s.pages.dev/",
+          "headers": {
+            "Host": "b96ef9ae.trojanfree-76s.pages.dev"
+          }
         }
       }
     }

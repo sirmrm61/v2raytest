@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2135,
+      "port": 2132,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,15 +42,11 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/",
+          "path": "/Telegram@Linkvws?ed=2560",
           "headers": {
             "Host": "xn----pmcnaac0dkn0rb71nda.pages.dev"
           }
         }
-      }
-    }
-  ]
-}
       }
     }
   ]

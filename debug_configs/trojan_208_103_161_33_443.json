@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2111,
+      "port": 2116,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,24 +28,18 @@
             "port": 443,
             "users": [
               {
-                "password": "mitivpn"
+                "password": "Mitivpn"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "ir-sub.ir",
+          "serverName": "www.hitgram.ir",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "ir-sub.ir"
-          }
         }
       }
     }

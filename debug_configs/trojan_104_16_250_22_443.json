@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2155,
+      "port": 2162,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "humanity"
+                "password": "36639485-60a0-4853-856c-40ac05f4b00d"
               }
             ]
           }
@@ -38,11 +38,11 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.multiplydose.com",
+          "serverName": "null.us1234567891.xyz",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "/music",
           "headers": {
             "Host": ""
           }
