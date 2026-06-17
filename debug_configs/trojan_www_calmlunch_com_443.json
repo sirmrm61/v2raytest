@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2104,
+      "port": 2162,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,9 +42,9 @@
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/assignment",
+          "path": "//assignment",
           "headers": {
-            "Host": ""
+            "Host": "www.calmlunch.com"
           }
         }
       }

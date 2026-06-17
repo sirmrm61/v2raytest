@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2176,
+      "port": 2165,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -24,11 +24,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "time.ir",
-            "port": 443,
+            "address": "127.1.1.127",
+            "port": 80,
             "users": [
               {
-                "id": "last-update-time",
+                "id": "602736e4-a2e8-4eb3-9fc9-7c7082925365",
                 "alterId": "0",
                 "security": "auto"
               }
@@ -37,15 +37,7 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
-        "security": true,
-        "tlsSettings": {},
-        "wsSettings": {
-          "path": "/",
-          "headers": {
-            "Host": "time.ir"
-          }
-        }
+        "network": "tcp"
       }
     }
   ]
