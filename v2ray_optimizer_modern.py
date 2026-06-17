@@ -783,16 +783,18 @@ def save_output_files(best: List[TestResult], output_name: str):
     b64_path = f"{output_name}.base64"
     json_path = f"{output_name}_results.json"
     
+    # Save base64 encoded (v2rayNG subscription format)
     try:
+        encoded = base64.b64encode("\n".join(links).encode("utf-8")).decode("utf-8")
         with open(plain_path, "w", encoding="utf-8") as f:
-            f.write("\n".join(links))
+            f.write(encoded)
     except Exception:
         pass
     
+    # Also save plain text for reference
     try:
-        encoded = base64.b64encode("\n".join(links).encode("utf-8")).decode("utf-8")
         with open(b64_path, "w", encoding="utf-8") as f:
-            f.write(encoded)
+            f.write("\n".join(links))
     except Exception:
         pass
     
@@ -1252,7 +1254,7 @@ class V2RayOptimizerModernGUI:
             save_output_files(best, output_name)
             self._update_results(best)
             self._set_status("✓ اتمام تست")
-            self._log(f"✓ خروجی ذخیره شد: {output_name}.txt و {output_name}.base64")
+            self._log(f"✓ خروجی ذخیره شد: {output_name}.txt (v2rayNG format) و {output_name}.base64")
         except Exception as exc:
             self._log(f"✗ خطا: {exc}")
             traceback.print_exc()
