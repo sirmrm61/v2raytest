@@ -304,7 +304,26 @@ def normalize_subscription_url(url: str) -> str:
 
 def fetch_subscription(url: str, timeout: int = 10) -> List[str]:
     try:
-        real_url = normalize_subscription_url(url.strip())
+        url = url.strip()
+        
+        # Check if it's a local file path
+        if os.path.exists(url):
+            with open(url, "r", encoding="utf-8") as f:
+                content = f.read()
+            
+            # Check if it's a JSON result file
+            if url.endswith("_results.json"):
+                try:
+                    data = json.loads(content)
+                    if "results" in data:
+                        return [item["raw"] for item in data["results"] if "raw" in item]
+                except:
+                    pass
+            
+            return extract_links_from_text(content)
+        
+        # Otherwise treat as URL
+        real_url = normalize_subscription_url(url)
         resp = requests.get(real_url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
         resp.raise_for_status()
         return extract_links_from_text(resp.text)
