@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2158,
+      "port": 2124,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": "4bf5a71c-d726-4585-b095-7396675706d5",
                 "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
               }
             ]
           }
@@ -40,10 +40,10 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "deepl.com",
-          "publicKey": "D_ks4Yyk4-osnWBxCFvd0_UEgohUXvR2zJoWQg1CACU",
-          "shortId": "c84f",
-          "fingerprint": "qq"
+          "serverName": "",
+          "publicKey": "",
+          "shortId": "",
+          "fingerprint": "chrome"
         }
       }
     }

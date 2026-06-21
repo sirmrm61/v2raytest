@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2128,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl2.panel11.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "039a1658-e86e-475f-a3a4-67cc249acada",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "nl2.panel11.ru",
+          "publicKey": "N1HRDSdKHqdbSX_N5SUfFiokXcN-jQzu-Na244bA21I",
+          "shortId": "c64556c616970b14",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

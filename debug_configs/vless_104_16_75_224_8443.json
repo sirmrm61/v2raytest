@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2158,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "104.16.75.224",
+            "port": 8443,
+            "users": [
+              {
+                "id": "4bf9601f-87e8-4250-a4e4-250bf54c5db4",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "splash.ariyuz.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/api/v1",
+          "headers": {
+            "Host": "splash.ariyuz.org"
+          }
+        }
+      }
+    }
+  ]
+}

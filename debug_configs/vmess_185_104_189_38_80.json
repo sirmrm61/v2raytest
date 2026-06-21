@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2118,
+      "port": 2132,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -41,7 +41,7 @@
         "wsSettings": {
           "path": "/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1/?de=2560",
           "headers": {
-            "Host": "imdb.com"
+            "Host": "185.104.189.38"
           }
         }
       }

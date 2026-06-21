@@ -1,0 +1,50 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2085,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "47.244.120.197",
+            "port": 36703,
+            "users": [
+              {
+                "id": "45b83519-9c4f-4052-a11b-02e017b636d4",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/arki?ed=2048",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

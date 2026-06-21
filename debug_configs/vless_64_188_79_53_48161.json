@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2163,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "64.188.79.53",
+            "port": 48161,
+            "users": [
+              {
+                "id": "72362320-3c4c-42cf-b76c-82f7b1832c47",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "github.com",
+          "publicKey": "cm3MNPIRmySoBcEgeH6QEuVyoPbBQyjRhs8UF_swl1E",
+          "shortId": "41388e02247a3902",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

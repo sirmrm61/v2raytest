@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2123,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "fast.cd-tur4.ir",
+            "port": 443,
+            "users": [
+              {
+                "id": "e7d3fb75-034f-4f3f-83d6-33845dafa81c",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "default.ssl.fastly.net",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "pan1.global.ssl.fastly.net"
+          }
+        }
+      }
+    }
+  ]
+}

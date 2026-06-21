@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2158,
+      "port": 2134,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,9 +40,9 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "",
-          "publicKey": "",
-          "shortId": "",
+          "serverName": "www.wechat.com",
+          "publicKey": "V-fTxzejwmP5x9rjQR5i1IE7WrSn-syZq9Qp41jukFE",
+          "shortId": "a7",
           "fingerprint": "chrome"
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2120,
+      "port": 2112,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,7 +40,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "cdn3-87.vk-cdnvideo.com",
+          "serverName": "",
           "allowInsecure": true
         }
       }

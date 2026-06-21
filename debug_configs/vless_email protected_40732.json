@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2080,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "email protected",
+            "port": 40732,
+            "users": [
+              {
+                "id": null,
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.wechat.com",
+          "publicKey": "V-fTxzejwmP5x9rjQR5i1IE7WrSn-syZq9Qp41jukFE",
+          "shortId": "a7",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

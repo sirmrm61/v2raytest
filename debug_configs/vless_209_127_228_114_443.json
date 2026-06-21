@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2153,
+      "port": 2132,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": "d205ae68-0819-473c-b425-6c5947ac2f8d",
                 "encryption": "none",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
@@ -40,9 +40,9 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "",
-          "publicKey": "",
-          "shortId": "",
+          "serverName": "cars.morro-settings.ru",
+          "publicKey": "8vqOvJ5eoG_9oHla4B3Vh1E-o39RrCXW6Wr7OcXZGmI",
+          "shortId": "dd",
           "fingerprint": "chrome"
         }
       }

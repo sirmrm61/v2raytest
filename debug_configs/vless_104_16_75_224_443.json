@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2096,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "104.16.75.224",
+            "port": 443,
+            "users": [
+              {
+                "id": "b3bd8d0e-3cbe-4241-a4f1-e3dd0a9e432c",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "server-ir-3.ariyuz.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/page=2",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}

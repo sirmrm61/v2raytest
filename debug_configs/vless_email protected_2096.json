@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2090,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "email protected",
+            "port": 2096,
+            "users": [
+              {
+                "id": null,
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "group.shalana.xyz",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/shalana",
+          "headers": {
+            "Host": "group.shalana.xyz"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2101,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "turkey.shabtaban.ir",
+            "port": 443,
+            "users": [
+              {
+                "id": "336ab676-47c5-4d11-99a2-29441457e94e",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "play.google.com",
+          "publicKey": "m0laydpddP-MhAgDbMB_QGrSk4-nrIvDSoIHK_Q8Uy4",
+          "shortId": "a796a1f52722b3a5",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

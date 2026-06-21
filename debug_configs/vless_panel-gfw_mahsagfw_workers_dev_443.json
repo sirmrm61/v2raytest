@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2171,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "panel-gfw.mahsagfw.workers.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "9fdfe33e-797d-8e29-f8fa-50a5adb38c61",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "panel-gfw.mahsagfw.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/sync",
+          "headers": {
+            "Host": "panel-gfw.mahsagfw.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

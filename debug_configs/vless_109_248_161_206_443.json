@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2134,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "109.248.161.206",
+            "port": 443,
+            "users": [
+              {
+                "id": "09d8ebf3-c4bb-4597-91e4-5cebfa593b7c",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.yahoo.com",
+          "publicKey": "oqrU5jM7qTRqjb1N-cakTOyTtVU3Zs9lmet-irbr8TU",
+          "shortId": "6443cb87ea",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

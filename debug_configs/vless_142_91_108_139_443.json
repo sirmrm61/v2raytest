@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2093,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "142.91.108.139",
+            "port": 443,
+            "users": [
+              {
+                "id": "7e6d3393-bb84-45c7-9eef-35de95805b7e",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "jp.api-yandex.net",
+          "publicKey": "IOO3P6BDqBjUA0gB4tgpvxrXL6Fit88QgpJ1y6GYyz0",
+          "shortId": "0f4dacf88202e05f",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

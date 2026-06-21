@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2134,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "188.114.97.6",
+            "port": 2053,
+            "users": [
+              {
+                "id": "5501b359-cd6c-431f-b478-f9ded18e4d6a",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "WAnDERINg-FIelD-030c.HSuSudJFifjDHxCCv.WorkeRS.Dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/eyJqdW5rIjoiZzdoR3kxczdkcUxmIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==?ed=2560",
+          "headers": {
+            "Host": "wandering-field-030c.hsusudjfifjdhxccv.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

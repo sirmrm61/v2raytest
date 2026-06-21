@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2110,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "79.137.207.130",
+            "port": 443,
+            "users": [
+              {
+                "id": "1f4c983e-382c-d2fa-b2dc-7981f02b34de",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "lvz.de",
+          "publicKey": "5NHgGSXmIyLoslNxkfnH9ZUojx_WafjIhllNUEAhIwc",
+          "shortId": "ea7acce8b971",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

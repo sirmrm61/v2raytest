@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2131,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "45.130.125.158",
+            "port": 8443,
+            "users": [
+              {
+                "id": "f3b8c2a1-9d4e-4b7f-a6c5-2e8d1f0b4a93",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "srv03.perfectbulk.info",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "srv03.perfectbulk.info"
+          }
+        }
+      }
+    }
+  ]
+}

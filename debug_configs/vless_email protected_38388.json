@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2158,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "email protected",
+            "port": 38388,
+            "users": [
+              {
+                "id": null,
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "itunes.apple.com",
+          "publicKey": "xHaPe5SLprSSqGccSor5d3tCRuwyowBwFeYrVXoSz3w",
+          "shortId": "6ba85179e30d4fc2",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

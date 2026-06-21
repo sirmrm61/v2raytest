@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2101,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "172.64.33.162",
+            "port": 443,
+            "users": [
+              {
+                "id": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "octopusss5.info",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/udfyfws",
+          "headers": {
+            "Host": "octopusss5.info"
+          }
+        }
+      }
+    }
+  ]
+}

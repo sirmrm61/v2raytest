@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2120,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "135.125.191.9",
+            "port": 8443,
+            "users": [
+              {
+                "id": "b82f0dc8-6ed6-4cb1-8754-3a41846eec11",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "nova-mango-spark-7b1c.nova-ef15e0.workers.dev",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/proxyip=45.155.102.207?u=f37bdce86d",
+          "headers": {
+            "Host": "nova-mango-spark-7b1c.nova-ef15e0.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

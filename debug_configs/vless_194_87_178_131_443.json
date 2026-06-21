@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2120,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "194.87.178.131",
+            "port": 443,
+            "users": [
+              {
+                "id": "69a2af58-d74a-44ca-864a-e09b493f4274",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.intel.com",
+          "publicKey": "gOEyW5XYfKV6t_3vCR0iCOcItof1desNG7CSiFnVpF4",
+          "shortId": "804f5d",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

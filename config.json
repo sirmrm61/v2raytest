@@ -8,8 +8,12 @@
   "tests_per_config": 2,
   "max_concurrency": 400,
   "timeout": 5.0,
-  "xray_path": "D:/project/python/v2raytest/Xray/xray.exe",
+  "xray_path": "D:/project/py/v2raytest/Xray/xray.exe",
+  "hysteria_path": "D:/project/py/v2raytest/hysteria/hysteria.exe",
+  "skip_hysteria2": false,
   "auto_schedule_enabled": true,
   "auto_schedule_interval": 10,
-  "max_allowed_latency": 500
+  "max_allowed_latency": 500,
+  "enable_speed_test": true,
+  "speed_test_size": 10
 }
