@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2172,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "144.31.241.7",
+            "port": 8443,
+            "users": [
+              {
+                "id": "cf038a28-8f85-41fc-9e86-ba99a3fdd0d9",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "yourcloud.ldtp.com",
+          "publicKey": "kt-3Y5U6yLWiLB_RijhceKo01lYAVosWRZbhS05YpCY",
+          "shortId": "7d6203949764f921",
+          "fingerprint": "safari"
+        }
+      }
+    }
+  ]
+}

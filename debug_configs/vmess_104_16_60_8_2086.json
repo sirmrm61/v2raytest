@@ -1,0 +1,50 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2105,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "104.16.60.8",
+            "port": 2086,
+            "users": [
+              {
+                "id": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/glweidf.sbs/linkws",
+          "headers": {
+            "Host": "1c11-muddy-rice-1c11.vetanex501.workers.dev"
+          }
+        }
+      }
+    }
+  ]
+}

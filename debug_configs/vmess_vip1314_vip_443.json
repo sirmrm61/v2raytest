@@ -1,0 +1,52 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2179,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "vip1314.vip",
+            "port": 443,
+            "users": [
+              {
+                "id": "5f72f180-b21b-4b7a-8484-240759012606",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": true,
+        "tlsSettings": {},
+        "wsSettings": {
+          "path": "/5f72f180-b21b-4b7a-8484-240759096785",
+          "headers": {
+            "Host": "vip1314.vip"
+          }
+        }
+      }
+    }
+  ]
+}

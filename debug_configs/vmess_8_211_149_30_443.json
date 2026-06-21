@@ -1,0 +1,52 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2087,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "8.211.149.30",
+            "port": 443,
+            "users": [
+              {
+                "id": "bc82b8e0-026b-4b7e-8fa7-69977b6d9dc0",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": true,
+        "tlsSettings": {},
+        "wsSettings": {
+          "path": "/ws/",
+          "headers": {
+            "Host": "polartime.link"
+          }
+        }
+      }
+    }
+  ]
+}

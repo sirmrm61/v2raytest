@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2143,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.lianchuang123.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "2c473bc0-484c-49d5-8cf3-c89d26b724fe",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sni.mmadcoffee.info",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/16838/c89d26b724fe/",
+          "headers": {
+            "Host": "smtp.mmadcoffee.info"
+          }
+        }
+      }
+    }
+  ]
+}

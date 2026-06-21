@@ -1,0 +1,50 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2131,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca",
+            "port": 80,
+            "users": [
+              {
+                "id": "e2923bc6-8204-4768-98ea-379d48ea8a7a",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/1awNzxRSwKsdkPVKP0ZQqlHjt10sp",
+          "headers": {
+            "Host": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca"
+          }
+        }
+      }
+    }
+  ]
+}

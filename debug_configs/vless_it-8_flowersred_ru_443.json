@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2145,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "it-8.flowersred.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "82a7f52c-f047-4f8c-b913-3ea1f29bdb38",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.samsung.com",
+          "publicKey": "5pj_m0SB8p5ah-Jc7QZrF5iEVeeLyZY8fWM6OZWj5FM",
+          "shortId": "",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

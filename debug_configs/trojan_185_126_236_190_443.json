@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2143,
+      "port": 2169,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "VGBzLm49%3DM_i02Az30tIeonkQw180t-edg"
+                "password": "VGBzLm49=M_i02Az30tIeonkQw180t-edg"
               }
             ]
           }
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "",
+          "serverName": "185.126.236.190",
           "allowInsecure": true
         }
       }

@@ -1,0 +1,52 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2139,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ipa.xn--220ba84am6g99wihgilau3ar1g.info",
+            "port": 2053,
+            "users": [
+              {
+                "id": "b04868f0-b54d-4f48-aad4-e5543d03c909",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": true,
+        "tlsSettings": {},
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "cdn.xn--220ba84am6g99wihgilau3ar1g.info"
+          }
+        }
+      }
+    }
+  ]
+}

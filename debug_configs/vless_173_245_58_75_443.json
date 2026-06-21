@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2128,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "173.245.58.75",
+            "port": 443,
+            "users": [
+              {
+                "id": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "terazhediii.info",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/hdgrbws",
+          "headers": {
+            "Host": "terazhediii.info"
+          }
+        }
+      }
+    }
+  ]
+}

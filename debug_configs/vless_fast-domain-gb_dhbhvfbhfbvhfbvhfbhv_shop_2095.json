@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2106,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "fast-domain-gb.dhbhvfbhfbvhfbvhfbhv.shop",
+            "port": 2095,
+            "users": [
+              {
+                "id": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.speedtest.net",
+          "publicKey": "9nvQaypTgq2UZ_9wSUctYxStDRWNJqe3o9evmKc5UBE",
+          "shortId": "bc348c28dbc7b9f5",
+          "fingerprint": "random"
+        }
+      }
+    }
+  ]
+}

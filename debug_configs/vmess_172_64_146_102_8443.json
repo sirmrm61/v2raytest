@@ -1,0 +1,52 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2083,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "172.64.146.102",
+            "port": 8443,
+            "users": [
+              {
+                "id": "c1a8dee0-bdad-4b6d-9926-5e15c3c8ed7d",
+                "alterId": "0",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": true,
+        "tlsSettings": {},
+        "wsSettings": {
+          "path": "/c1a8dee0-bdad-4b6d-9926-5e15c3c8ed7d-vm",
+          "headers": {
+            "Host": "marco-visibility-tops-estimate.trycloudflare.com"
+          }
+        }
+      }
+    }
+  ]
+}

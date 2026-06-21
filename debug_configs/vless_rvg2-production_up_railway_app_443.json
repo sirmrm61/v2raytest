@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2132,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "rvg2-production.up.railway.app",
+            "port": 443,
+            "users": [
+              {
+                "id": "7c352f3b-6535-788f-fb0c-f28a76d6deb6",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "rvg2-production.up.railway.app",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ws/7c352f3b-6535-788f-fb0c-f28a76d6deb6",
+          "headers": {
+            "Host": "rvg2-production.up.railway.app"
+          }
+        }
+      }
+    }
+  ]
+}

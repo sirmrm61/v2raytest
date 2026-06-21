@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2108,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl08.abvpn.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "95e118b4-4352-4218-8493-f20cc7fc467a",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "nl08.abvpn.ru",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/websocket",
+          "headers": {
+            "Host": ""
+          }
+        }
+      }
+    }
+  ]
+}
