@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2162,
+      "port": 2102,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,7 +40,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "de1.fromblancwithlove.com",
+          "serverName": "",
           "allowInsecure": true
         }
       }

@@ -1,8 +1,18 @@
 """
-V2Ray/Xray Subscription Optimizer - Modern GUI
--------------------------------------------------
+V2Ray/Xray/Hysteria2 Subscription Optimizer - Modern GUI
+--------------------------------------------------------
 این برنامه لینک‌های subscription را دریافت کرده، کانفیگ‌ها را استخراج می‌کند،
 تست اتصال/تاخیر را به صورت موازی و بهینه انجام می‌دهد، و بهترین کانفیگ‌ها را رتبه‌بندی و خروجی می‌دهد.
+
+پشتیبانی از پروتکل‌ها: vmess, vless, trojan, ss (Shadowsocks), hysteria2, hy2
+
+تغییرات نسخه جدید:
+- بهبود ظاهری UI با تم مدرن و رنگ‌بندی حرفه‌ای
+- پشتیبانی کامل از Hysteria2 با باینری جداگانه
+- تست سرعت واقعی (10MB download) برای کانفیگ‌های برتر
+- Export به Excel با pandas
+- مدیریت هوشمند خطاها و لاگ‌گیری دقیق
+- پشتیبانی بهتر از RTL و فونت فارسی
 
 Run with: python v2ray_optimizer_modern.py
 Python 3.8+
@@ -64,69 +74,105 @@ def get_country_from_ip(ip: str) -> str:
 
 
 class ModernTheme:
-    """Modern dark theme with RTL support"""
+    """تم مدرن با پشتیبانی RTL و رنگ‌بندی حرفه‌ای"""
     
-    # Color Palette
-    BG_PRIMARY = "#1e1e2e"
-    BG_SECONDARY = "#313244"
-    BG_TERTIARY = "#45475a"
-    ACCENT = "#89b4fa"
-    ACCENT_HOVER = "#b4befe"
-    SUCCESS = "#a6e3a1"
-    WARNING = "#f9e2af"
-    ERROR = "#f38ba8"
-    TEXT_PRIMARY = "#cdd6f4"
-    TEXT_SECONDARY = "#a6adc8"
-    BORDER = "#585b70"
+    # پالت رنگی - الهام گرفته از Catppuccin و ابزارهای مدرن
+    BG_PRIMARY = "#0f0f14"           # پس‌زمینه اصلی (تیره‌تر)
+    BG_SECONDARY = "#1a1a24"         # پس‌زمینه ثانویه
+    BG_TERTIARY = "#252532"          # پس‌زمینه سوم
+    BG_CARD = "#1e1e28"              # پس‌زمینه کارت‌ها
     
-    # Fonts
-    FONT_FAMILY = "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"
+    ACCENT = "#7aa2f7"              # رنگ اصلی (آبی ملایم)
+    ACCENT_HOVER = "#89b4fa"         # رنگ هاور
+    ACCENT_DIM = "#5d7fd3"           # رنگ کمرنگ
+    
+    SUCCESS = "#9ece6a"              # سبز موفقیت
+    SUCCESS_DIM = "#73daca"          # سبز کمرنگ
+    
+    WARNING = "#e0af68"              # زرد هشدار
+    ERROR = "#f7768e"                # قرمز خطا
+    INFO = "#7dcfff"                 # آبی اطلاعات
+    
+    TEXT_PRIMARY = "#c0caf5"         # متن اصلی
+    TEXT_SECONDARY = "#a9b1d6"       # متن ثانویه
+    TEXT_MUTED = "#565f89"           # متن خاموش
+    
+    BORDER = "#414868"               # حاشیه
+    BORDER_LIGHT = "#565f89"         # حاشیه روشن
+    
+    # گرادیان‌ها (شبیه‌سازی شده با رنگ‌ها)
+    GRADIENT_START = "#1a1b26"
+    GRADIENT_END = "#24283b"
+    
+    # فونت‌ها - پشتیبانی از فونت فارسی
+    FONT_FAMILY = "Vazirmatn, B Nazanin, Tahoma, Segoe UI, Geneva, Verdana, sans-serif"
+    FONT_FAMILY_EN = "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"
+    FONT_SIZE_SMALL = 9
     FONT_SIZE_NORMAL = 10
     FONT_SIZE_LARGE = 12
-    FONT_SIZE_TITLE = 14
+    FONT_SIZE_TITLE = 16
+    FONT_SIZE_HEADER = 20
     
     @classmethod
     def configure_style(cls, style: ttk.Style):
-        """Configure modern ttk styles"""
+        """پیکربندی استایل‌های مدرن ttk"""
         style.theme_use('clam')
         
-        # Configure colors
+        # پیکربندی رنگ‌های پایه
         style.configure("TFrame", background=cls.BG_PRIMARY)
         style.configure("TLabel", background=cls.BG_PRIMARY, foreground=cls.TEXT_PRIMARY, 
                        font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL))
+        
+        # دکمه‌ها با افکت هاور بهتر
         style.configure("TButton", background=cls.ACCENT, foreground=cls.BG_PRIMARY,
                        font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL, "bold"),
-                       borderwidth=0, focuscolor='none')
-        style.map("TButton", background=[('active', cls.ACCENT_HOVER)])
+                       borderwidth=0, focuscolor='none', padding=10)
+        style.map("TButton", 
+                 background=[('active', cls.ACCENT_HOVER), ('pressed', cls.ACCENT_DIM)],
+                 foreground=[('active', cls.BG_PRIMARY)])
         
+        # فیلدهای ورودی با استایل مدرن
         style.configure("TEntry", fieldbackground=cls.BG_SECONDARY, 
                        foreground=cls.TEXT_PRIMARY, insertcolor=cls.ACCENT,
-                       borderwidth=1, relief="solid")
+                       borderwidth=1, relief="solid", padding=8)
+        style.map("TEntry", 
+                 bordercolor=[('focus', cls.ACCENT)],
+                 fieldbackground=[('focus', cls.BG_TERTIARY)])
         
+        # تب‌ها با طراحی مدرن
         style.configure("TNotebook", background=cls.BG_PRIMARY, borderwidth=0)
         style.configure("TNotebook.Tab", background=cls.BG_SECONDARY, 
-                       foreground=cls.TEXT_SECONDARY, padding=[20, 10],
-                       font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL))
-        style.map("TNotebook.Tab", background=[('selected', cls.ACCENT)],
-                 foreground=[('selected', cls.BG_PRIMARY)])
+                       foreground=cls.TEXT_SECONDARY, padding=[25, 12],
+                       font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL),
+                       borderwidth=0)
+        style.map("TNotebook.Tab", 
+                 background=[('selected', cls.ACCENT), ('active', cls.BG_TERTIARY)],
+                 foreground=[('selected', cls.BG_PRIMARY), ('active', cls.TEXT_PRIMARY)])
         
+        # نوار پیشرفت با ضخامت بیشتر
         style.configure("TProgressbar", background=cls.ACCENT, troughcolor=cls.BG_SECONDARY,
-                       borderwidth=0, thickness=8)
+                       borderwidth=0, thickness=10)
         
-        # Treeview styling
-        style.configure("Treeview", background=cls.BG_SECONDARY, foreground=cls.TEXT_PRIMARY,
-                       fieldbackground=cls.BG_SECONDARY, font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL),
-                       rowheight=30)
+        # Treeview با ردیف‌های بلندتر
+        style.configure("Treeview", background=cls.BG_CARD, foreground=cls.TEXT_PRIMARY,
+                       fieldbackground=cls.BG_CARD, font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL),
+                       rowheight=35, borderwidth=0)
         style.configure("Treeview.Heading", background=cls.BG_TERTIARY, 
-                       foreground=cls.TEXT_PRIMARY, font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL, "bold"))
-        style.map("Treeview", background=[('selected', cls.ACCENT)],
+                       foreground=cls.TEXT_PRIMARY, font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL, "bold"),
+                       borderwidth=0, relief="flat")
+        style.map("Treeview", 
+                 background=[('selected', cls.ACCENT)],
                  foreground=[('selected', cls.BG_PRIMARY)])
         
-        # Scrollbar
+        # اسکرول‌بار با استایل مدرن
         style.configure("Vertical.TScrollbar", background=cls.BG_TERTIARY,
-                       troughcolor=cls.BG_SECONDARY, borderwidth=0)
+                       troughcolor=cls.BG_SECONDARY, borderwidth=0, arrowsize=12)
         style.configure("Horizontal.TScrollbar", background=cls.BG_TERTIARY,
-                       troughcolor=cls.BG_SECONDARY, borderwidth=0)
+                       troughcolor=cls.BG_SECONDARY, borderwidth=0, arrowsize=12)
+        
+        # چک‌باکس
+        style.configure("TCheckbutton", background=cls.BG_PRIMARY, foreground=cls.TEXT_PRIMARY,
+                       font=(cls.FONT_FAMILY, cls.FONT_SIZE_NORMAL))
 
 
 # ----------------------------- Data Models -----------------------------
@@ -199,10 +245,14 @@ DEFAULT_SETTINGS = {
     "max_concurrency": 50,
     "timeout": 3,
     "xray_path": "",
+    "hysteria_path": "",              # مسیر باینری Hysteria2
+    "skip_hysteria2": False,          # رد کردن خودکار کانفیگ‌های Hysteria2
     "dark_mode": True,
     "auto_schedule_enabled": False,
     "auto_schedule_interval": 60,  # minutes
     "max_allowed_latency": 500,  # ms
+    "enable_speed_test": True,       # تست سرعت واقعی برای کانفیگ‌های برتر
+    "speed_test_size": 10,           # MB
 }
 
 CONFIG_FILE = "config.json"
@@ -261,28 +311,86 @@ def parse_vmess(link: str) -> Optional[ConfigItem]:
 
 
 def parse_url_like(link: str) -> Optional[ConfigItem]:
+    """پارسی کردن لینک‌های URL-like شامل vless, trojan, ss, hysteria2"""
     try:
-        from urllib.parse import urlparse
+        from urllib.parse import urlparse, unquote, parse_qs
         parsed = urlparse(link)
         protocol = parsed.scheme
+        
+        # تبدیل hy2:// به hysteria2
+        if protocol == "hy2":
+            protocol = "hysteria2"
+        
         host = parsed.hostname or ""
+        # حذف براکت از آدرس‌های IPv6
+        if host.startswith("[") and host.endswith("]"):
+            host = host[1:-1]
+        
         port = parsed.port or 0
-        remark = parsed.fragment or f"{protocol}"
+        remark = unquote(parsed.fragment) if parsed.fragment else f"{protocol}"
         if not host or not port:
             return None
-        # Don't get country during parsing to avoid blocking
-        return ConfigItem(raw=link.strip(), protocol=protocol, host=host, port=int(port), remark=remark, country="")
+        
+        extra = {}
+        
+        # پارسی کردن Shadowsocks
+        if protocol == "ss":
+            try:
+                without_prefix = link[5:]
+                if "@" in without_prefix:
+                    b64_part, server_part = without_prefix.split("@", 1)
+                    try:
+                        decoded = base64.b64decode(b64_part + "==").decode("utf-8")
+                        if ":" in decoded:
+                            method, password = decoded.split(":", 1)
+                            extra["method"] = method
+                            extra["password"] = password
+                    except:
+                        if ":" in b64_part:
+                            method, password = b64_part.split(":", 1)
+                            extra["method"] = method
+                            extra["password"] = password
+            except:
+                pass
+        
+        # پارسی کردن Hysteria2
+        elif protocol == "hysteria2":
+            # hysteria2://uuid@server:port?sni=xxx&alpn=h3&mport=30000-32000&hopinterval=30s#remark
+            extra["uuid"] = unquote(parsed.username) if parsed.username else ""
+            query_params = parse_qs(parsed.query)
+            extra["sni"] = query_params.get("sni", [""])[0]
+            extra["alpn"] = query_params.get("alpn", ["h3"])[0]
+            extra["mport"] = query_params.get("mport", [""])[0]
+            extra["hopinterval"] = query_params.get("hopinterval", [""])[0]
+            extra["insecure"] = query_params.get("insecure", ["0"])[0] == "1"
+        
+        # پارسی کردن VLESS و Trojan
+        elif protocol in ["vless", "trojan"]:
+            query_params = parse_qs(parsed.query)
+            extra["security"] = query_params.get("security", ["none"])[0]
+            extra["type"] = query_params.get("type", ["tcp"])[0]
+            extra["sni"] = query_params.get("sni", [""])[0]
+            extra["flow"] = query_params.get("flow", [""])[0] if protocol == "vless" else ""
+            extra["pbk"] = query_params.get("pbk", [""])[0]
+            extra["sid"] = query_params.get("sid", [""])[0]
+            extra["fp"] = query_params.get("fp", ["chrome"])[0]
+            extra["path"] = query_params.get("path", ["/"])[0]
+            extra["host"] = query_params.get("host", [""])[0]
+            extra["serviceName"] = query_params.get("serviceName", [""])[0]
+        
+        return ConfigItem(raw=link.strip(), protocol=protocol, host=host, port=int(port), remark=remark, extra=extra, country="")
     except Exception:
         return None
 
 
 def parse_link(link: str) -> Optional[ConfigItem]:
+    """پارسی کردن لینک کانفیگ و تشخیص پروتکل"""
     link = link.strip()
     if not link:
         return None
     if link.startswith("vmess://"):
         return parse_vmess(link)
-    if link.startswith(("vless://", "trojan://", "ss://")):
+    if link.startswith(("vless://", "trojan://", "ss://", "hysteria2://", "hy2://")):
         return parse_url_like(link)
     return None
 
@@ -600,10 +708,10 @@ def test_with_xray(config: ConfigItem, xray_path: str, timeout: float) -> Tuple[
 
 
 def _test_with_socks5_manual(local_port: int, timeout: float, start_time: float) -> Tuple[bool, float]:
-    """Manual SOCKS5 implementation as fallback with proper HTTP request"""
+    """پیاده‌سازی دستی SOCKS5 به عنوان fallback با درخواست HTTP صحیح"""
     sock = None
     try:
-        # Connect to local SOCKS proxy
+        # اتصال به پروکسی SOCKS محلی
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(timeout)
         sock.connect(("127.0.0.1", local_port))
@@ -614,23 +722,23 @@ def _test_with_socks5_manual(local_port: int, timeout: float, start_time: float)
         if len(response) < 2 or response[0] != 0x05 or response[1] != 0x00:
             return False, float("inf")
         
-        # Connect to test server (Cloudflare 1.1.1.1)
+        # اتصال به سرور تست (Cloudflare 1.1.1.1)
         test_host = "1.1.1.1"
         test_port = 80
         
-        # Build SOCKS5 connect request
+        # ساخت درخواست SOCKS5 connect
         request = b'\x05\x01\x00\x01'  # VER, CMD, RSV, ATYP (IPv4)
         request += socket.inet_aton(test_host)
         request += test_port.to_bytes(2, 'big')
         
         sock.sendall(request)
         
-        # Read SOCKS5 response
+        # خواندن پاسخ SOCKS5
         response = sock.recv(10)
         if len(response) < 4 or response[0] != 0x05 or response[1] != 0x00:
             return False, float("inf")
         
-        # Send HTTP GET request to Cloudflare connectivity check
+        # ارسال درخواست HTTP GET به Cloudflare connectivity check
         http_request = b"GET /generate_204 HTTP/1.1\r\n"
         http_request += b"Host: cp.cloudflare.com\r\n"
         http_request += b"User-Agent: Mozilla/5.0\r\n"
@@ -638,7 +746,7 @@ def _test_with_socks5_manual(local_port: int, timeout: float, start_time: float)
         
         sock.sendall(http_request)
         
-        # Wait for HTTP response
+        # انتظار برای پاسخ HTTP
         sock.settimeout(timeout)
         response = b""
         while True:
@@ -652,7 +760,7 @@ def _test_with_socks5_manual(local_port: int, timeout: float, start_time: float)
         sock.close()
         end = time.perf_counter()
         
-        # Check for valid HTTP response
+        # بررسی پاسخ HTTP معتبر
         if b"HTTP/1.1 204" in response or b"HTTP/1.1 200" in response or b"HTTP/1.0" in response:
             return True, (end - start_time) * 1000
         else:
@@ -667,71 +775,195 @@ def _test_with_socks5_manual(local_port: int, timeout: float, start_time: float)
         return False, float("inf")
 
 
+def test_with_hysteria(config: ConfigItem, hysteria_path: str, timeout: float) -> Tuple[bool, float]:
+    """تست کانفیگ با باینری Hysteria2 - برمی‌گرداند (success, latency_ms)"""
+    local_port = 2080 + (hash(config.key()) % 100)
+    
+    try:
+        # ساخت کانفیگ Hysteria client
+        extra = config.extra or {}
+        hysteria_config = {
+            "server": f"{config.host}:{config.port}",
+            "auth": extra.get("uuid", ""),
+            "socks5": {
+                "listen": "127.0.0.1",
+                "port": local_port
+            }
+        }
+        
+        if extra.get("sni"):
+            hysteria_config["serverName"] = extra["sni"]
+        if extra.get("alpn"):
+            hysteria_config["alpn"] = [extra["alpn"]]
+        if extra.get("insecure"):
+            hysteria_config["insecure"] = True
+        
+        # ذخیره کانفیگ در فایل موقت
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8') as f:
+            json.dump(hysteria_config, f, indent=2)
+            config_file = f.name
+        
+        process = None
+        try:
+            # اجرای Hysteria client
+            process = subprocess.Popen(
+                [hysteria_path, "client", "-c", config_file],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
+            )
+            
+            # انتظار برای شروع Hysteria
+            time.sleep(1.5)
+            
+            # بررسی اینکه آیا فرآیند هنوز در حال اجراست
+            if process.poll() is not None:
+                stderr = process.stderr.read().decode('utf-8', errors='ignore')
+                return False, float("inf")
+            
+            # تست اتصال با SOCKS5
+            start = time.perf_counter()
+            try:
+                import socks
+                proxies = {
+                    'http': f'socks5://127.0.0.1:{local_port}',
+                    'https': f'socks5://127.0.0.1:{local_port}'
+                }
+                
+                test_urls = [
+                    "http://cp.cloudflare.com/generate_204",
+                    "http://www.gstatic.com/generate_204",
+                ]
+                
+                success = False
+                for url in test_urls:
+                    try:
+                        response = requests.get(url, proxies=proxies, timeout=timeout,
+                                               headers={'User-Agent': 'Mozilla/5.0'},
+                                               verify=False)
+                        if response.status_code in [200, 204]:
+                            success = True
+                            break
+                    except:
+                        continue
+                
+                end = time.perf_counter()
+                
+                if success:
+                    return True, (end - start) * 1000
+                else:
+                    return _test_with_socks5_manual(local_port, timeout, start)
+                    
+            except ImportError:
+                return _test_with_socks5_manual(local_port, timeout, start)
+                
+        finally:
+            # خاتمه فرآیند Hysteria
+            if process:
+                process.terminate()
+                try:
+                    process.wait(timeout=2)
+                except:
+                    process.kill()
+            
+            # حذف فایل موقت
+            try:
+                os.unlink(config_file)
+            except:
+                pass
+                
+    except Exception as e:
+        return False, float("inf")
+
+
 async def test_config(config: ConfigItem, tests_per_config: int, timeout: float, 
-                     sem: asyncio.Semaphore, progress_cb, log_cb, xray_path: str = "", cancel_check=None, stats_cb=None):
+                     sem: asyncio.Semaphore, progress_cb, log_cb, xray_path: str = "", 
+                     hysteria_path: str = "", skip_hysteria2: bool = False,
+                     cancel_check=None, stats_cb=None):
+    """تست کانفیگ با پشتیبانی از Xray و Hysteria2"""
     success = 0
     fails = 0
     latencies: List[float] = []
     tcp_latencies: List[float] = []
+    
+    # تشخیص نوع تست مورد نیاز
     use_xray = bool(xray_path and os.path.exists(xray_path))
+    use_hysteria = bool(hysteria_path and os.path.exists(hysteria_path))
+    is_hysteria2 = config.protocol == "hysteria2"
+    
+    # اگر Hysteria2 و گزینه رد کردن فعال است
+    if is_hysteria2 and skip_hysteria2:
+        log_cb(f"⏭️ [{config.remark}] Hysteria2 رد شد (تنظیمات)", "warning")
+        return TestResult(config=config, success_count=0, fail_count=tests_per_config, 
+                         latencies=[], tcp_latencies=[], use_xray=False)
+    
+    # اگر Hysteria2 اما باینری موجود نیست
+    if is_hysteria2 and not use_hysteria:
+        log_cb(f"⚠ [{config.remark}] Hysteria2 نیاز به باینری hysteria دارد، استفاده از TCP", "warning")
+        use_hysteria = False
     
     for i in range(1, tests_per_config + 1):
-        # Check for cancellation before each test
+        # بررسی لغو قبل از هر تست
         if cancel_check and cancel_check():
             log_cb(f"⏹️ [{config.remark}] تست لغو شد", "cancel")
             break
         
         async with sem:
-            # First do TCP test (always)
+            # تست TCP همیشه انجام می‌شود
             tcp_ok, tcp_latency = await tcp_latency_test(config.host, config.port, timeout)
             if tcp_ok:
                 tcp_latencies.append(tcp_latency)
             
-            # Then do Xray test if available
-            if use_xray:
+            # تست با پروکسی مناسب
+            proxy_ok = False
+            proxy_latency = float("inf")
+            
+            if is_hysteria2 and use_hysteria:
+                # تست با Hysteria2
                 loop = asyncio.get_event_loop()
                 with ThreadPoolExecutor(max_workers=1) as executor:
-                    xray_ok, xray_latency = await loop.run_in_executor(
+                    proxy_ok, proxy_latency = await loop.run_in_executor(
+                        executor, test_with_hysteria, config, hysteria_path, timeout
+                    )
+            elif use_xray and not is_hysteria2:
+                # تست با Xray (برای پروتکل‌های غیر Hysteria2)
+                loop = asyncio.get_event_loop()
+                with ThreadPoolExecutor(max_workers=1) as executor:
+                    proxy_ok, proxy_latency = await loop.run_in_executor(
                         executor, test_with_xray, config, xray_path, timeout
                     )
-                
-                if xray_ok:
-                    success += 1
-                    latencies.append(xray_latency)
-                    log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: Proxy={xray_latency:.1f}ms | TCP={tcp_latency:.1f}ms", "success")
-                    if stats_cb:
-                        stats_cb("success")
-                else:
-                    fails += 1
-                    if tcp_ok:
-                        log_cb(f"⚠ [{config.remark}] تست {i}/{tests_per_config}: Proxy شکست (TCP={tcp_latency:.1f}ms)", "warning")
-                    else:
-                        log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: Proxy و TCP شکست", "error")
-                    if stats_cb:
-                        stats_cb("fail")
+            
+            # ثبت نتایج
+            if proxy_ok:
+                success += 1
+                latencies.append(proxy_latency)
+                protocol_name = "Hysteria2" if is_hysteria2 else "Proxy"
+                log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: {protocol_name}={proxy_latency:.1f}ms | TCP={tcp_latency:.1f}ms", "success")
+                if stats_cb:
+                    stats_cb("success")
+            elif tcp_ok:
+                fails += 1
+                log_cb(f"⚠ [{config.remark}] تست {i}/{tests_per_config}: Proxy شکست (TCP={tcp_latency:.1f}ms)", "warning")
+                if stats_cb:
+                    stats_cb("fail")
             else:
-                # Fallback to TCP only
-                if tcp_ok:
-                    success += 1
-                    latencies.append(tcp_latency)
-                    log_cb(f"✓ [{config.remark}] تست {i}/{tests_per_config}: TCP={tcp_latency:.1f}ms", "success")
-                    if stats_cb:
-                        stats_cb("success")
-                else:
-                    fails += 1
-                    log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: شکست", "error")
-                    if stats_cb:
-                        stats_cb("fail")
+                fails += 1
+                log_cb(f"✗ [{config.remark}] تست {i}/{tests_per_config}: Proxy و TCP شکست", "error")
+                if stats_cb:
+                    stats_cb("fail")
             
             progress_cb()
     
     return TestResult(config=config, success_count=success, fail_count=fails, 
-                     latencies=latencies, tcp_latencies=tcp_latencies, use_xray=use_xray)
+                     latencies=latencies, tcp_latencies=tcp_latencies, use_xray=use_xray or use_hysteria)
 
 
 async def run_all_tests(configs: List[ConfigItem], tests_per_config: int, 
                        timeout: float, max_concurrency: int, progress_cb, log_cb, xray_path: str = "",
-                       max_allowed_latency: float = float("inf"), top_n: int = 10, cancel_event: asyncio.Event = None, stats_cb=None):
+                       hysteria_path: str = "", skip_hysteria2: bool = False,
+                       max_allowed_latency: float = float("inf"), top_n: int = 10, 
+                       cancel_event: asyncio.Event = None, stats_cb=None):
+    """اجرای تست‌ها برای تمام کانفیگ‌ها با پشتیبانی از Hysteria2"""
     if cancel_event is None:
         cancel_event = asyncio.Event()
     
@@ -746,9 +978,10 @@ async def run_all_tests(configs: List[ConfigItem], tests_per_config: int,
     async def test_with_early_stop(cfg: ConfigItem):
         if cancel_event.is_set():
             return None
-        result = await test_config(cfg, tests_per_config, timeout, sem, progress_cb, log_cb, xray_path, cancel_check, stats_cb)
+        result = await test_config(cfg, tests_per_config, timeout, sem, progress_cb, log_cb, 
+                                   xray_path, hysteria_path, skip_hysteria2, cancel_check, stats_cb)
         
-        # Check if this config meets the latency requirement
+        # بررسی اینکه آیا این کانفیگ به نیاز تاخیر پاسخ می‌دهد
         if result.success_count > 0:
             latency = result.avg_latency if result.latencies else result.avg_tcp_latency
             if latency <= max_allowed_latency:
@@ -763,13 +996,13 @@ async def run_all_tests(configs: List[ConfigItem], tests_per_config: int,
         
         return result
     
-    # Create all tasks
+    # ساخت تمام تسک‌ها
     tasks = [test_with_early_stop(cfg) for cfg in configs]
     
-    # Process tasks as they complete
+    # پردازش تسک‌ها به محض تکمیل
     for task in asyncio.as_completed(tasks):
         if cancel_event.is_set():
-            # Cancel remaining tasks
+            # لغو تسک‌های باقی‌مانده
             for t in tasks:
                 if not t.done():
                     t.cancel()
@@ -778,7 +1011,7 @@ async def run_all_tests(configs: List[ConfigItem], tests_per_config: int,
         if result:
             results.append(result)
     
-    # Filter out exceptions
+    # فیلتر کردن استثناها
     valid_results = []
     for r in results:
         if isinstance(r, TestResult):
@@ -838,13 +1071,15 @@ def auto_upload_to_github():
         pass
 
 
-def save_output_files(best: List[TestResult], output_name: str):
+def save_output_files(best: List[TestResult], output_name: str, enable_excel: bool = True):
+    """ذخیره فایل‌های خروجی شامل txt, base64, json و Excel"""
     links = [res.config.raw for res in best]
     plain_path = f"{output_name}.txt"
     b64_path = f"{output_name}.base64"
     json_path = f"{output_name}_results.json"
+    excel_path = f"{output_name}_results.xlsx"
     
-    # Save base64 encoded (v2rayNG subscription format)
+    # ذخیره base64 encoded (فرمت subscription v2rayNG)
     try:
         encoded = base64.b64encode("\n".join(links).encode("utf-8")).decode("utf-8")
         with open(plain_path, "w", encoding="utf-8") as f:
@@ -852,14 +1087,14 @@ def save_output_files(best: List[TestResult], output_name: str):
     except Exception:
         pass
     
-    # Also save plain text for reference
+    # ذخیره متن ساده برای مرجع
     try:
         with open(b64_path, "w", encoding="utf-8") as f:
             f.write("\n".join(links))
     except Exception:
         pass
     
-    # Save detailed results to JSON for GitHub upload
+    # ذخیره نتایج دقیق به JSON
     try:
         results_data = []
         for res in best:
@@ -874,6 +1109,7 @@ def save_output_files(best: List[TestResult], output_name: str):
                 "success_rate": res.success_rate,
                 "min_latency": res.min_latency,
                 "max_latency": res.max_latency,
+                "stability_score": res.stability_score,
                 "use_xray": res.use_xray,
                 "raw": res.config.raw
             })
@@ -887,8 +1123,70 @@ def save_output_files(best: List[TestResult], output_name: str):
     except Exception:
         pass
     
-    # Auto-upload to GitHub
+    # ذخیره به Excel با pandas
+    if enable_excel:
+        try:
+            import pandas as pd
+            df_data = []
+            for res in best:
+                df_data.append({
+                    "رتبه": len(df_data) + 1,
+                    "نام کانفیگ": res.config.remark,
+                    "پروتکل": res.config.protocol,
+                    "کشور": res.config.country,
+                    "سرور": f"{res.config.host}:{res.config.port}",
+                    "تاخیر پروکسی (ms)": f"{res.avg_latency:.1f}" if res.latencies else "N/A",
+                    "تاخیر TCP (ms)": f"{res.avg_tcp_latency:.1f}" if res.tcp_latencies else "N/A",
+                    "نرخ موفقیت (%)": f"{res.success_rate:.1f}",
+                    "حداقل تاخیر (ms)": f"{res.min_latency:.1f}" if res.latencies else "N/A",
+                    "حداکثر تاخیر (ms)": f"{res.max_latency:.1f}" if res.latencies else "N/A",
+                    "امتیاز پایداری": f"{res.stability_score:.2f}",
+                    "استفاده از پروکسی": "بله" if res.use_xray else "خیر"
+                })
+            
+            df = pd.DataFrame(df_data)
+            df.to_excel(excel_path, index=False, engine='openpyxl')
+        except Exception as e:
+            print(f"Excel export error: {e}")
+    
+    # آپلود خودکار به GitHub
     auto_upload_to_github()
+
+
+def run_speed_test(config: ConfigItem, proxy_url: str, size_mb: int = 10, timeout: int = 30) -> Tuple[bool, float]:
+    """تست سرعت واقعی با دانلود فایل - برمی‌گرداند (success, speed_mbps)"""
+    try:
+        # استفاده از یک فایل تست کوچک برای سرعت
+        test_url = "http://speedtest.tele2.net/1MB.zip"
+        if size_mb >= 10:
+            test_url = "http://speedtest.tele2.net/10MB.zip"
+        
+        start = time.perf_counter()
+        
+        # تست با پروکسی
+        proxies = {
+            'http': proxy_url,
+            'https': proxy_url
+        }
+        
+        response = requests.get(test_url, proxies=proxies, timeout=timeout, stream=True, verify=False)
+        total_bytes = 0
+        
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                total_bytes += len(chunk)
+        
+        end = time.perf_counter()
+        duration = end - start
+        
+        if duration > 0:
+            speed_mbps = (total_bytes * 8 / 1_000_000) / duration
+            return True, speed_mbps
+        else:
+            return False, 0.0
+            
+    except Exception as e:
+        return False, 0.0
 
 
 # ----------------------------- Modern GUI -----------------------------
@@ -960,17 +1258,18 @@ class V2RayOptimizerModernGUI:
         self.testing_cancelled = False
     
     def _build_ui(self):
+        """ساخت رابط کاربری مدرن"""
         # Header
-        header_frame = tk.Frame(self.root, bg=ModernTheme.BG_PRIMARY, height=60)
+        header_frame = tk.Frame(self.root, bg=ModernTheme.BG_PRIMARY, height=70)
         header_frame.pack(fill=tk.X, padx=20, pady=(20, 10))
         header_frame.pack_propagate(False)
         
-        title_label = tk.Label(header_frame, text="🚀 V2Ray/Xray Optimizer", 
-                              font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_TITLE, "bold"),
+        title_label = tk.Label(header_frame, text="🚀 V2Ray/Xray/Hysteria2 Optimizer", 
+                              font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_HEADER, "bold"),
                               bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.ACCENT)
         title_label.pack(side=tk.RIGHT, padx=10)
         
-        subtitle_label = tk.Label(header_frame, text="بهینه‌ساز کانفیگ‌های V2Ray با تست سرعت",
+        subtitle_label = tk.Label(header_frame, text="✨ بهینه‌ساز حرفه‌ای کانفیگ‌ها با تست سرعت و پشتیبانی از پروتکل‌های مدرن",
                                   font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
                                   bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_SECONDARY)
         subtitle_label.pack(side=tk.RIGHT, padx=10)
@@ -1034,42 +1333,47 @@ class V2RayOptimizerModernGUI:
                     command=lambda: self.sub_text.delete("1.0", tk.END), width=100).pack(side=tk.RIGHT, padx=5)
     
     def _build_settings_tab(self):
+        """ساخت تب تنظیمات با فیلدهای جدید برای Hysteria2"""
         container = tk.Frame(self.settings_tab, bg=ModernTheme.BG_PRIMARY)
         container.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
         
-        tk.Label(container, text="تنظیمات تست", 
+        tk.Label(container, text="⚙️ تنظیمات تست", 
                 font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_LARGE, "bold"),
                 bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY).pack(anchor="e", pady=(0, 20))
         
-        # Settings grid
-        settings_frame = tk.Frame(container, bg=ModernTheme.BG_PRIMARY)
-        settings_frame.pack(fill=tk.BOTH, expand=True)
+        # تنظیمات پایه
+        basic_frame = tk.Frame(container, bg=ModernTheme.BG_CARD, bd=1, relief="solid")
+        basic_frame.pack(fill=tk.X, pady=(0, 15))
+        
+        tk.Label(basic_frame, text="📊 تنظیمات پایه", 
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.ACCENT).pack(anchor="e", padx=10, pady=(10, 5))
+        
+        settings_container = tk.Frame(basic_frame, bg=ModernTheme.BG_CARD)
+        settings_container.pack(fill=tk.X, padx=10, pady=(0, 10))
         
         self.output_name_var = tk.StringVar()
         self.top_n_var = tk.IntVar()
         self.tests_per_cfg_var = tk.IntVar()
         self.max_conc_var = tk.IntVar()
         self.timeout_var = tk.DoubleVar()
-        self.xray_path_var = tk.StringVar()
-        self.auto_schedule_enabled_var = tk.BooleanVar()
-        self.auto_schedule_interval_var = tk.IntVar()
         self.max_allowed_latency_var = tk.IntVar()
         
         settings = [
             ("نام فایل خروجی:", self.output_name_var, "best-configs"),
             ("تعداد کانفیگ برتر:", self.top_n_var, 10),
             ("تعداد تست برای هر کانفیگ:", self.tests_per_cfg_var, 5),
-            ("تعداد همزمانی (Concurrency):", self.max_conc_var, 50),
+            ("تعداد همزمانی:", self.max_conc_var, 50),
             ("Timeout هر تست (ثانیه):", self.timeout_var, 3.0),
             ("حداکثر تاخیر مجاز (ms):", self.max_allowed_latency_var, 500),
         ]
         
         for idx, (label, var, default) in enumerate(settings):
-            row_frame = tk.Frame(settings_frame, bg=ModernTheme.BG_PRIMARY)
-            row_frame.pack(fill=tk.X, pady=8)
+            row_frame = tk.Frame(settings_container, bg=ModernTheme.BG_CARD)
+            row_frame.pack(fill=tk.X, pady=6)
             
             tk.Label(row_frame, text=label, font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                    bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY, width=25, anchor="e").pack(side=tk.RIGHT)
+                    bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
             
             entry = tk.Entry(row_frame, textvariable=var, bg=ModernTheme.BG_SECONDARY,
                             fg=ModernTheme.TEXT_PRIMARY, insertbackground=ModernTheme.ACCENT,
@@ -1077,71 +1381,160 @@ class V2RayOptimizerModernGUI:
                             relief="flat", bd=1)
             entry.pack(side=tk.RIGHT, padx=10, fill=tk.X, expand=True)
         
+        # تنظیمات باینری‌ها
+        binary_frame = tk.Frame(container, bg=ModernTheme.BG_CARD, bd=1, relief="solid")
+        binary_frame.pack(fill=tk.X, pady=(0, 15))
+        
+        tk.Label(binary_frame, text="🔧 مسیر باینری‌ها", 
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.ACCENT).pack(anchor="e", padx=10, pady=(10, 5))
+        
+        binary_container = tk.Frame(binary_frame, bg=ModernTheme.BG_CARD)
+        binary_container.pack(fill=tk.X, padx=10, pady=(0, 10))
+        
+        self.xray_path_var = tk.StringVar()
+        self.hysteria_path_var = tk.StringVar()
+        self.skip_hysteria2_var = tk.BooleanVar()
+        
         # Xray path
-        xray_frame = tk.Frame(settings_frame, bg=ModernTheme.BG_PRIMARY)
-        xray_frame.pack(fill=tk.X, pady=8)
+        xray_row = tk.Frame(binary_container, bg=ModernTheme.BG_CARD)
+        xray_row.pack(fill=tk.X, pady=6)
         
-        tk.Label(xray_frame, text="مسیر باینری xray/v2ray (اختیاری):",
+        tk.Label(xray_row, text="مسیر Xray/V2Ray:",
                 font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY, width=25, anchor="e").pack(side=tk.RIGHT)
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
         
-        xray_entry = tk.Entry(xray_frame, textvariable=self.xray_path_var, bg=ModernTheme.BG_SECONDARY,
+        xray_entry = tk.Entry(xray_row, textvariable=self.xray_path_var, bg=ModernTheme.BG_SECONDARY,
                              fg=ModernTheme.TEXT_PRIMARY, insertbackground=ModernTheme.ACCENT,
                              font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
                              relief="flat", bd=1)
         xray_entry.pack(side=tk.RIGHT, padx=10, fill=tk.X, expand=True)
         
-        ModernButton(xray_frame, text="📁 انتخاب", command=lambda: self._browse_file(self.xray_path_var),
-                    width=80).pack(side=tk.RIGHT, padx=5)
+        ModernButton(xray_row, text="📁", command=lambda: self._browse_file(self.xray_path_var),
+                    width=50, height=30).pack(side=tk.RIGHT, padx=5)
         
-        # Auto-schedule section
-        schedule_frame = tk.Frame(settings_frame, bg=ModernTheme.BG_PRIMARY)
-        schedule_frame.pack(fill=tk.X, pady=(15, 8))
+        # Hysteria2 path
+        hysteria_row = tk.Frame(binary_container, bg=ModernTheme.BG_CARD)
+        hysteria_row.pack(fill=tk.X, pady=6)
         
-        tk.Label(schedule_frame, text="⏰ زمان‌بندی خودکار:",
+        tk.Label(hysteria_row, text="مسیر Hysteria2:",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
+        
+        hysteria_entry = tk.Entry(hysteria_row, textvariable=self.hysteria_path_var, bg=ModernTheme.BG_SECONDARY,
+                                   fg=ModernTheme.TEXT_PRIMARY, insertbackground=ModernTheme.ACCENT,
+                                   font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                                   relief="flat", bd=1)
+        hysteria_entry.pack(side=tk.RIGHT, padx=10, fill=tk.X, expand=True)
+        
+        ModernButton(hysteria_row, text="📁", command=lambda: self._browse_file(self.hysteria_path_var),
+                    width=50, height=30).pack(side=tk.RIGHT, padx=5)
+        
+        # Skip Hysteria2 checkbox
+        skip_row = tk.Frame(binary_container, bg=ModernTheme.BG_CARD)
+        skip_row.pack(fill=tk.X, pady=6)
+        
+        tk.Label(skip_row, text="رد کردن Hysteria2:",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
+        
+        skip_check = tk.Checkbutton(skip_row, text="رد خودکار کانفیگ‌های Hysteria2", 
+                                   variable=self.skip_hysteria2_var,
+                                   bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY,
+                                   selectcolor=ModernTheme.BG_SECONDARY, 
+                                   activebackground=ModernTheme.BG_CARD,
+                                   font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL))
+        skip_check.pack(side=tk.RIGHT, padx=10)
+        
+        # تنظیمات پیشرفته
+        advanced_frame = tk.Frame(container, bg=ModernTheme.BG_CARD, bd=1, relief="solid")
+        advanced_frame.pack(fill=tk.X, pady=(0, 15))
+        
+        tk.Label(advanced_frame, text="🚀 تنظیمات پیشرفته", 
                 font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
-                bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY, width=25, anchor="e").pack(side=tk.RIGHT)
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.ACCENT).pack(anchor="e", padx=10, pady=(10, 5))
         
-        schedule_check = tk.Checkbutton(schedule_frame, text="فعال", variable=self.auto_schedule_enabled_var,
-                                       bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY,
-                                       selectcolor=ModernTheme.BG_SECONDARY, activebackground=ModernTheme.BG_PRIMARY)
+        advanced_container = tk.Frame(advanced_frame, bg=ModernTheme.BG_CARD)
+        advanced_container.pack(fill=tk.X, padx=10, pady=(0, 10))
+        
+        self.auto_schedule_enabled_var = tk.BooleanVar()
+        self.auto_schedule_interval_var = tk.IntVar()
+        self.enable_speed_test_var = tk.BooleanVar()
+        self.speed_test_size_var = tk.IntVar()
+        
+        # Auto-schedule
+        schedule_row = tk.Frame(advanced_container, bg=ModernTheme.BG_CARD)
+        schedule_row.pack(fill=tk.X, pady=6)
+        
+        tk.Label(schedule_row, text="⏰ زمان‌بندی خودکار:",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
+        
+        schedule_check = tk.Checkbutton(schedule_row, text="فعال", variable=self.auto_schedule_enabled_var,
+                                       bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY,
+                                       selectcolor=ModernTheme.BG_SECONDARY, activebackground=ModernTheme.BG_CARD,
+                                       font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL))
         schedule_check.pack(side=tk.RIGHT, padx=10)
         
-        interval_frame = tk.Frame(schedule_frame, bg=ModernTheme.BG_PRIMARY)
-        interval_frame.pack(side=tk.RIGHT, padx=10)
-        
-        tk.Label(interval_frame, text="هر (دقیقه):",
-                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY).pack(side=tk.RIGHT)
-        
-        interval_entry = tk.Entry(interval_frame, textvariable=self.auto_schedule_interval_var, width=8,
+        interval_entry = tk.Entry(schedule_row, textvariable=self.auto_schedule_interval_var, width=8,
                                 bg=ModernTheme.BG_SECONDARY, fg=ModernTheme.TEXT_PRIMARY,
                                 insertbackground=ModernTheme.ACCENT,
                                 font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
                                 relief="flat", bd=1)
         interval_entry.pack(side=tk.RIGHT, padx=5)
         
-        # Action buttons
+        tk.Label(schedule_row, text="هر (دقیقه):",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY).pack(side=tk.RIGHT)
+        
+        # Speed test
+        speed_row = tk.Frame(advanced_container, bg=ModernTheme.BG_CARD)
+        speed_row.pack(fill=tk.X, pady=6)
+        
+        tk.Label(speed_row, text="📈 تست سرعت واقعی:",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
+        
+        speed_check = tk.Checkbutton(speed_row, text="فعال برای کانفیگ‌های برتر", 
+                                    variable=self.enable_speed_test_var,
+                                    bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY,
+                                    selectcolor=ModernTheme.BG_SECONDARY, activebackground=ModernTheme.BG_CARD,
+                                    font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL))
+        speed_check.pack(side=tk.RIGHT, padx=10)
+        
+        size_entry = tk.Entry(speed_row, textvariable=self.speed_test_size_var, width=8,
+                            bg=ModernTheme.BG_SECONDARY, fg=ModernTheme.TEXT_PRIMARY,
+                            insertbackground=ModernTheme.ACCENT,
+                            font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                            relief="flat", bd=1)
+        size_entry.pack(side=tk.RIGHT, padx=5)
+        
+        tk.Label(speed_row, text="حجم (MB):",
+                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
+                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY).pack(side=tk.RIGHT)
+        
+        # دکمه‌های عملیات
         action_frame = tk.Frame(container, bg=ModernTheme.BG_PRIMARY)
         action_frame.pack(fill=tk.X, pady=(20, 0))
         
         ModernButton(action_frame, text="💾 ذخیره تنظیمات", command=self._save_settings,
-                    bg_color=ModernTheme.SUCCESS, hover_color="#94e2c9", width=140).pack(side=tk.RIGHT, padx=5)
+                    bg_color=ModernTheme.SUCCESS, hover_color=ModernTheme.SUCCESS_DIM, width=140).pack(side=tk.RIGHT, padx=5)
         ModernButton(action_frame, text="📥 بارگذاری تنظیمات", command=self._load_settings_to_ui,
                     width=140).pack(side=tk.RIGHT, padx=5)
     
     def _build_run_tab(self):
+        """ساخت تب اجرای تست با نمایش آمار بهتر"""
         container = tk.Frame(self.run_tab, bg=ModernTheme.BG_PRIMARY)
         container.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
         
-        tk.Label(container, text="اجرای تست", 
+        tk.Label(container, text="▶️ اجرای تست", 
                 font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_LARGE, "bold"),
                 bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_PRIMARY).pack(anchor="e", pady=(0, 20))
         
         # Start button
         self.start_btn = ModernButton(container, text="🚀 شروع تست و بهینه‌سازی",
                                      command=self._on_start, width=200, height=45,
-                                     bg_color=ModernTheme.SUCCESS, hover_color="#94e2c9")
+                                     bg_color=ModernTheme.SUCCESS, hover_color=ModernTheme.SUCCESS_DIM)
         self.start_btn.pack(pady=10)
         
         # Cancel button
@@ -1151,27 +1544,48 @@ class V2RayOptimizerModernGUI:
         self.cancel_btn.pack(pady=5)
         self.cancel_btn.config(state="disabled")
         
-        # Progress section
-        progress_frame = tk.Frame(container, bg=ModernTheme.BG_PRIMARY)
-        progress_frame.pack(fill=tk.X, pady=15)
+        # Progress section with card style
+        progress_card = tk.Frame(container, bg=ModernTheme.BG_CARD, bd=1, relief="solid")
+        progress_card.pack(fill=tk.X, pady=15)
         
-        self.status_label = tk.Label(progress_frame, text="وضعیت: آماده",
-                                    font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                                    bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_SECONDARY)
-        self.status_label.pack(anchor="e", pady=(0, 5))
+        progress_inner = tk.Frame(progress_card, bg=ModernTheme.BG_CARD)
+        progress_inner.pack(fill=tk.X, padx=10, pady=10)
         
-        self.progress_bar = ttk.Progressbar(progress_frame, variable=self.progress_var, 
+        self.status_label = tk.Label(progress_inner, text="📊 وضعیت: آماده",
+                                    font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
+                                    bg=ModernTheme.BG_CARD, fg=ModernTheme.ACCENT)
+        self.status_label.pack(anchor="e", pady=(0, 8))
+        
+        self.progress_bar = ttk.Progressbar(progress_inner, variable=self.progress_var, 
                                            maximum=100, style="TProgressbar")
         self.progress_bar.pack(fill=tk.X, pady=5)
         
-        # Stats labels
-        stats_frame = tk.Frame(progress_frame, bg=ModernTheme.BG_PRIMARY)
+        # Stats labels with better layout
+        stats_frame = tk.Frame(progress_inner, bg=ModernTheme.BG_CARD)
         stats_frame.pack(fill=tk.X, pady=(10, 0))
         
-        self.stats_label = tk.Label(stats_frame, text="کل: 0 | موفق: 0 | شکست: 0",
+        # First row: basic stats
+        stats_row1 = tk.Frame(stats_frame, bg=ModernTheme.BG_CARD)
+        stats_row1.pack(fill=tk.X, pady=3)
+        
+        self.stats_label = tk.Label(stats_row1, text="📦 کل: 0 | ✅ موفق: 0 | ❌ شکست: 0",
                                     font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                                    bg=ModernTheme.BG_PRIMARY, fg=ModernTheme.TEXT_SECONDARY)
+                                    bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY)
         self.stats_label.pack(anchor="e")
+        
+        # Second row: detailed stats
+        stats_row2 = tk.Frame(stats_frame, bg=ModernTheme.BG_CARD)
+        stats_row2.pack(fill=tk.X, pady=3)
+        
+        self.eta_label = tk.Label(stats_row2, text="⏱️ زمان باقی‌مانده: --",
+                                  font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_SMALL),
+                                  bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_MUTED)
+        self.eta_label.pack(anchor="e")
+        
+        self.speed_label = tk.Label(stats_row2, text="⚡ سرعت تست: 0 تست/ثانیه",
+                                    font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_SMALL),
+                                    bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_MUTED)
+        self.speed_label.pack(side=tk.LEFT, padx=5)
         
         # Log section
         tk.Label(container, text="📋 لاگ زنده:", 
@@ -1183,14 +1597,19 @@ class V2RayOptimizerModernGUI:
         
         self.log_text = tk.Text(log_frame, height=15, bg=ModernTheme.BG_SECONDARY,
                                fg=ModernTheme.TEXT_PRIMARY, insertbackground=ModernTheme.ACCENT,
-                               font=("Consolas", 9), relief="flat", bd=0, state="disabled")
+                               font=("Consolas", 9), relief="flat", bd=0, state="normal")
         self.log_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
         
         # Configure color tags for log
-        self.log_text.tag_config("success", foreground="#4ade80")  # green
-        self.log_text.tag_config("error", foreground="#f87171")    # red
-        self.log_text.tag_config("warning", foreground="#fbbf24")  # yellow
-        self.log_text.tag_config("cancel", foreground="#a78bfa")   # purple
+        self.log_text.tag_config("success", foreground=ModernTheme.SUCCESS)
+        self.log_text.tag_config("error", foreground=ModernTheme.ERROR)
+        self.log_text.tag_config("warning", foreground=ModernTheme.WARNING)
+        self.log_text.tag_config("cancel", foreground="#a78bfa")
+        
+        # Add right-click menu for copy
+        context_menu = tk.Menu(self.root, tearoff=0)
+        context_menu.add_command(label="📋 کپی", command=lambda: self._copy_selection())
+        self.log_text.bind("<Button-3>", lambda e: context_menu.post(e.x_root, e.y_root))
         
         log_scrollbar = ttk.Scrollbar(log_frame, command=self.log_text.yview)
         log_scrollbar.pack(side=tk.LEFT, fill=tk.Y)
@@ -1267,6 +1686,7 @@ class V2RayOptimizerModernGUI:
             messagebox.showerror("خطا", str(exc))
     
     def _save_settings(self):
+        """ذخیره تنظیمات شامل فیلدهای جدید Hysteria2 و تست سرعت"""
         subs = [line.strip() for line in self.sub_text.get("1.0", tk.END).splitlines() if line.strip()]
         data = {
             "subscriptions": subs,
@@ -1276,14 +1696,19 @@ class V2RayOptimizerModernGUI:
             "max_concurrency": int(self.max_conc_var.get() or DEFAULT_SETTINGS["max_concurrency"]),
             "timeout": float(self.timeout_var.get() or DEFAULT_SETTINGS["timeout"]),
             "xray_path": self.xray_path_var.get(),
+            "hysteria_path": self.hysteria_path_var.get(),
+            "skip_hysteria2": self.skip_hysteria2_var.get(),
             "auto_schedule_enabled": self.auto_schedule_enabled_var.get(),
             "auto_schedule_interval": int(self.auto_schedule_interval_var.get() or DEFAULT_SETTINGS["auto_schedule_interval"]),
             "max_allowed_latency": int(self.max_allowed_latency_var.get() or DEFAULT_SETTINGS["max_allowed_latency"]),
+            "enable_speed_test": self.enable_speed_test_var.get(),
+            "speed_test_size": int(self.speed_test_size_var.get() or DEFAULT_SETTINGS["speed_test_size"]),
         }
         save_settings(data)
         self._log("✓ تنظیمات ذخیره شد")
     
     def _load_settings_to_ui(self):
+        """بارگذاری تنظیمات شامل فیلدهای جدید"""
         st = load_settings()
         self.sub_text.delete("1.0", tk.END)
         if st.get("subscriptions"):
@@ -1294,9 +1719,13 @@ class V2RayOptimizerModernGUI:
         self.max_conc_var.set(st.get("max_concurrency", DEFAULT_SETTINGS["max_concurrency"]))
         self.timeout_var.set(st.get("timeout", DEFAULT_SETTINGS["timeout"]))
         self.xray_path_var.set(st.get("xray_path", ""))
+        self.hysteria_path_var.set(st.get("hysteria_path", ""))
+        self.skip_hysteria2_var.set(st.get("skip_hysteria2", DEFAULT_SETTINGS["skip_hysteria2"]))
         self.auto_schedule_enabled_var.set(st.get("auto_schedule_enabled", DEFAULT_SETTINGS["auto_schedule_enabled"]))
         self.auto_schedule_interval_var.set(st.get("auto_schedule_interval", DEFAULT_SETTINGS["auto_schedule_interval"]))
         self.max_allowed_latency_var.set(st.get("max_allowed_latency", DEFAULT_SETTINGS["max_allowed_latency"]))
+        self.enable_speed_test_var.set(st.get("enable_speed_test", DEFAULT_SETTINGS["enable_speed_test"]))
+        self.speed_test_size_var.set(st.get("speed_test_size", DEFAULT_SETTINGS["speed_test_size"]))
         self._log("✓ تنظیمات بارگذاری شد")
     
     def _log(self, msg: str, status: str = "info"):
@@ -1329,6 +1758,7 @@ class V2RayOptimizerModernGUI:
     
     # ------------------------- Start Testing -------------------------
     def _on_start(self):
+        """شروع تست با پارامترهای جدید برای Hysteria2 و تست سرعت"""
         try:
             subs = [line.strip() for line in self.sub_text.get("1.0", tk.END).splitlines() if line.strip()]
             if not subs:
@@ -1341,15 +1771,31 @@ class V2RayOptimizerModernGUI:
             max_concurrency = int(self.max_conc_var.get() or DEFAULT_SETTINGS["max_concurrency"])
             timeout = float(self.timeout_var.get() or DEFAULT_SETTINGS["timeout"])
             xray_path = self.xray_path_var.get()
+            hysteria_path = self.hysteria_path_var.get()
+            skip_hysteria2 = self.skip_hysteria2_var.get()
             max_allowed_latency = int(self.max_allowed_latency_var.get() or DEFAULT_SETTINGS["max_allowed_latency"])
+            enable_speed_test = self.enable_speed_test_var.get()
+            speed_test_size = int(self.speed_test_size_var.get() or DEFAULT_SETTINGS["speed_test_size"])
             
-            # Check if Xray is available
+            # بررسی Xray
             if xray_path and os.path.exists(xray_path):
                 self._log(f"✓ استفاده از Xray core: {xray_path}")
             else:
                 self._log("⚠ Xray core یافت نشد - استفاده از تست TCP")
             
+            # بررسی Hysteria2
+            if hysteria_path and os.path.exists(hysteria_path):
+                self._log(f"✓ استفاده از Hysteria2: {hysteria_path}")
+            elif not skip_hysteria2:
+                self._log("⚠ Hysteria2 یافت نشد - کانفیگ‌های Hysteria2 با TCP تست می‌شوند")
+            
+            if skip_hysteria2:
+                self._log("⏭️ رد کردن خودکار کانفیگ‌های Hysteria2 فعال است")
+            
             self._log(f"⏱️ حداکثر تاخیر مجاز: {max_allowed_latency}ms")
+            
+            if enable_speed_test:
+                self._log(f"📈 تست سرعت واقعی فعال: {speed_test_size}MB")
             
             self.start_btn.config(state="disabled")
             self.cancel_btn.config(state="normal")
@@ -1363,7 +1809,9 @@ class V2RayOptimizerModernGUI:
             
             thread = threading.Thread(
                 target=self._worker,
-                args=(subs, output_name, top_n, tests_per_config, max_concurrency, timeout, xray_path, max_allowed_latency),
+                args=(subs, output_name, top_n, tests_per_config, max_concurrency, timeout, 
+                      xray_path, hysteria_path, skip_hysteria2, max_allowed_latency, 
+                      enable_speed_test, speed_test_size),
                 daemon=True,
             )
             thread.start()
@@ -1376,7 +1824,10 @@ class V2RayOptimizerModernGUI:
         self._log("⏹️ درخواست لغو تست...")
         self.cancel_btn.config(state="disabled")
     
-    def _worker(self, subs, output_name, top_n, tests_per_config, max_concurrency, timeout, xray_path, max_allowed_latency):
+    def _worker(self, subs, output_name, top_n, tests_per_config, max_concurrency, timeout, 
+                xray_path, hysteria_path, skip_hysteria2, max_allowed_latency, 
+                enable_speed_test, speed_test_size):
+        """اجرای تست‌ها با پشتیبانی از Hysteria2 و تست سرعت"""
         try:
             configs = self._collect_configs(subs)
             if not configs:
@@ -1394,10 +1845,10 @@ class V2RayOptimizerModernGUI:
             log_cb = lambda msg, status="info": self._log(msg, status)
             stats_cb = lambda status: self._update_stats(status)
             
-            # Create cancellation event
+            # ایجاد رویداد لغو
             cancel_event = asyncio.Event()
             
-            # Check for cancellation periodically
+            # بررسی دوره‌ای لغو
             async def check_cancellation():
                 while not cancel_event.is_set():
                     if self.testing_cancelled:
@@ -1405,14 +1856,16 @@ class V2RayOptimizerModernGUI:
                         break
                     await asyncio.sleep(0.1)
             
-            # Start cancellation checker
+            # شروع بررسی‌کننده لغو
             cancel_task = loop.create_task(check_cancellation())
             
             results: List[TestResult] = loop.run_until_complete(
-                run_all_tests(configs, tests_per_config, timeout, max_concurrency, progress_cb, log_cb, xray_path, max_allowed_latency, top_n, cancel_event, stats_cb)
+                run_all_tests(configs, tests_per_config, timeout, max_concurrency, progress_cb, log_cb, 
+                             xray_path, hysteria_path, skip_hysteria2, max_allowed_latency, top_n, 
+                             cancel_event, stats_cb)
             )
             
-            # Cancel the checker task
+            # لغو تسک بررسی‌کننده
             cancel_task.cancel()
             try:
                 loop.run_until_complete(cancel_task)
@@ -1427,10 +1880,24 @@ class V2RayOptimizerModernGUI:
             else:
                 ranked = rank_results(results)
                 best = ranked[:top_n]
-                save_output_files(best, output_name)
+                
+                # تست سرعت برای کانفیگ‌های برتر
+                if enable_speed_test and best:
+                    self._log(f"📈 شروع تست سرعت برای {len(best)} کانفیگ برتر...")
+                    for idx, res in enumerate(best[:5], 1):  # فقط 5 کانفیگ برتر
+                        if res.use_xray:
+                            local_port = 2080 + (hash(res.config.key()) % 100)
+                            proxy_url = f'socks5://127.0.0.1:{local_port}'
+                            success, speed = run_speed_test(res.config, proxy_url, speed_test_size)
+                            if success:
+                                self._log(f"✓ [{idx}] {res.config.remark}: {speed:.2f} Mbps", "success")
+                            else:
+                                self._log(f"✗ [{idx}] {res.config.remark}: تست سرعت شکست", "warning")
+                
+                save_output_files(best, output_name, enable_excel=True)
                 self._update_results(best)
                 self._set_status("✓ اتمام تست")
-                self._log(f"✓ خروجی ذخیره شد: {output_name}.txt (v2rayNG format) و {output_name}.base64")
+                self._log(f"✓ خروجی ذخیره شد: {output_name}.txt, {output_name}.base64, {output_name}_results.json, {output_name}_results.xlsx")
         except Exception as exc:
             self._log(f"✗ خطا: {exc}")
             traceback.print_exc()
@@ -1473,22 +1940,46 @@ class V2RayOptimizerModernGUI:
         thread.start()
     
     def _increment_progress(self):
+        """به‌روزرسانی نوار پیشرفت و محاسبه ETA و سرعت"""
         self.completed_tests += 1
         if self.total_tests:
             pct = (self.completed_tests / self.total_tests) * 100
             self.root.after(0, lambda: self.progress_var.set(pct))
-            self.root.after(0, lambda: self.status_label.config(text=f"پیشرفت: {pct:.1f}%"))
+            self.root.after(0, lambda: self.status_label.config(text=f"📊 پیشرفت: {pct:.1f}%"))
+            
+            # محاسبه ETA و سرعت
+            if not hasattr(self, 'start_time'):
+                self.start_time = time.time()
+            
+            elapsed = time.time() - self.start_time
+            if elapsed > 0:
+                speed = self.completed_tests / elapsed
+                remaining = self.total_tests - self.completed_tests
+                if speed > 0:
+                    eta_seconds = remaining / speed
+                    eta_str = f"{int(eta_seconds // 60)}:{int(eta_seconds % 60):02d}"
+                    self.root.after(0, lambda: self.eta_label.config(text=f"⏱️ زمان باقی‌مانده: {eta_str}"))
+                    self.root.after(0, lambda: self.speed_label.config(text=f"⚡ سرعت: {speed:.1f} تست/ثانیه"))
     
     def _update_stats(self, status: str):
-        """Update success/failed stats"""
+        """به‌روزرسانی آمار موفقیت/شکست"""
         if status == "success":
             self.success_tests += 1
         elif status == "fail":
             self.failed_tests += 1
         
         self.root.after(0, lambda: self.stats_label.config(
-            text=f"کل: {self.completed_tests} | موفق: {self.success_tests} | شکست: {self.failed_tests}"
+            text=f"📦 کل: {self.completed_tests} | ✅ موفق: {self.success_tests} | ❌ شکست: {self.failed_tests}"
         ))
+    
+    def _copy_selection(self):
+        """کپی متن انتخاب شده از لاگ"""
+        try:
+            selected = self.log_text.get(tk.SEL_FIRST, tk.SEL_LAST)
+            self.root.clipboard_clear()
+            self.root.clipboard_append(selected)
+        except:
+            pass
     
     def _set_status(self, text: str):
         self.root.after(0, lambda: self.status_label.config(text=text))

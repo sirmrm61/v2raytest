@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2087,
+      "port": 2097,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "max.ru",
           "publicKey": "Lbug_wz0y9xgKeDK44D9kuUap0fXzNKyv_nMJxnZRzU",
           "shortId": "28a059440d3d5ba1",
-          "fingerprint": "chrome"
+          "fingerprint": "qq"
         }
       }
     }

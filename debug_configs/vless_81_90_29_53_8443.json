@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2177,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "81.90.29.53",
+            "port": 8443,
+            "users": [
+              {
+                "id": "cf038a28-8f85-41fc-9e86-ba99a3fdd0d9",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "mishaduck.duckdns.org",
+          "publicKey": "-FQM2tUbpiBjwjgla2mwkSkFhFIKQU0FQOvRi0ZD_mY",
+          "shortId": "540f5784c2481b5a",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

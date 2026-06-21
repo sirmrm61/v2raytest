@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2090,
+      "port": 2104,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "id": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+                "id": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
                 "encryption": "none",
                 "flow": ""
               }
@@ -40,13 +40,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "amooaliii.net",
+          "serverName": "vangoghhh.info",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/jdhfyws",
+          "path": "/rdfgtws",
           "headers": {
-            "Host": "amooaliii.net"
+            "Host": "vangoghhh.info"
           }
         }
       }

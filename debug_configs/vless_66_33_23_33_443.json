@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2147,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "66.33.23.33",
+            "port": 443,
+            "users": [
+              {
+                "id": "ec797c83-0b8d-4d5c-b556-1d786ca074c3",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "r-production-260d.up.railway.app",
+          "allowInsecure": true
+        },
+        "grpcSettings": {
+          "serviceName": "grpc",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}
