@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2127,
+      "port": 2091,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,20 +30,18 @@
               {
                 "id": null,
                 "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "serverName": "de2.zestful.bond",
-          "publicKey": "KS0F6q2PTY1s6y2sH5PdrznYqprIkUBtS1masvcrJjo",
-          "shortId": "823257b7b9ab9d02",
-          "fingerprint": "firefox"
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "u711540us1243.csgfw.top",
+          "allowInsecure": true
         }
       }
     }

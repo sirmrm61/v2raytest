@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2123,
+      "port": 2098,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": "8ca5cbd3-ec16-4728-bedc-2bc0d82f0922",
                 "encryption": "none",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
               }
             ]
           }

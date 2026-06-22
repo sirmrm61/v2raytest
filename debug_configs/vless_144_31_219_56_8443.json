@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2156,
+      "port": 2152,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "cdn2.swaginozip.fun",
           "publicKey": "EIlnBMyH--EIasnzGPJAAFSP5WM_4FNU4ktFUQI0O00",
           "shortId": "a13edee689fca1da",
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         }
       }
     }

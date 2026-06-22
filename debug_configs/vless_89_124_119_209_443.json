@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2166,
+      "port": 2092,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "rezerv6.yunus.guru",
           "publicKey": "6QIHdF1dvSK8mDPOeWXvGIqJmZ2ySq5fyc7N15h1WFE",
           "shortId": "34256b39b4ebb864",
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         }
       }
     }
