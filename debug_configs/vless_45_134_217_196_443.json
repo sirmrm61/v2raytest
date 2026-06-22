@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2170,
+      "port": 2095,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "gr1.panel11.ru",
           "publicKey": "rYwYudDb69CwjAJNw5KTFqJnRwwADgDMDpjv9KESjEY",
           "shortId": "f5c14a97040a38bf",
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         }
       }
     }

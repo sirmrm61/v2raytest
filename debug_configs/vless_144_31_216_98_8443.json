@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2134,
+      "port": 2152,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "service.mycloudsfere.abrdns.com",
           "publicKey": "Xb-A55KyH9nwjxKw85wksIUJs9KBGk5B8rLArXGVLiw",
           "shortId": "d9654598d4415f95",
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         }
       }
     }

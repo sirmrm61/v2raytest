@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2108,
+      "port": 2127,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,9 +40,9 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "google.com",
-          "publicKey": "Fp0-VrMBeaQe9xOrehDYHt0mqTZL-5CdfuMEzoXkOE8",
-          "shortId": "",
+          "serverName": "de2.zestful.bond",
+          "publicKey": "KS0F6q2PTY1s6y2sH5PdrznYqprIkUBtS1masvcrJjo",
+          "shortId": "823257b7b9ab9d02",
           "fingerprint": "firefox"
         }
       }

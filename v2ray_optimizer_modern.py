@@ -251,8 +251,6 @@ DEFAULT_SETTINGS = {
     "auto_schedule_enabled": False,
     "auto_schedule_interval": 60,  # minutes
     "max_allowed_latency": 500,  # ms
-    "enable_speed_test": True,       # تست سرعت واقعی برای کانفیگ‌های برتر
-    "speed_test_size": 10,           # MB
 }
 
 CONFIG_FILE = "config.json"
@@ -1037,31 +1035,52 @@ def rank_results(results: List[TestResult]) -> List[TestResult]:
     )
 
 
-def auto_upload_to_github():
+def auto_upload_to_github(log_cb=None):
     """Automatically commit and push results to GitHub"""
     try:
         import threading
         def upload_task():
             try:
+                if log_cb:
+                    log_cb("📤 شروع آپلود به GitHub...", "info")
+                
                 # Add all changes
-                subprocess.run(["git", "add", "."], 
+                result = subprocess.run(["git", "add", "."], 
                              capture_output=True, 
                              creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
                              timeout=30)
+                if log_cb:
+                    if result.returncode == 0:
+                        log_cb("✓ فایل‌ها به git اضافه شدند", "success")
+                    else:
+                        log_cb(f"⚠ خطا در git add: {result.stderr.decode('utf-8', errors='ignore')}", "warning")
                 
                 # Commit with timestamp
                 timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-                subprocess.run(["git", "commit", "-m", f"Update test results - {timestamp}"],
+                commit_msg = f"Update test results - {timestamp}"
+                result = subprocess.run(["git", "commit", "-m", commit_msg],
                              capture_output=True,
                              creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
                              timeout=30)
+                if log_cb:
+                    if result.returncode == 0:
+                        log_cb(f"✓ کامیت انجام شد: {commit_msg}", "success")
+                    else:
+                        log_cb(f"⚠ خطا در git commit: {result.stderr.decode('utf-8', errors='ignore')}", "warning")
                 
                 # Push to GitHub
-                subprocess.run(["git", "push", "-u", "origin", "main"],
+                result = subprocess.run(["git", "push", "-u", "origin", "main"],
                              capture_output=True,
                              creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
                              timeout=60)
+                if log_cb:
+                    if result.returncode == 0:
+                        log_cb("✓ تغییرات به GitHub push شد", "success")
+                    else:
+                        log_cb(f"⚠ خطا در git push: {result.stderr.decode('utf-8', errors='ignore')}", "warning")
             except Exception as e:
+                if log_cb:
+                    log_cb(f"✗ خطا در آپلود GitHub: {e}", "error")
                 print(f"Git upload error: {e}")
         
         # Run in background thread to not block UI
@@ -1071,7 +1090,7 @@ def auto_upload_to_github():
         pass
 
 
-def save_output_files(best: List[TestResult], output_name: str, enable_excel: bool = True):
+def save_output_files(best: List[TestResult], output_name: str, enable_excel: bool = True, log_cb=None):
     """ذخیره فایل‌های خروجی شامل txt, base64, json و Excel"""
     links = [res.config.raw for res in best]
     plain_path = f"{output_name}.txt"
@@ -1150,7 +1169,7 @@ def save_output_files(best: List[TestResult], output_name: str, enable_excel: bo
             print(f"Excel export error: {e}")
     
     # آپلود خودکار به GitHub
-    auto_upload_to_github()
+    auto_upload_to_github(log_cb)
 
 
 def run_speed_test(config: ConfigItem, proxy_url: str, size_mb: int = 10, timeout: int = 30) -> Tuple[bool, float]:
@@ -1459,8 +1478,6 @@ class V2RayOptimizerModernGUI:
         
         self.auto_schedule_enabled_var = tk.BooleanVar()
         self.auto_schedule_interval_var = tk.IntVar()
-        self.enable_speed_test_var = tk.BooleanVar()
-        self.speed_test_size_var = tk.IntVar()
         
         # Auto-schedule
         schedule_row = tk.Frame(advanced_container, bg=ModernTheme.BG_CARD)
@@ -1491,27 +1508,6 @@ class V2RayOptimizerModernGUI:
         speed_row = tk.Frame(advanced_container, bg=ModernTheme.BG_CARD)
         speed_row.pack(fill=tk.X, pady=6)
         
-        tk.Label(speed_row, text="📈 تست سرعت واقعی:",
-                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL, "bold"),
-                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY, width=28, anchor="e").pack(side=tk.RIGHT)
-        
-        speed_check = tk.Checkbutton(speed_row, text="فعال برای کانفیگ‌های برتر", 
-                                    variable=self.enable_speed_test_var,
-                                    bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY,
-                                    selectcolor=ModernTheme.BG_SECONDARY, activebackground=ModernTheme.BG_CARD,
-                                    font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL))
-        speed_check.pack(side=tk.RIGHT, padx=10)
-        
-        size_entry = tk.Entry(speed_row, textvariable=self.speed_test_size_var, width=8,
-                            bg=ModernTheme.BG_SECONDARY, fg=ModernTheme.TEXT_PRIMARY,
-                            insertbackground=ModernTheme.ACCENT,
-                            font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                            relief="flat", bd=1)
-        size_entry.pack(side=tk.RIGHT, padx=5)
-        
-        tk.Label(speed_row, text="حجم (MB):",
-                font=(ModernTheme.FONT_FAMILY, ModernTheme.FONT_SIZE_NORMAL),
-                bg=ModernTheme.BG_CARD, fg=ModernTheme.TEXT_PRIMARY).pack(side=tk.RIGHT)
         
         # دکمه‌های عملیات
         action_frame = tk.Frame(container, bg=ModernTheme.BG_PRIMARY)
@@ -1701,8 +1697,6 @@ class V2RayOptimizerModernGUI:
             "auto_schedule_enabled": self.auto_schedule_enabled_var.get(),
             "auto_schedule_interval": int(self.auto_schedule_interval_var.get() or DEFAULT_SETTINGS["auto_schedule_interval"]),
             "max_allowed_latency": int(self.max_allowed_latency_var.get() or DEFAULT_SETTINGS["max_allowed_latency"]),
-            "enable_speed_test": self.enable_speed_test_var.get(),
-            "speed_test_size": int(self.speed_test_size_var.get() or DEFAULT_SETTINGS["speed_test_size"]),
         }
         save_settings(data)
         self._log("✓ تنظیمات ذخیره شد")
@@ -1724,8 +1718,6 @@ class V2RayOptimizerModernGUI:
         self.auto_schedule_enabled_var.set(st.get("auto_schedule_enabled", DEFAULT_SETTINGS["auto_schedule_enabled"]))
         self.auto_schedule_interval_var.set(st.get("auto_schedule_interval", DEFAULT_SETTINGS["auto_schedule_interval"]))
         self.max_allowed_latency_var.set(st.get("max_allowed_latency", DEFAULT_SETTINGS["max_allowed_latency"]))
-        self.enable_speed_test_var.set(st.get("enable_speed_test", DEFAULT_SETTINGS["enable_speed_test"]))
-        self.speed_test_size_var.set(st.get("speed_test_size", DEFAULT_SETTINGS["speed_test_size"]))
         self._log("✓ تنظیمات بارگذاری شد")
     
     def _log(self, msg: str, status: str = "info"):
@@ -1774,8 +1766,6 @@ class V2RayOptimizerModernGUI:
             hysteria_path = self.hysteria_path_var.get()
             skip_hysteria2 = self.skip_hysteria2_var.get()
             max_allowed_latency = int(self.max_allowed_latency_var.get() or DEFAULT_SETTINGS["max_allowed_latency"])
-            enable_speed_test = self.enable_speed_test_var.get()
-            speed_test_size = int(self.speed_test_size_var.get() or DEFAULT_SETTINGS["speed_test_size"])
             
             # بررسی Xray
             if xray_path and os.path.exists(xray_path):
@@ -1794,9 +1784,6 @@ class V2RayOptimizerModernGUI:
             
             self._log(f"⏱️ حداکثر تاخیر مجاز: {max_allowed_latency}ms")
             
-            if enable_speed_test:
-                self._log(f"📈 تست سرعت واقعی فعال: {speed_test_size}MB")
-            
             self.start_btn.config(state="disabled")
             self.cancel_btn.config(state="normal")
             self.completed_tests = 0
@@ -1810,8 +1797,7 @@ class V2RayOptimizerModernGUI:
             thread = threading.Thread(
                 target=self._worker,
                 args=(subs, output_name, top_n, tests_per_config, max_concurrency, timeout, 
-                      xray_path, hysteria_path, skip_hysteria2, max_allowed_latency, 
-                      enable_speed_test, speed_test_size),
+                      xray_path, hysteria_path, skip_hysteria2, max_allowed_latency),
                 daemon=True,
             )
             thread.start()
@@ -1825,9 +1811,8 @@ class V2RayOptimizerModernGUI:
         self.cancel_btn.config(state="disabled")
     
     def _worker(self, subs, output_name, top_n, tests_per_config, max_concurrency, timeout, 
-                xray_path, hysteria_path, skip_hysteria2, max_allowed_latency, 
-                enable_speed_test, speed_test_size):
-        """اجرای تست‌ها با پشتیبانی از Hysteria2 و تست سرعت"""
+                xray_path, hysteria_path, skip_hysteria2, max_allowed_latency):
+        """اجرای تست‌ها با پشتیبانی از Hysteria2"""
         try:
             configs = self._collect_configs(subs)
             if not configs:
@@ -1881,20 +1866,7 @@ class V2RayOptimizerModernGUI:
                 ranked = rank_results(results)
                 best = ranked[:top_n]
                 
-                # تست سرعت برای کانفیگ‌های برتر
-                if enable_speed_test and best:
-                    self._log(f"📈 شروع تست سرعت برای {len(best)} کانفیگ برتر...")
-                    for idx, res in enumerate(best[:5], 1):  # فقط 5 کانفیگ برتر
-                        if res.use_xray:
-                            local_port = 2080 + (hash(res.config.key()) % 100)
-                            proxy_url = f'socks5://127.0.0.1:{local_port}'
-                            success, speed = run_speed_test(res.config, proxy_url, speed_test_size)
-                            if success:
-                                self._log(f"✓ [{idx}] {res.config.remark}: {speed:.2f} Mbps", "success")
-                            else:
-                                self._log(f"✗ [{idx}] {res.config.remark}: تست سرعت شکست", "warning")
-                
-                save_output_files(best, output_name, enable_excel=True)
+                save_output_files(best, output_name, enable_excel=True, log_cb=lambda msg, status="info": self._log(msg, status))
                 self._update_results(best)
                 self._set_status("✓ اتمام تست")
                 self._log(f"✓ خروجی ذخیره شد: {output_name}.txt, {output_name}.base64, {output_name}_results.json, {output_name}_results.xlsx")

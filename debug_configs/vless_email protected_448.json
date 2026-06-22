@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2091,
+      "port": 2127,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -41,8 +41,8 @@
         "security": "reality",
         "realitySettings": {
           "serverName": "www.googletagmanager.com",
-          "publicKey": "0B7XMJC-mBqvUkf_on0wPZeW1iVmZIbEPVyvz-V_jRI",
-          "shortId": "60d7a9bbacadc0fb",
+          "publicKey": "MbaP34cAgypweQZ7L2hx1wihw_K5c3g4SBlOpgD7wRo",
+          "shortId": "e0274f4ac227090f",
           "fingerprint": "chrome"
         }
       }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2091,
+      "port": 2158,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,7 +40,7 @@
         "network": "xhttp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "u729792us2783.wagahaha.xyz",
+          "serverName": "u729792us2782.wagahaha.xyz",
           "allowInsecure": true
         }
       }
