@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2120,
+      "port": 2084,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -38,7 +38,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "www.lateralio.click",
+          "serverName": "fra154.clientfirewall.click",
           "allowInsecure": true
         }
       }

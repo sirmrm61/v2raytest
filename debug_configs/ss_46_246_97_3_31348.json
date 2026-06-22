@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2105,
+      "port": 2137,
       "protocol": "socks",
       "settings": {
         "udp": true

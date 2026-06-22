@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2101,
+      "port": 2127,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -42,7 +42,7 @@
         "realitySettings": {
           "serverName": "www.samsung.com",
           "publicKey": "GzOdZG9TCQSrZV7ivcmOq9tKWUf37QnoTxSHf32OfAs",
-          "shortId": "16",
+          "shortId": "1680",
           "fingerprint": "chrome"
         }
       }

@@ -37,7 +37,7 @@
         ]
       },
       "streamSettings": {
-        "network": "xhttp",
+        "network": "httpupgrade",
         "security": true,
         "tlsSettings": {}
       }

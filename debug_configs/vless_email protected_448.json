@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2155,
+      "port": 2091,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": null,
                 "encryption": "none",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
@@ -40,9 +40,9 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "www.samsung.com",
-          "publicKey": "nE2H52_rX3dHXENKxpHFDfZPKP40AjGoHyJv9olrr20",
-          "shortId": "124107a81dcd5199",
+          "serverName": "www.googletagmanager.com",
+          "publicKey": "0B7XMJC-mBqvUkf_on0wPZeW1iVmZIbEPVyvz-V_jRI",
+          "shortId": "60d7a9bbacadc0fb",
           "fingerprint": "chrome"
         }
       }

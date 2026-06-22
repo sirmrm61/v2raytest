@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2179,
+      "port": 2160,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -37,17 +37,11 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "splash.ariyuz.org",
+          "serverName": "ams1.fromblancwithlove.com",
           "allowInsecure": true
-        },
-        "wsSettings": {
-          "path": "/api/v1",
-          "headers": {
-            "Host": "splash.ariyuz.org"
-          }
         }
       }
     }

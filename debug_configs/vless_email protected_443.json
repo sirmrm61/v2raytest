@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2154,
+      "port": 2108,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,10 +40,10 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "4.oncloudnineservicestreang.com",
-          "publicKey": "P5ceHLOW8Gmz45z-ozbm9T6xsdSsIGLB71-jMfSjCBQ",
-          "shortId": "04bc695105689674",
-          "fingerprint": "chrome"
+          "serverName": "google.com",
+          "publicKey": "Fp0-VrMBeaQe9xOrehDYHt0mqTZL-5CdfuMEzoXkOE8",
+          "shortId": "",
+          "fingerprint": "firefox"
         }
       }
     }

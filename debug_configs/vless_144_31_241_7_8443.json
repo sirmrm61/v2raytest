@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2099,
+      "port": 2146,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "yourcloud.ldtp.com",
           "publicKey": "kt-3Y5U6yLWiLB_RijhceKo01lYAVosWRZbhS05YpCY",
           "shortId": "7d6203949764f921",
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         }
       }
     }
