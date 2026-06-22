@@ -997,7 +997,7 @@ async def run_all_tests(configs: List[ConfigItem], tests_per_config: int,
         return result
     
     # ساخت تمام تسک‌ها
-    tasks = [test_with_early_stop(cfg) for cfg in configs]
+    tasks = [asyncio.create_task(test_with_early_stop(cfg)) for cfg in configs]
     
     # پردازش تسک‌ها به محض تکمیل
     for task in asyncio.as_completed(tasks):

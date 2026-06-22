@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2122,
+      "port": 2161,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 80,
             "users": [
               {
-                "id": "68c8f462-8468-4931-90a8-680c3d6cb3c1",
+                "id": "43dcdce1-3cea-4193-bc8d-90b92071d779",
                 "alterId": "0",
                 "security": "auto"
               }
@@ -39,9 +39,9 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1",
+          "path": "/?BIA_TELEGRAM@AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1_AZARBAYJAB1/?de=2560",
           "headers": {
-            "Host": "tr1-smart.adelping.com"
+            "Host": "TM_AZARBAYJAB1.new.99.workers.dev"
           }
         }
       }

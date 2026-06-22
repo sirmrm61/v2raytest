@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2153,
+      "port": 2136,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -41,9 +41,9 @@
         "security": "reality",
         "realitySettings": {
           "serverName": "deepl.com",
-          "publicKey": "zH_3ABX1RiBh4Be_xH9QJcQMzOEI4L4zmiuTiA2_ThU",
-          "shortId": "b9a9",
-          "fingerprint": "chrome"
+          "publicKey": "a-GLfBU_yhZcBKPODh1zl-Ypj-jm4nYN_fkHBhMGAGs",
+          "shortId": "d56f",
+          "fingerprint": "firefox"
         }
       }
     }

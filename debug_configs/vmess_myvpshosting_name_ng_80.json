@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2135,
+      "port": 2083,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -29,7 +29,7 @@
             "users": [
               {
                 "id": "96408f9a-df03-448b-b7e4-ec8e2c216682",
-                "alterId": 0,
+                "alterId": "0",
                 "security": "auto"
               }
             ]

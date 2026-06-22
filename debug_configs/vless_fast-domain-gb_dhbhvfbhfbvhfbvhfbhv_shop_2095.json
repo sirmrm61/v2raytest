@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2119,
+      "port": 2159,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,7 +40,7 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "www.speedtest.net",
+          "serverName": "refersion.com",
           "publicKey": "9nvQaypTgq2UZ_9wSUctYxStDRWNJqe3o9evmKc5UBE",
           "shortId": "bc348c28dbc7b9f5",
           "fingerprint": "random"

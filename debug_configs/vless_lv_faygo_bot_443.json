@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2104,
+      "port": 2109,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": "8ca5cbd3-ec16-4728-bedc-2bc0d82f0922",
                 "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
               }
             ]
           }
@@ -43,7 +43,7 @@
           "serverName": "enterprisekitten.com",
           "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
           "shortId": "6ba85179e30d4fc2",
-          "fingerprint": "chrome"
+          "fingerprint": "qq"
         }
       }
     }

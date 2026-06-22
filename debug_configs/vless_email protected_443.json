@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2162,
+      "port": 2154,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,18 +30,20 @@
               {
                 "id": null,
                 "encryption": "none",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "xhttp",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "u711540us4077.wagahaha.xyz",
-          "allowInsecure": true
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "4.oncloudnineservicestreang.com",
+          "publicKey": "P5ceHLOW8Gmz45z-ozbm9T6xsdSsIGLB71-jMfSjCBQ",
+          "shortId": "04bc695105689674",
+          "fingerprint": "chrome"
         }
       }
     }

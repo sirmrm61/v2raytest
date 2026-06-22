@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2082,
+      "port": 2092,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "cars.morro-settings.ru",
           "publicKey": "8vqOvJ5eoG_9oHla4B3Vh1E-o39RrCXW6Wr7OcXZGmI",
           "shortId": "dd",
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         }
       }
     }

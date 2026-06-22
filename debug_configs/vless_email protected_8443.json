@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2150,
+      "port": 2179,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,20 +30,24 @@
               {
                 "id": null,
                 "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "serverName": "storage.yandex.net",
-          "publicKey": "7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg",
-          "shortId": "2715592069f36fe7",
-          "fingerprint": "firefox"
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "splash.ariyuz.org",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/api/v1",
+          "headers": {
+            "Host": "splash.ariyuz.org"
+          }
         }
       }
     }

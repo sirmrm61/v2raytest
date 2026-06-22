@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2089,
+      "port": 2107,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -37,7 +37,7 @@
         ]
       },
       "streamSettings": {
-        "network": "httpupgrade",
+        "network": "xhttp",
         "security": true,
         "tlsSettings": {}
       }
