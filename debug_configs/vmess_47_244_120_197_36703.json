@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2085,
+      "port": 2099,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -41,7 +41,7 @@
         "wsSettings": {
           "path": "/arki?ed=2048",
           "headers": {
-            "Host": ""
+            "Host": "47.244.120.197"
           }
         }
       }

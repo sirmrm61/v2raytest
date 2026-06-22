@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2177,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "89.124.90.42",
+            "port": 443,
+            "users": [
+              {
+                "id": "a5ea9247-79f3-4655-aece-3fb51e1e669e",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "rezerv5.yunus.guru",
+          "publicKey": "E56UL8pvnV6FNSPmv_Q9AZnSgHZpjOm-jrLyOEKwO0Q",
+          "shortId": "399a4569c48e12e6",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

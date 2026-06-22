@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2177,
+      "port": 2089,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "mishaduck.duckdns.org",
           "publicKey": "-FQM2tUbpiBjwjgla2mwkSkFhFIKQU0FQOvRi0ZD_mY",
           "shortId": "540f5784c2481b5a",
-          "fingerprint": "chrome"
+          "fingerprint": "safari"
         }
       }
     }

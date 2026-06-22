@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2125,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "151.101.110.219",
+            "port": 443,
+            "users": [
+              {
+                "password": "MITIVPN"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "global.fastly.com",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/ed=mitivpn",
+          "headers": {
+            "Host": "mitivpn-6.global.ssl.fastly.net"
+          }
+        }
+      }
+    }
+  ]
+}

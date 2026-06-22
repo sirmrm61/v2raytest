@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2107,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "185.68.185.212",
+            "port": 50029,
+            "users": [
+              {
+                "id": "0fdbacfb-428b-4d49-adb4-dd629e7c52e2",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.nvidia.com",
+          "publicKey": "7f483yCE9Bohsk5FkHta5FYQF0BN96EzAHoUuEACB3I",
+          "shortId": "4e7f150d",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

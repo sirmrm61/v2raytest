@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2095,
+      "port": 2131,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "icloud.com",
           "publicKey": "5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI",
           "shortId": "d82fb387",
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         }
       }
     }

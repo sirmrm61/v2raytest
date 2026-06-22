@@ -1,0 +1,49 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2104,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "2401:c080:1000:2bc9:5400:6ff:fe47:7cf3",
+            "port": 443,
+            "users": [
+              {
+                "id": "43bcba7d-cd22-379c-a7da-2e8eafecbc78",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "u711540us5195.wagahaha.xyz",
+          "allowInsecure": true
+        }
+      }
+    }
+  ]
+}

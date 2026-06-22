@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2119,
+      "port": 2087,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "A4u%5Ep%28_UR*F6"
+                "password": "0ab59a11983d4ce7862d156c164d927d"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "027.ELeCTroCelLco-CF-027.wORkERS.dEv",
+          "serverName": "FAST-Route-DD4E2D.FREEfiReMO7964.WOrkeRS.DEV",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/eyJqdW5rIjoidlhnMXN5OXFUSiIsInByb3RvY29sIjoidHIiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560",
+          "path": "/eyJqdW5rIjoiajRMMndudHIiLCJwcm90b2NvbCI6InRyIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMDkuMTIyLjE5OC4xMjciXX0=?ed=2560",
           "headers": {
-            "Host": "027.electrocellco-cf-027.workers.dev"
+            "Host": "FAST-RouTE-Dd4E2d.fREefIREmO7964.wOrKerS.dev"
           }
         }
       }

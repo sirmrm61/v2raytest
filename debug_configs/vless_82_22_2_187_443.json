@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2174,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "82.22.2.187",
+            "port": 443,
+            "users": [
+              {
+                "id": "f00297b0-a501-4982-9a8e-2cf2df5b4f84",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "fr-01.slnode.cc",
+          "publicKey": "Icm1TWywIJz1OVINqBXHYeQr1yxDoT-t3R9DDi-CD2U",
+          "shortId": "71b1677c130233d7",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

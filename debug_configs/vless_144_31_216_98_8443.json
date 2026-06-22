@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2123,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "144.31.216.98",
+            "port": 8443,
+            "users": [
+              {
+                "id": "cf038a28-8f85-41fc-9e86-ba99a3fdd0d9",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "service.mycloudsfere.abrdns.com",
+          "publicKey": "Xb-A55KyH9nwjxKw85wksIUJs9KBGk5B8rLArXGVLiw",
+          "shortId": "d9654598d4415f95",
+          "fingerprint": "chrome"
+        }
+      }
+    }
+  ]
+}

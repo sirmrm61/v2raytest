@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2125,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "34.213.172.16",
+            "port": 22189,
+            "users": [
+              {
+                "id": "4889ee33-74e5-4819-86d8-b2a1a5bc8f46",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.tesla.com",
+          "publicKey": "5tUZskKOCKpjz3j7hmuYaQHNfE1QRtZI9P62qvSs1GY",
+          "shortId": "47b6d14ff477fe59",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

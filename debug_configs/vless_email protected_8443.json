@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2147,
+      "port": 2150,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": null,
                 "encryption": "none",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
@@ -38,10 +38,12 @@
       },
       "streamSettings": {
         "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "ams1.fromblancwithlove.com",
-          "allowInsecure": true
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "storage.yandex.net",
+          "publicKey": "7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg",
+          "shortId": "2715592069f36fe7",
+          "fingerprint": "firefox"
         }
       }
     }

@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2087,
+      "port": 2170,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "password": "mitivpn"
+                "password": "6c862415-30d2-4813-8e49-42e99a0bd415"
               }
             ]
           }
@@ -38,13 +38,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "gamingdll.ir",
+          "serverName": "space.byu.id.yxls.eu.cc",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/ed=mitivpn/index.php",
+          "path": "/us-gllc",
           "headers": {
-            "Host": "gamingdll.ir"
+            "Host": "space.byu.id.yxls.eu.cc"
           }
         }
       }

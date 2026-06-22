@@ -40,7 +40,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "u729792us3571.wagahaha.xyz",
+          "serverName": "u729792us3570.wagahaha.xyz",
           "allowInsecure": true
         }
       }

@@ -1,0 +1,53 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2136,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "45.130.125.126",
+            "port": 443,
+            "users": [
+              {
+                "password": "86957ec0-b213-433b-a43b-51f2175e0ec3"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "space.byu.id.yxls.eu.cc",
+          "allowInsecure": true
+        },
+        "wsSettings": {
+          "path": "/au-do",
+          "headers": {
+            "Host": "space.byu.id.yxls.eu.cc"
+          }
+        }
+      }
+    }
+  ]
+}

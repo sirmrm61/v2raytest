@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2081,
+      "port": 2179,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -40,10 +40,10 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "",
-          "publicKey": "",
-          "shortId": "",
-          "fingerprint": "chrome"
+          "serverName": "yahoo.com",
+          "publicKey": "oYCopzg1jDV54b-i8nR9_ULi7uivm_qfCM95LwRBfXU",
+          "shortId": "61",
+          "fingerprint": "firefox"
         }
       }
     }

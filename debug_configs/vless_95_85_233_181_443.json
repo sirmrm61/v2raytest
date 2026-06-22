@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2155,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "95.85.233.181",
+            "port": 443,
+            "users": [
+              {
+                "id": "e0bb3250-1873-4b9d-b9b5-7aa6c863885f",
+                "encryption": "none",
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "c.primarymaster.online",
+          "publicKey": "S05RWQUVH-p3uqekd0iRpIeH__NpCt0XEN2xCiQJs3Y",
+          "shortId": "c56c3ba3b9f676c5",
+          "fingerprint": "firefox"
+        },
+        "grpcSettings": {
+          "serviceName": "",
+          "multiMode": false
+        }
+      }
+    }
+  ]
+}

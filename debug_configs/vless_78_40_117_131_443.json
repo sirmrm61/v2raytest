@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2111,
+      "port": 2161,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,7 +30,7 @@
               {
                 "id": "1281ef13-f1cd-493b-903e-4c2f4ffe1eba",
                 "encryption": "none",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
@@ -40,10 +40,10 @@
         "network": "tcp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "",
-          "publicKey": "",
-          "shortId": "",
-          "fingerprint": "chrome"
+          "serverName": "ikea.com",
+          "publicKey": "Dgu9RaToLbQcM1NCf_pS3ezHj6LsBQSYu50zWs5A6Qk",
+          "shortId": "57cc65bfd5ef7465",
+          "fingerprint": "firefox"
         }
       }
     }

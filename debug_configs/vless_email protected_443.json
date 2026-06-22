@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2152,
+      "port": 2162,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -30,20 +30,18 @@
               {
                 "id": null,
                 "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "serverName": "enterprisekitten.com",
-          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
-          "shortId": "6ba85179e30d4fc2",
-          "fingerprint": "qq"
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "u711540us4077.wagahaha.xyz",
+          "allowInsecure": true
         }
       }
     }

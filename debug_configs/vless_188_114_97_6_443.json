@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2169,
+      "port": 2098,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -28,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "id": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+                "id": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
                 "encryption": "none",
                 "flow": ""
               }
@@ -40,13 +40,13 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "vangoghhh.info",
+          "serverName": "terazhediii.info",
           "allowInsecure": true
         },
         "wsSettings": {
-          "path": "/rdfgtws",
+          "path": "/hdgrbws",
           "headers": {
-            "Host": "vangoghhh.info"
+            "Host": "terazhediii.info"
           }
         }
       }

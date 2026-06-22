@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "port": 2175,
+      "port": 2127,
       "protocol": "socks",
       "settings": {
         "udp": true
@@ -43,7 +43,7 @@
           "serverName": "vindobona.org",
           "publicKey": "5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng",
           "shortId": "08",
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         }
       }
     }

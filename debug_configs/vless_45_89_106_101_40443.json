@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2163,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "45.89.106.101",
+            "port": 40443,
+            "users": [
+              {
+                "id": "6ae44ad9-c2cb-4bdf-8e48-6c01fa646372",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "deepl.com",
+          "publicKey": "f6MOnGRTqdns7Lut75DSrnFZeiiZ4N04gnj5m-l7KnM",
+          "shortId": "54ce",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}

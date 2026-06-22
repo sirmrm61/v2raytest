@@ -1,0 +1,51 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 2167,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "usa.ldtp.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "0e49e208-e09e-49bc-afee-2907e5419107",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "usa.ldtp.com",
+          "publicKey": "N--0r-eUKZ-23lmSHvsC4ywFbsAWRahFtxv_N02AgFY",
+          "shortId": "df2becfa7b040c78",
+          "fingerprint": "firefox"
+        }
+      }
+    }
+  ]
+}
